@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, links, script, content)">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title th:replace="${title}">레이아웃 타이틀</title>
+
+    <th:block th:replace="${links}"></th:block>
+    <th:block th:replace="${script}"></th:block>
 </head>
 <body>
 
+<div th:replace="${content}">
+    <p>레이아웃 컨텐츠</p>
+</div>
 </body>
 </html>
