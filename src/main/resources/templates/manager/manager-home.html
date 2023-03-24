@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{css/manager-home}">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+    <script defer th:src="@{js/manager-home.js}"></script>
+    <title>managerHome</title>
 </head>
 <body>
+<section>
+| 오늘의 할일 |
+방문자 현황 |  일자별 게시판 요약 | 로그인 관리자 정보
 
+1:1 문의 | 게시물 신고 |  지금 실시간 인기 게시물
+</section>
 </body>
 </html>
