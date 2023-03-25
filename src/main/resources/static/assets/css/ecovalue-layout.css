@@ -1,0 +1,303 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+@font-face {
+    font-family: "TheJamsil5Bold";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --point-color: #27ae60;
+    --background-color-main: #f7f8f8;
+    --background-color-sub: #f1f2f3;
+    --boundary-color: #d9d9d9;
+    --font-color-main: #333333;
+    --font-color-sub: #4c4c4c;
+    --font-color-sub2: #577391;
+}
+
+body {
+    font-family: "NanumSquare", sans-serif;
+    background-color: var(--background-color-main);
+}
+
+/* 네비게이션 제일 바깥 배경 영역 */
+.navbar_cover {
+    width: auto;
+    min-width: 1280px;
+    border-bottom: 1px solid var(--point-color);
+    background-color: var(--background-color-main);
+}
+
+/* 네비게이션 내부 아이템들 감싸는 영역 */
+.navbar_wrap {
+    margin: auto;
+    width: 1280px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+/* 로고 아이템들 감싸는 영역 */
+.logo_wrap {
+
+}
+
+/* 로고 영역 */
+.logo {
+    font-family: "TheJamsil5Bold", serif;
+    color: var(--point-color);
+    font-size: 40px;
+    font-weight: 800;
+}
+
+/* 메뉴 아이템들 감싸는 영역 */
+.menu_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 250px;
+}
+
+/* 각각의 메뉴 아이템들 영역 */
+.menu_wrap .menu {
+    padding-top: 20px;
+    margin: 0 20px;
+    position: relative;
+}
+
+.menu_wrap .menu .menu_name {
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--font-color-main);
+}
+
+.menu_wrap .menu .menu_name:hover {
+    color: var(--point-color);
+}
+
+.menu_wrap .menu .menu_name:before {
+    position: absolute;
+    content: '';
+    background-color: var(--point-color);
+    width: 0;
+    height: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -14px;
+    transition: 0.2s;
+}
+
+.menu_wrap .menu .menu_name:hover:before {
+    width: 100%;
+}
+
+
+.menu_wrap .menu .sub_menu {
+    position: absolute;
+    top: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu_wrap .menu ul li{
+
+}
+
+
+
+
+.navbar_log_in {
+    font-weight: 400;
+    font-size: 15px;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.navbar_log_in li {
+    width: 30%;
+    height: auto;
+    border-radius: 5px;
+    transition: 0.2s;
+    margin: 0 2px;
+    padding-top: 25px;
+}
+
+.navbar_log_in li a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: var(--font-color-main);
+    text-align: center;
+    transition: 0.2s;
+}
+
+.navbar_log_in li a:hover .sub_menu {
+    visibility: inherit;
+    height: 50px;
+    overflow: visible;
+    padding-top: 5px;
+}
+
+
+
+
+.sub_menu li {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: inline-block;
+}
+
+.sub_menu li a {
+    font-size: 16px;
+}
+
+/* 이유 모르겠는데 이벤트만 이상함 */
+/* 대혁 : 여기 event -> navi_event 클래스로 바꾸셈 */
+#event li {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: inline-block;
+}
+
+/**/
+
+
+.subbar_cover {
+    min-width: 1280px;
+
+    height: 50px;
+    font-family: "NanumSquare", sans-serif;
+    border-bottom: 1px solid var(--boundary-color);
+    color: var(--font-color-main);
+    background-color: var(--background-color-sub);
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.subbar_menu {
+    margin: auto;
+    width: 1280px;
+    height: 50px;
+
+}
+
+.subbar {
+    margin: auto;
+    position: relative;
+    width: 1280px;
+    color: var(--font-color-main);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.subbar .template {
+    display: inline-block;
+    margin: 0;
+    padding-top: 15px;
+    padding-left: 40px;
+    height: 50px;
+    width: 30%;
+
+    color: var(--point-color);
+}
+
+.subbar .tip {
+    display: inline-block;
+    padding-top: 15px;
+    padding-right: 8%;
+    height: 50px;
+    justify-content: end;
+    max-width: 60%;
+}
+
+.tip .tip_comment {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.tip .tem {
+    display: inline-block;
+}
+
+.tip .tem > i {
+    color: var(--font-color-main);
+}
+
+/*** 각 서브메뉴의 위치 이동 ***/
+.tab_menu #recycle {
+    margin-left: -150px;
+}
+
+.tab_menu #upcycle {
+    margin-left: -140px;
+}
+
+.tab_menu #zero_waste {
+    margin-left: -175px;
+}
+
+.tab_menu #store {
+    margin-left: -110px;
+}
+
+.tab_menu #event {
+    margin-left: 10px;
+}
+
+/* 일단 여기는 한 눈에 레이아웃 보이게끔 높이 조정 */
+.container {
+    width: 100%;
+    height: 800px;
+    min-height: 80vh;
+    margin: auto;
+    background-color: var(--background-color-main);
+    border: var(--point-color);
+}
+
+.footer_cover {
+    width: auto;
+    min-width: 1280px;
+    height: 100px;
+    background-color: var(--background-color-sub);
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    width: 1280px;
+}
+
+.footer_logo {
+    float: left;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 100px;
+    margin-right: 200px;
+    color: var(--font-color-main);
+}
+
+.line {
+    text-align: center;
+    justify-content: center;
+    padding-top: 30px;
+    text-align: left;
+}
+
+.line span {
+    padding-right: 30px;
+    color: var(--font-color-sub2);
+}
