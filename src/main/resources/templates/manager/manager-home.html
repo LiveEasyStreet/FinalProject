@@ -6,18 +6,143 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/static/assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/assets/css/manager-home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+          rel="stylesheet"/>
     <script defer src="/static/assets/js/manager-home.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
             crossorigin="anonymous"></script>
     <title>managerHome</title>
+    <link rel="stylesheet" href="../../static/assets/css/manager-home.css">
+    <script src="https://kit.fontawesome.com/71b528d146.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<section>
-| 오늘의 할일 |
-방문자 현황 |  일자별 게시판 요약 | 로그인 관리자 정보
-
-1:1 문의 | 게시물 신고 |  지금 실시간 인기 게시글
-    <h1> 하이</h1>
+<section class="container">
+    <div class="b_section">
+        <div class="grid_title">오늘의 할일<span>2</span></div>
+        <hr>
+        <div class="flexbox">
+            <div>답변 대기 문의 <span>2</span></div>
+            <div>신고 관리<span>2</span></div>
+            <div>챌린지 관리<span>2</span></div>
+            <div>이벤트 관리<span>0</span></div>
+        </div>
+    </div>
+    <div class="c_section">
+        <div class="grid_title">방문자 현황<i class="fa-solid fa-leaf"></i></div>
+        <hr>
+    </div>
+    <div class="d_section">
+        <div class="grid_title">일자별 요약<i class="fa-solid fa-seedling"></i></div>
+        <hr>
+        <table>
+            <thead>
+            <tr>
+                <th>일자</th>
+                <th>방문자 수</th>
+                <th>게시판 수</th>
+                <th>댓글 수</th>
+                <th>가입자 수</th>
+                <th>문의 수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2023-03-25</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-26</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-27</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-28</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-29</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-30</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-31</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>최근 7일 합계</td>
+                <td>700 <span>명</span></td>
+                <td>140 <span>개</span></td>
+                <td>350 <span>개</span></td>
+                <td>70 <span>명</span></td>
+                <td>35 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>이번 달 합계</td>
+                <td>1500 <span>명</span></td>
+                <td>300 <span>개</span></td>
+                <td>500 <span>개</span></td>
+                <td>100 <span>명</span></td>
+                <td>50 <span>개</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="e_section">
+        <div>로그인 관리자 정보<i class="fa-solid fa-certificate"></i></div>
+    </div>
+    <div class="f_section">
+        <div class="grid_title">1:1 문의<i class="fa-solid fa-clover"></i></div>
+        <hr>
+    </div>
+    <div class="g_section">
+        <div class="grid_title">게시물 신고<i class="fa-solid fa-tree"></i></div>
+        <hr>
+    </div>
+    <div class="h_section">
+        <div class="grid_title">실시간 인기있는 게시글<i class="fa-solid fa-mountain-sun"></i></div>
+        <hr>
+    </div>
+    <div class="i_section">
+        같이하는 작은 실천, 의미있는 큰 가치
+        <div>가치</div>
+    </div>
 </section>
 </body>
 </html>
