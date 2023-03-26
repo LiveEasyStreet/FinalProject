@@ -1,4 +1,4 @@
-const sub_tab = document.querySelector("#sub_space");
+const sub_tab = document.querySelector("#nav_contents_wrap");
 
 let intervalarr = [];
 let interval = setInterval(() => subbar_click(), 3000);
@@ -21,15 +21,15 @@ const sample_text = [
 ];
 
 document
-  .querySelector(".navbar_wrap")
-  .addEventListener("mouseenter", function () {
-    sub_tab.style.display = "none";
-  });
+    .querySelector(".menu_wrap")
+    .addEventListener("mouseenter", function () {
+      sub_tab.style.display = "none";
+    });
 document
-  .querySelector(".navbar_wrap")
-  .addEventListener("mouseleave", function () {
-    sub_tab.style.display = "flex";
-  });
+    .querySelector(".menu_wrap")
+    .addEventListener("mouseleave", function () {
+      sub_tab.style.display = "flex";
+    });
 
 const start = function () {
   cleararr();

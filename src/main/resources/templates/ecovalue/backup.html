@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, links, script, content)">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-    <title th:replace="${title}">ecovalue</title>
-
+    <title>ecovalue</title>
     <link th:href="@{/assets/css/reset.css}" href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"/>
     <link th:href="@{/assets/css/ecovalue-layout.css}" href="/static/assets/css/ecovalue-layout.css" type="text/css"
           rel="stylesheet"/>
     <script defer th:src="@{/assets/js/ecovalue-script.js}" src="/static/assets/js/ecovalue-script.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-
-    <th:block th:replace="${links}"></th:block>
-    <th:block th:replace="${script}"></th:block>
 </head>
 <body>
 <div class="container">
@@ -22,7 +18,7 @@
         <div class="navbar_top">
             <div class="navbar_wrap">
 
-                <a class="logo_wrap" href="/">
+                <a class="logo_wrap" href="#">
                     <div class="logo">
                         가치
                     </div>
@@ -39,7 +35,7 @@
                     </li>
                     <li class="menu">
                         <a class="menu_name" href="#">업사이클</a>
-                        <ul class="sub_menu">
+                        <ul class="sub_menu" id="upcycle">
                             <li><a href="#">업사이클 소개</a></li>
                             <li><a href="#">업사이클 갤러리</a></li>
                             <li><a href="#">업사이클 게시물</a></li>
@@ -88,13 +84,11 @@
         </div>
     </nav>
 
-    <div class="main_contents">
+    <section class="main_contents">
         <div class="main_contents_wrap">
-            <div th:replace="${content}">
-
-            </div>
+                내용물 테스트 영역
         </div>
-    </div>
+    </section>
 
 
     <footer class="footer">
@@ -110,6 +104,7 @@
             </div>
         </div>
     </footer>
+
 
 </div>
 
