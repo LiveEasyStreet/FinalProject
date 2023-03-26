@@ -212,6 +212,32 @@ body {
     font-size: 13px;
 }
 
+/* sort 아이콘 영역 */
+#sort {
+    font-size: 18px;
+    position: relative;
+}
+
+/* sort 아이콘 클릭용 [div] 영역 up */
+#sort_up {
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 12px;
+    cursor: pointer;
+    top: -2px;
+}
+
+/* sort 아이콘 클릭용 [div] 영역 down */
+#sort_down {
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 12px;
+    cursor: pointer;
+    bottom: -2px;
+}
+
 /* 레이아웃 중간 콘텐츠 감싸는 영역 */
 .main_contents {
     background: var(--background-color-main);
