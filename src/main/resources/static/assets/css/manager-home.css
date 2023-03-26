@@ -100,6 +100,10 @@ i {
     grid-area: c;
 }
 
+.c_section #myChart {
+    margin-top: 30px;
+}
+
 .d_section {
     grid-area: d;
     display: flex;
@@ -133,12 +137,22 @@ i {
     grid-area: e;
 }
 
-.e_section div {
+.e_section > .content {
     height: 100%;
-    color: #f7f8f8;
     background-color: #3b3e43;
+    color: var(--background-color-sub);
     text-align: center;
+}
+
+.e_section > .content > .title {
     font-size: 20px;
+}
+
+
+.e_section > #white_hr {
+    background: var(--background-color-sub);
+    height: 1px;
+    border: 0;
 }
 
 .f_section {
@@ -261,7 +275,7 @@ i {
 }
 
 .h_section .content_title {
-    width:132px;
+    width: 132px;
     margin: 6px 0;
 }
 
@@ -281,9 +295,9 @@ i {
     text-align: left;
 }
 
-.h_section > .flexbox2 .content{
+.h_section > .flexbox2 .content {
     height: 100%;
-    align-items : center;
+    align-items: center;
     display: flex;
     flex-direction: row;
 }
@@ -312,8 +326,13 @@ i {
     color: #aaaaaa;
 }
 
-
 .i_section {
     grid-area: i;
+    text-align: center;
+    font-size: 30px;
     color: var(--point-color);
+}
+
+.i_section div {
+    padding-top: 35px;
 }

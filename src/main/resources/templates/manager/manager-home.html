@@ -11,12 +11,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet"/>
-    <script defer src="/static/assets/js/manager-home.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
             crossorigin="anonymous"></script>
-    <title>managerHome</title>
     <link rel="stylesheet" href="../../static/assets/css/manager-home.css">
     <script src="https://kit.fontawesome.com/71b528d146.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="/static/assets/js/manager-home.js"></script>
+    <title>managerHome</title>
 </head>
 <body>
 <section class="container">
@@ -33,6 +34,9 @@
     <div class="c_section">
         <div class="grid_title">방문자 현황<i class="fa-solid fa-leaf"></i></div>
         <hr>
+        <div>
+            <canvas id="myChart" height="220"></canvas>
+        </div>
     </div>
     <div class="d_section">
         <div class="grid_title">일자별 요약<i class="fa-solid fa-seedling"></i></div>
@@ -125,7 +129,17 @@
         </table>
     </div>
     <div class="e_section">
-        <div>로그인 관리자 정보<i class="fa-solid fa-certificate"></i></div>
+        <div class="content">
+            <div class="title">당일 종합 정보<i class="fa-solid fa-certificate"></i></div>
+            <hr id="white_hr">
+            <div>오늘 가입자수 / 총 회원수</div>
+            <div>오늘 게시물 수 / 총 게시물 수</div>
+            <div>오늘 방문자 수 / 총 방문자 수</div>
+            <div>오프라인 상점 수</div>
+            <div>온라인 상점 수</div>
+            <div>진행중인 챌린지 수</div>
+            <div>진행중인 이벤트 수</div>
+        </div>
     </div>
     <div class="f_section">
         <div class="grid_title">1:1 문의<i class="fa-solid fa-clover"></i></div>
@@ -295,7 +309,7 @@
         </div>
     </div>
     <div class="i_section">
-        배너 페이지!
+        <div>배너 페이지!</div>
     </div>
 </section>
 </body>
