@@ -24,8 +24,7 @@ body {
 
 .container {
     position: absolute;
-    width: auto;
-    min-width: 1280px;
+    width: 1280px;
     top: 100px;
     left: 200px;
     display: grid;
@@ -102,9 +101,9 @@ i {
 }
 
 .d_section {
+    grid-area: d;
     display: flex;
     flex-direction: column;
-    grid-area: d;
 }
 
 .d_section > table {
@@ -113,7 +112,6 @@ i {
     height: 100%;
 }
 
-/* #### 이 부분이 문제 !! ##### */
 .d_section th, td {
     text-align: center;
     padding-right: 8px;
@@ -145,20 +143,175 @@ i {
 
 .f_section {
     grid-area: f;
+    display: flex;
+    flex-direction: column;
+}
+
+.f_section > .flexbox {
+    /* *** 나머지를 채우는 코드 *** */
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.f_section > .flexbox i {
+    color: var(--font-color-sub2);
+    float: left;
+    font-size: 40px;
+    margin: 5px 15px 0 15px;
+}
+
+.f_section .content {
+    padding-top: 10px;
+    height: 100%;
+}
+
+.f_section a:link {
+    color: var(--font-color-main);
+    text-decoration: none;
+}
+
+.f_section a:visited {
+    color: #aaaaaa;
+}
+
+.f_section .content:hover {
+    background-color: #ecf3ec;
+}
+
+.f_section .content div:first-of-type {
+    font-weight: 500;
+}
+
+.f_section .content div:last-of-type {
+    padding-left: 66px;
+    color: var(--font-color-sub2);
+    font-size: 14px;
 }
 
 .g_section {
     grid-area: g;
+    display: flex;
+    flex-direction: column;
+}
+
+.g_section img {
+    margin-left: 10px;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+}
+
+.g_section > table {
+    table-layout: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.g_section th, td {
+    text-align: center;
+    padding-right: 8px;
+    border-bottom: 1px solid var(--boundary-color);
+}
+
+.g_section thead {
+    height: 40px;
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--font-color-sub2);
+}
+
+.g_section tbody :hover {
+    background-color: #ecf3ec;
+}
+
+.g_section a:link {
+    font-weight: 550;
+    color: var(--font-color-main);
+    text-decoration: none;
+}
+
+.g_section a:visited {
+    color: #aaaaaa;
 }
 
 .h_section {
     grid-area: h;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .h_section > .grid_title {
     margin: 15px 0;
 }
+
+.h_section > .flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.h_section img {
+    width: 132px;
+    height: 132px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.h_section .content_title {
+    width:132px;
+    margin: 6px 0;
+}
+
+.h_section .flexbox .line-clamp {
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.h_section > .flexbox2 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+}
+
+.h_section > .flexbox2 .content{
+    height: 100%;
+    align-items : center;
+    display: flex;
+    flex-direction: row;
+}
+
+.h_section .flexbox2 .line-clamp {
+    max-width: 250px;
+    padding-left: 20px;
+    padding-right: 8px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.h_section .flexbox2 :hover {
+    background-color: #ecf3ec;
+}
+
+.h_section a:link {
+    font-weight: 550;
+    color: var(--font-color-main);
+    text-decoration: none;
+}
+
+.h_section a:visited {
+    color: #aaaaaa;
+}
+
 
 .i_section {
     grid-area: i;
