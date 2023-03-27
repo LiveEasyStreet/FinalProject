@@ -2,16 +2,15 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/static/css/quizMain.css">
-    <script src="/static/js/quizMain.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="/css/quizMain.css">
+    <script src="/js/quizMain.js" defer></script>
     <title>EchoValue</title>
 </head>
 
 <body>
 <div id="퀴즈">
-
-    <div id="퀴즈내용">
-        <img src="/static/image/재활용퀴즈.jpg" th:if="${showImage}" id="startImage">
+    <div id="퀴즈시작">
+        <img src="/image/재활용퀴즈.jpg" th:if="${showImage}" id="startImage">
         <p></p>
         <button id="QuizStartButton" onclick="startQuiz()">퀴즈 시작하기</button>
     </div>
@@ -22,7 +21,7 @@
         let showImage = false;
         const startButton = document.querySelector("#QuizStartButton");
         startButton.addEventListener("click", () => {
-            location.href = "/sin";
+            location.href = "/question";
         })
     }
 </script>
