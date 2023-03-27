@@ -41,13 +41,10 @@ table {
 }
 
 td, th {
-    padding: 0
-<<<<<<< HEAD
-=======
+    padding: 0;
 }
 
 a {
     text-decoration: none;
-    outline: none
->>>>>>> jungwon
+    outline: none;
 }
