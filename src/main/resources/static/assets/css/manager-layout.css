@@ -1,0 +1,91 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+
+@font-face {
+    font-family: "TheJamsil5Bold";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+.mg_container {
+    display: grid;
+    grid-template-columns: 300px auto auto;
+    grid-template-rows: 32px auto auto;
+    grid-template-areas:
+            'a a a'
+            'b c c'
+            'b c c';
+}
+
+.mg_top_bar_wrap {
+    grid-area: a;
+    width: 100%;
+    background-color: #333333;
+    height: 32px;
+}
+
+.mg_top_bar {
+    max-width: 1600px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mg_top_bar_text {
+    font-family: "NanumSquare", serif;
+    font-weight: 800;
+    font-size: 14px;
+    margin-left: 50px;
+    color: #27ae60;
+}
+
+.mg_top_bar_right {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.mg_top_bar_logout {
+    font-family: '돋움', serif;
+    font-size: 12px;
+    width: 80px;
+    height: 22px;
+    background-color: white;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.mg_top_bar_version {
+    font-family: "NanumSquare", serif;
+    font-size: 16px;
+    color: white;
+    align-self: center;
+}
+
+.mg_navbar_warp {
+    grid-area: b;
+    width: 400px;
+    height: calc(100vh - 32px);
+    min-height: 1080px;
+    background-color: slategrey;
+}
+
+.mg_navbar {
+    margin-top: 200px;
+    height: 500px;
+    background-color: #333333;
+}
+
+.mg_content {
+    grid-area: c;
+    background-color: #d9d9d9;
+    width: 100%;
+}
