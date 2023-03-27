@@ -2,11 +2,25 @@
     text-align: center;
 }
 
-#퀴즈내용 {
+#퀴즈시작 {
     margin: 30px;
 }
 
-#퀴즈시작버튼 {
-    height: 30px;
-    width: 100px;
+#QuizStartButton {
+    height: 50px;
+    width: 150px;
+    box-shadow: 5px 6px 8px gray;
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: chartreuse;
+    font-size: 20px;
+}
+
+#QuizStartButton:hover {
+    background-color: forestgreen;
+}
+
+#QuizStartButton:active {
+    background-color: darkgreen;
+    box-shadow: 0px 0px 5px gray;
 }
