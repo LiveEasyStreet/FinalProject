@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, links, script, content)">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title th:replace="${title}">ecovalue</title>
+
+    <link th:href="@{/assets/css/reset.css}" href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/assets/css/ecovalue-layout.css}" href="/static/assets/css/ecovalue-layout.css" type="text/css"
+          rel="stylesheet"/>
+    <script defer th:src="@{/assets/js/ecovalue-script.js}" src="/static/assets/js/ecovalue-script.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+
+    <th:block th:replace="${links}"></th:block>
+    <th:block th:replace="${script}"></th:block>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar">
+        <div class="navbar_top">
+            <div class="navbar_wrap">
+
+                <a class="logo_wrap" href="/">
+                    <div class="logo">
+                        가치
+                    </div>
+                </a>
+
+                <ul class="menu_wrap">
+                    <li class="menu">
+                        <a class="menu_name" href="#">리사이클</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">재활용 방법</a></li>
+                            <li><a href="#">나만의 노하우</a></li>
+                            <li><a href="#">재활용 퀴즈</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a class="menu_name" href="#">업사이클</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">업사이클 소개</a></li>
+                            <li><a href="#">업사이클 갤러리</a></li>
+                            <li><a href="#">업사이클 게시물</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a class="menu_name" href="#">제로웨이스트</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">제로웨이스트 소개</a></li>
+                            <li><a href="#">챌린지 목록</a></li>
+                            <li><a href="#">DIY 만들기</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a class="menu_name" href="#">상점</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">오프라인 상점</a></li>
+                            <li><a href="#">온라인 상점</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu">
+                        <a class="menu_name" href="#">이벤트</a>
+                        <ul class="sub_menu">
+                            <li><a href="#">이벤트 목록</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <ul class="login_wrap">
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="navbar_bottom">
+            <div class="navbar_bottom_wrap">
+                <div class="nav_contents" id="nav_contents_wrap">
+                    <p class="contents_text">같이하는 작은 실천, 의미있는 큰 가치</p>
+                    <div class="tip_wrap">
+                        <p class="tip_comment">오염된 비닐은 재활용이 불가해요</p>
+                        <i id="sort" class="fa-solid fa-sort">
+                            <span id="sort_up" onclick="upButton()"></span>
+                            <span id="sort_down" onclick="downButton()"></span>
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main_contents">
+        <div class="main_contents_wrap">
+            <div th:replace="${content}">
+
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer_wrap">
+            <div class="footer_logo">가치</div>
+            <div class="footer_info">
+                <div class="footer_first_line">
+                    <span>고객센터</span><span>서울 특별시 역삼동 역삼역</span>
+                </div>
+                <div class="footer_second_line">
+                    <span>팔자피조</span><span>팀장 : 갓대혁</span><span>팀원 : 이예림 김하영 하유미 신원균 김태경 서정원 고찬솔</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>

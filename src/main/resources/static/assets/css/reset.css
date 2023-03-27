@@ -42,4 +42,12 @@ table {
 
 td, th {
     padding: 0
+<<<<<<< HEAD
+=======
+}
+
+a {
+    text-decoration: none;
+    outline: none
+>>>>>>> jungwon
 }
