@@ -1,0 +1,12 @@
+#퀴즈 {
+    text-align: center;
+}
+
+#퀴즈내용 {
+    margin: 30px;
+}
+
+#퀴즈시작버튼 {
+    height: 30px;
+    width: 100px;
+}
