@@ -3,11 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>EchoValue</title>
-    <link rel="stylesheet" href="/static/css/QuizQuestion.css">
+    <link rel="stylesheet" href="/css/QuizQuestion.css">
+    <script src="https://kit.fontawesome.com/fb84122c0e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="QuizContent">
-    <p>퀴즈 내용</p>
+
+<div id="QuizContentWrapper">
+    <div id="QuizContent">
+        <p>퀴즈내용</p>
+    </div>
 </div>
+
+<div id="oxWrapper">
+    <div id="OX">
+        <i class="fa-solid fa-o" onclick="plusNumber('O')"></i>
+        <i class="fa-solid fa-x" onclick="plusNumber('X')"></i>
+        <span id="Quiz_count">1 / 10</span>
+    </div>
+</div>
+
+<script th:sytle="javascript">
+
+    let counted_quiz = 1;
+
+    let plusNumber = (value) => {
+
+        if (value === 'O' || value === 'X') {
+            counted_quiz++;
+            document.getElementById('Quiz_count').innerHTML = `${counted_quiz} / 10`
+        }
+
+        if (counted_quiz === 10) {
+            counted_quiz = 0;
+        }
+    }
+</script>
+
 </body>
 </html>

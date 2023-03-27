@@ -1,0 +1,56 @@
+#QuizContentWrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+#QuizContent {
+    height: 300px;
+    width: 800px;
+    border-radius: 10px;
+    border: 3px solid black;
+    text-align: center;
+    margin: 40px;
+}
+
+#oxWrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+#OX {
+    height: 100px;
+    width: 800px;
+    text-align: center;
+    margin: 40px;
+    border-radius: 20px;
+    border: 3px solid black;
+    position: relative;
+}
+
+#OX > i {
+    font-size: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#OX > i:nth-last-of-type(2) {
+    color: blue;
+    text-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+}
+
+#OX > i:nth-last-of-type(1) {
+    color: red;
+    text-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+}
+
+#Quiz_count {
+    font-size: 20px;
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+}
+

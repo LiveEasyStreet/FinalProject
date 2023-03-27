@@ -10,20 +10,11 @@
 <body>
 <div id="퀴즈">
     <div id="퀴즈시작">
-        <img src="/image/재활용퀴즈.jpg" th:if="${showImage}" id="startImage">
+        <img src="/image/재활용퀴즈.jpg" id="startImage">
         <p></p>
-        <button id="QuizStartButton" onclick="startQuiz()">퀴즈 시작하기</button>
+        <button id="QuizStartButton" onclick="location.href = '/question'"><strong>Quiz Start</strong></button>
     </div>
 </div>
 
-<script th:inline="javascript">
-    const startQuiz = () => {
-        let showImage = false;
-        const startButton = document.querySelector("#QuizStartButton");
-        startButton.addEventListener("click", () => {
-            location.href = "/question";
-        })
-    }
-</script>
 </body>
 </html>
