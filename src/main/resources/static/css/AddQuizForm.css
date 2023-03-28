@@ -17,7 +17,7 @@
 }
 
 #QuizCreateTable td, th {
-    border: 2px solid black;
+    border: 2px solid #d9d9d9;
     width: 500px;
     height: 30px;
     padding: 10px;
@@ -27,7 +27,7 @@
     width: 50%;
     height: 30vw;
     border-radius: 20px;
-    border: 2px solid black;
+    border: 2px solid #d9d9d9;
 }
 
 #addQuiz > h2 {
@@ -36,7 +36,7 @@
 
 #addQuiz > #QuizCreateTable {
     border-radius: 5px;
-    border: 2px solid black;
+    border: 2px solid #d9d9d9;
 }
 
 #title_input {
@@ -61,6 +61,6 @@
     width: 100%;
     height: 10vw;
     border-radius: 20px;
-    border: 2px solid black;
+    border: 2px solid #d9d9d9;
 }
 

@@ -22,4 +22,9 @@ public class quizController {
         return "/quiz/QuizCreate";
     }
 
+    @RequestMapping("/score")
+    public String score() {
+        return "/quiz/Score";
+    }
+
 }
