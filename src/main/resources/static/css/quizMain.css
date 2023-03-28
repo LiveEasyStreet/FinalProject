@@ -9,18 +9,19 @@
 #QuizStartButton {
     height: 50px;
     width: 150px;
-    box-shadow: 5px 6px 8px gray;
+    box-shadow: 10px 10px 10px gray;
     cursor: pointer;
     border-radius: 20px;
-    background-color: chartreuse;
+    background-color: #27ae60;
     font-size: 20px;
 }
 
 #QuizStartButton:hover {
-    background-color: forestgreen;
+    background-color: #27ae60;
+    box-shadow: 0px 0px 10px #27ae60;
 }
 
 #QuizStartButton:active {
-    background-color: darkgreen;
-    box-shadow: 0px 0px 5px gray;
+    background-color: #27ae60;
+    box-shadow: inset 0px 0px 10px #27ae60;
 }
