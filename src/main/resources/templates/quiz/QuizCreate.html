@@ -1,12 +1,35 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/AddQuizForm.css">
     <title>EcoValue</title>
 </head>
 <body>
-    <header>
-    </header>
+<div id="addQuizContainer">
+    <div id="addQuiz">
+        <h2>퀴즈 등록</h2>
+        <form action="" method="post">
+            <table id="QuizCreateTable">
+                <tr>
+                    <th>제목</th>
+                    <th>분류</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="title" value="제목을 입력하세요." id="title_input"></td>
+                    <td>분류</td>
+                </tr>
+                <tr id="quiz_content_shell">
+                    <td colspan="2"><textarea name="table_context" id="quiz_content" rows="5">내용을 입력해주세요.</textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <div id="quiz_o_x"></div>
+
+        </form>
+    </div>
+</div>
 </body>
 </html>

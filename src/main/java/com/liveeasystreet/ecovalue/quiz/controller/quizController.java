@@ -1,14 +1,13 @@
 package com.liveeasystreet.ecovalue.quiz.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+@RequestMapping("/quiz")
 @Controller
 public class quizController {
 
-    @RequestMapping("/quiz")
+    @RequestMapping
     public String quizStarter() {
         return "/quiz/QuizMain";
     }
@@ -17,4 +16,10 @@ public class quizController {
     public String question() {
         return "/quiz/QuizQuestion";
     }
+
+    @RequestMapping("/addQuiz")
+    public String quizCreate() {
+        return "/quiz/QuizCreate";
+    }
+
 }
