@@ -9,10 +9,20 @@
     font-style: normal;
 }
 
+:root {
+    --point-color: #27ae60;
+    --background-color-main: #f7f8f8;
+    --background-color-sub: #f1f2f3;
+    --boundary-color: #d9d9d9;
+    --font-color-main: #333333;
+    --font-color-sub: #4c4c4c;
+    --font-color-sub2: #577391;
+}
+
 
 .mg_container {
     display: grid;
-    grid-template-columns: 300px auto auto;
+    grid-template-columns: 250px auto auto;
     grid-template-rows: 32px auto auto;
     grid-template-areas:
             'a a a'
@@ -23,12 +33,12 @@
 .mg_top_bar_wrap {
     grid-area: a;
     width: 100%;
-    background-color: #333333;
+    background-color: #212121;
     height: 32px;
 }
 
 .mg_top_bar {
-    max-width: 1600px;
+    max-width: 2200px;
     height: 100%;
     display: flex;
     align-items: center;
@@ -40,7 +50,7 @@
     font-weight: 800;
     font-size: 14px;
     margin-left: 50px;
-    color: #27ae60;
+    color: #577391;
 }
 
 .mg_top_bar_right {
@@ -72,20 +82,100 @@
 
 .mg_navbar_warp {
     grid-area: b;
-    width: 400px;
+    border-top: 1px solid #16181b;
     height: calc(100vh - 32px);
-    min-height: 1080px;
-    background-color: slategrey;
+    min-height: 800px;
+    background-color: #2c3035;
+}
+
+.mg_navbar_logo {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mg_navbar_logo {
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 50px;
+    color: #27ae60;
 }
 
 .mg_navbar {
-    margin-top: 200px;
-    height: 500px;
-    background-color: #333333;
+    height: 450px;
+    background-color: #23262a;
+
+}
+
+.mg_menu {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: 1px solid #16181b;
+    position: relative;
+}
+
+.mg_menu:last-child {
+    border-bottom: 1px solid #16181b;
+}
+
+.mg_menu:hover:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background-color: #27ae60;
+    content: '';
+}
+
+.mg_menu:hover {
+    background-color: #212121;
+}
+
+.mg_menu:hover span {
+    color: white;
+}
+
+.mg_menu:hover div {
+    color: #27ae60;
+}
+
+.mg_menu a {
+    width: 100%;
+    height: 100%;
+    color: lightgray;
+    text-decoration: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.mg_menu a span {
+    font-family: NanumSquare, serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.mg_menu a div {
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px 0 20px;
+}
+
+.mg_menu a div i {
+    font-size: 18px;
+
 }
 
 .mg_content {
     grid-area: c;
-    background-color: #d9d9d9;
+    background-color: var(--background-color-main);
     width: 100%;
 }
