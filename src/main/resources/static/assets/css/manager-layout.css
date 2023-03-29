@@ -1,0 +1,203 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+
+@font-face {
+    font-family: "TheJamsil5Bold";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --point-color: #27ae60;
+    --background-color-main: #f7f8f8;
+    --background-color-sub: #f1f2f3;
+    --boundary-color: #d9d9d9;
+    --font-color-main: #333333;
+    --font-color-sub: #4c4c4c;
+    --font-color-sub2: #577391;
+}
+
+/* 전체를 감싸는 영역 grid 로 설정 */
+.mg_container {
+    display: grid;
+    grid-template-columns: 250px auto auto;
+    grid-template-rows: 32px auto auto;
+    grid-template-areas:
+            'a a a'
+            'b c c'
+            'b c c';
+}
+
+/* 상단 얇은 가로바 감싸는 영역 */
+.mg_top_bar_wrap {
+    grid-area: a;
+    width: 100%;
+    background-color: #212121;
+    height: 32px;
+}
+
+/* 상단 얇은 가로바 영역 */
+.mg_top_bar {
+    max-width: 2200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 상단 얇은 가로바 텍스트 영역 */
+.mg_top_bar_text {
+    font-family: "NanumSquare", serif;
+    font-weight: 800;
+    font-size: 14px;
+    margin-left: 50px;
+    color: #577391;
+}
+
+/* 상단 얇은 가로바 오른쪽 감싸는 영역 */
+.mg_top_bar_right {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 상단 얇은 가로바 오른쪽 로그아웃 영역 */
+.mg_top_bar_logout {
+    font-family: '돋움', serif;
+    font-size: 12px;
+    width: 80px;
+    height: 22px;
+    background-color: white;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* 상단 얇은 가로바 오른쪽 버전 영역 */
+.mg_top_bar_version {
+    font-family: "NanumSquare", serif;
+    font-size: 16px;
+    color: white;
+    align-self: center;
+}
+
+/* 왼쪽 네비게이션 감싸는 영역 */
+.mg_navbar_warp {
+    grid-area: b;
+    border-top: 1px solid #16181b;
+    height: calc(100vh - 32px);
+    height: 100%;
+    min-height: 800px;
+    background-color: #2c3035;
+}
+
+/* 왼쪽 네비게이션 로고 감싸는 영역 */
+.mg_navbar_logo {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 왼쪽 네비게이션 로고 영역 */
+.mg_navbar_logo span {
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 50px;
+    color: #27ae60;
+}
+
+/* 왼쪽 네비게이션 메뉴 감싸는 영역 */
+.mg_navbar {
+    height: 450px;
+    background-color: #23262a;
+
+}
+
+/* 왼쪽 네비게이션 메뉴 영역 */
+.mg_menu {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-top: 1px solid #16181b;
+    position: relative;
+}
+
+/* 왼쪽 네비게이션 제일 하단 영역 _ 마지막 부분에 1px 테두리를 주기 위한 영역 */
+.mg_menu:last-child {
+    border-bottom: 1px solid #16181b;
+}
+
+/* 왼쪽 네비게이션 메뉴 [마우스호버] 작은 녹색 박스 생기는 영역 */
+.mg_menu:hover:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background-color: #27ae60;
+    content: '';
+}
+
+/* 왼쪽 네비게이션 메뉴 [마우스호버] 색변환 */
+.mg_menu:hover {
+    background-color: #212121;
+}
+
+/* 왼쪽 네비게이션 메뉴 [마우스호버] 글짜색 변환 */
+.mg_menu:hover span {
+    color: white;
+}
+
+/* 왼쪽 네비게이션 메뉴 [마우스호버] 메뉴배경색 변경 */
+.mg_menu:hover div {
+    color: #27ae60;
+}
+
+/* 왼쪽 네비게이션 메뉴 [a태그] 영역 */
+.mg_menu a {
+    width: 100%;
+    height: 100%;
+    color: lightgray;
+    text-decoration: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+/* 왼쪽 네비게이션 메뉴 [a태그] 하위의 [span 태그] 영역 _ 실제 문자색 부분 */
+.mg_menu a span {
+    font-family: NanumSquare, serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+/* 왼쪽 네비게이션 메뉴 아이콘 때문에 추가된 감싸는 영역 */
+.mg_menu a div {
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px 0 20px;
+}
+
+/* 인쪽 네비게이션 메뉴 아이콘 영역 */
+.mg_menu a div i {
+    font-size: 18px;
+}
+
+/* 실제 레이아웃과 적용될 컨텐츠 영역 */
+.mg_content {
+    grid-area: c;
+    background-color: var(--background-color-main);
+    width: 100%;
+    padding: 15px;
+}

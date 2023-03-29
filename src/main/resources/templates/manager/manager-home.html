@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/manager-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>managerHome</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/reset.css}" href="/static/assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/manager-home.css}" href="/static/assets/css/manager-home.css">
+
+    <script defer src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+    <script defer src="https://kit.fontawesome.com/71b528d146.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer th:src="@{/assets/js/manager-home.js}" src="/static/assets/js/manager-home.js"></script>
+</head>
+<body>
+<section class="mg_home_container">
+    <!--* 각 그리드 세션 별로 구현 -->
+    <div class="b_section">
+        <div class="grid_title">오늘의 할일<span>2</span></div>
+        <hr>
+        <div class="flexbox">
+            <div>답변 대기 문의 <span>2</span></div>
+            <div>신고 관리<span>2</span></div>
+            <div>챌린지 관리<span>2</span></div>
+            <div>이벤트 관리<span>0</span></div>
+        </div>
+    </div>
+    <div class="c_section">
+        <div class="grid_title">방문자 현황<i class="fa-solid fa-leaf"></i></div>
+        <hr>
+        <div>
+            <canvas id="myChart" height="210"></canvas>
+        </div>
+    </div>
+    <div class="d_section">
+        <div class="grid_title">일자별 요약<i class="fa-solid fa-seedling"></i></div>
+        <hr>
+        <table>
+            <thead>
+            <tr>
+                <th>일자</th>
+                <th>방문자 수</th>
+                <th>게시판 수</th>
+                <th>댓글 수</th>
+                <th>가입자 수</th>
+                <th>문의 수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2023-03-25</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-26</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-27</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-28</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-29</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-30</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>2023-03-31</td>
+                <td>100 <span>명</span></td>
+                <td>20 <span>개</span></td>
+                <td>50 <span>개</span></td>
+                <td>10 <span>명</span></td>
+                <td>5 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>최근 7일 합계</td>
+                <td>700 <span>명</span></td>
+                <td>140 <span>개</span></td>
+                <td>350 <span>개</span></td>
+                <td>70 <span>명</span></td>
+                <td>35 <span>개</span></td>
+            </tr>
+            <tr>
+                <td>이번 달 합계</td>
+                <td>1500 <span>명</span></td>
+                <td>300 <span>개</span></td>
+                <td>500 <span>개</span></td>
+                <td>100 <span>명</span></td>
+                <td>50 <span>개</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="e_section">
+        <div class="content">
+            <div class="title">당일 종합 정보<i class="fa-solid fa-certificate"></i></div>
+            <hr id="white_hr">
+            <div>오늘 가입자수 / 총 회원수</div>
+            <div>오늘 게시물 수 / 총 게시물 수</div>
+            <div>오늘 방문자 수 / 총 방문자 수</div>
+            <div>오프라인 상점 수</div>
+            <div>온라인 상점 수</div>
+            <div>진행중인 챌린지 수</div>
+            <div>진행중인 이벤트 수</div>
+        </div>
+    </div>
+    <div class="f_section">
+        <div class="grid_title">1:1 문의<i class="fa-solid fa-clover"></i></div>
+        <hr>
+        <div class="flexbox">
+            <div class="content">
+                <i class="fa-solid fa-user"></i>
+                <div class="line-clamp">
+                    <a href="#"><span>[게시판] </span>게시글 작성 문의 드립니다. aaaaaaaaaaaaaaaaaaaaaaaaaaaa</a>
+                </div>
+                <div>
+                    <span>여기는회원아이디</span><span> | </span> 2023-03-26 15:13
+                </div>
+            </div>
+            <div class="content">
+                <i class="fa-solid fa-user"></i>
+                <div class="line-clamp">
+                    <a href="#"><span>[챌린지] </span>챌린지 관련 질문이 있습니다.</a>
+                </div>
+                <div>
+                    <span>회원명</span><span> | </span> 2023-03-26 15:13
+                </div>
+            </div>
+            <div class="content">
+                <i class="fa-solid fa-user"></i>
+                <div class="line-clamp">
+                    <a href="#"><span>[이벤트] </span>이벤트 상품 언제 배송되나요?</a>
+                </div>
+                <div>
+                    <span>회원명</span><span> | </span> 2023-03-26 15:13
+                </div>
+            </div>
+            <div class="content">
+                <i class="fa-solid fa-user"></i>
+                <div class="line-clamp">
+                    <a href="#"><span>[오프라인상점] </span>오프라인 상점 정보가 이상합니다.</a>
+                </div>
+                <div>
+                    <span>회원명</span><span> | </span> 2023-03-26 15:13
+                </div>
+            </div>
+            <div class="content">
+                <i class="fa-solid fa-user"></i>
+                <div class="line-clamp">
+                    <a href="#"><span>[활동점수] </span>활동점수가 오르지 않습니다.</a>
+                </div>
+                <div>
+                    <span>회원명</span><span> | </span> 2023-03-26 15:13
+                </div>
+            </div>
+            <div class="content">
+                <i class="fa-solid fa-user"></i>
+                <div class="line-clamp">
+                    <a href="#"><span>[게시판] </span>게시글 수정이 안됩니다.</a>
+                </div>
+                <div>
+                    <span>회원명</span><span> | </span> 2023-03-26 15:13
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="g_section">
+        <div class="grid_title">게시물 신고<i class="fa-solid fa-tree"></i></div>
+        <hr>
+        <table>
+            <thead>
+            <tr>
+                <th>이미지</th>
+                <th>카테고리</th>
+                <th>제목</th>
+                <th>조회 수</th>
+                <th>신고 수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
+                <td>[리사이클]</td>
+                <td class="line-clamp"><a href="#">광고성 게시판 제목aaaaaaaaaaaaa</a></td>
+                <td>50</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
+                <td>[제로웨이스트]</td>
+                <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
+                <td>50</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
+                <td>[리사이클]</td>
+                <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
+                <td>50</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
+                <td>[업사이클]</td>
+                <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
+                <td>20</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
+                <td>[리사이클]</td>
+                <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
+                <td>100</td>
+                <td>15</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="h_section">
+        <div class="grid_title">실시간 인기있는 게시글<i class="fa-solid fa-mountain-sun"></i></div>
+        <hr>
+        <div class="flexbox">
+            <div>
+                <img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt="">
+                <div class="content_title">
+                    <div class="line-clamp">
+                        <a href="#1">실시간 인기있는 게시글1</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt="">
+                <div class="content_title">
+                    <div class="line-clamp">
+                        <a href="#2">실시간 인기있는 게시글2 입니다. 과연 넘쳐날 것인가?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="flexbox2">
+            <div class="content">
+                <div class="line-clamp">
+                    <a href="#3">실시간 인기있는 게시글3 aaaaaaaaaaaaaaaaaa</a>
+                </div>
+                <div>[20]</div>
+            </div>
+            <div class="content">
+                <div class="line-clamp">
+                    <a href="#4">실시간 인기있는 게시글4</a>
+                </div>
+                <div>[20]</div>
+            </div>
+            <div class="content">
+                <div class="line-clamp">
+                    <a href="#5">실시간 인기있는 게시글5</a>
+                </div>
+                <div>[20]</div>
+            </div>
+            <div class="content">
+                <div class="line-clamp">
+                    <a href="#6">실시간 인기있는 게시글6</a>
+                </div>
+                <div>[20]</div>
+            </div>
+            <div class="content">
+                <div class="line-clamp">
+                    <a href="#7">실시간 인기있는 게시글7</a>
+                </div>
+                <div>[20]</div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,403 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@font-face {
+    font-family: "TheJamsil5Bold";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+    --point-color: #27ae60;
+    --background-color-main: #f7f8f8;
+    --background-color-sub: #f1f2f3;
+    --boundary-color: #d9d9d9;
+    --font-color-main: #333333;
+    --font-color-sub: #4c4c4c;
+    --font-color-sub2: #577391;
+    --font-color-sub3: #d1dbe3;
+}
+
+
+/* 기본적인 폰트 설정, 배경 설정 */
+body {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+/* 그리드 영역 지정 및 사이즈 지정*/
+.mg_home_container {
+    display: grid;
+    width: 1280px;
+    height: calc(100vh - 62px);
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 1fr 1fr;
+    grid-template-rows: 0.5fr 2fr 1fr 1.3fr 1.3fr;
+    grid-gap: 10px;
+    grid-template-areas:
+        'b b b b b b'
+        'c c d d e e'
+        'c c d d e e'
+        'f f g g h h'
+        'f f g g h h';
+    color: var(--font-color-main);
+}
+
+/* 각 그리드 영역별 테두리 및 배경색 지정 */
+.mg_home_container > div {
+    background-color: white;
+    border: 1px solid var(--boundary-color);
+    border-radius: 5px;
+}
+
+/* 각 그리드 제목 스타일 지정 */
+.grid_title {
+    font-weight: bold;
+    margin: 15px 0 15px 20px;
+}
+
+/* hr 태그 색 지정 */
+hr {
+    background: var(--boundary-color);
+    height: 1px;
+    border: 0;
+}
+
+/* fontawsome 태그의 색 밑 여백 지정 */
+.mg_home_container i {
+    margin-left: 10px;
+    color: var(--point-color);
+}
+
+/* + b 영역 시작*/
+.b_section {
+    grid-area: b;
+}
+
+/* span 태그 녹색 버튼 모양으로 바꿈 */
+.b_section > .grid_title > span {
+    display: inline-block;
+    margin-left: 10px;
+    width: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--background-color-main);
+    background-color: var(--point-color);
+}
+
+/* flexbox 클래스 속성 지정 */
+.b_section > .flexbox {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0 20px 20px;
+}
+
+/* flexbox 안 span 태그 녹색 버튼 모양으로 바꿈 */
+.b_section > .flexbox > div > span {
+    display: inline-block;
+    margin-left: 6px;
+    width: 40px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--background-color-main);
+    background-color: var(--point-color);
+}
+
+/* + c 영역 시작 */
+.c_section {
+    grid-area: c;
+}
+
+/* 그래프 상단 여백 지정 */
+.c_section #myChart {
+}
+
+/* + d 영역 시작 */
+.d_section {
+    grid-area: d;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 테이블 크기를 동적으로 되게끔 지정 */
+.d_section > table {
+    table-layout: auto;
+    width: 100%;
+    height: 100%;
+}
+
+/* 여백과 텍스트 정렬 지정, 각 행의 밑줄을 긋게끔 지정 */
+.d_section th, td {
+    text-align: center;
+    padding-right: 8px;
+    border-bottom: 1px solid var(--boundary-color);
+}
+
+/* 상단 크기 밑 폰트 지정*/
+.d_section thead {
+    height: 40px;
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--font-color-sub2);
+}
+
+/* 본문 폰트 지정 */
+.d_section tbody {
+    font-family: 맑은 고딕, serif;
+    font-size: 13px;
+}
+
+/* 본문 마우스오버시 색 지정 */
+.d_section tbody :hover {
+    background-color: #ecf3ec;
+}
+
+/* + e 영역 시작 */
+.e_section {
+    grid-area: e;
+}
+
+/* e영역 안을 div로 감싸고 상세 설정 지정 */
+.e_section > .content {
+    border-radius: 5px;
+    height: 100%;
+    background-color: #3b3e43;
+    color: var(--background-color-sub);
+    text-align: center;
+}
+
+/* e영역 제목 폰트 지정 */
+.e_section > .content > .title {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 0 15px 20px;
+}
+
+/* e영역 hr 태그 색깔 변경 */
+.e_section > #white_hr {
+    background: var(--background-color-sub);
+    height: 1px;
+    border: 0;
+}
+
+/* + f 영역 시작 */
+/* flex 박스 지정 */
+.f_section {
+    grid-area: f;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 내용부분에 동적으로 나머지 길이를 배분하고 다시 flexbox */
+.f_section > .flexbox {
+    /* *** 나머지를 채우는 코드 *** */
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* fontawsome 아이콘 크기 및 색 지정 */
+.f_section > .flexbox i {
+    color: var(--font-color-sub2);
+    float: left;
+    font-size: 25px;
+    margin: 5px 15px 0 15px;
+}
+
+/* 제목이 넘쳐도 일정 길이를 넘지않도록 설정 */
+.f_section .line-clamp {
+    max-width: 370px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 내용 부분 폰트 설정 */
+.f_section .content {
+    font-family: 맑은 고딕, serif;
+    font-size: 13px;
+    padding-top: 10px;
+    height: 100%;
+}
+
+/* 클릭하지 않은 a링크 설정 */
+.f_section a:link {
+    color: var(--font-color-main);
+    text-decoration: none;
+}
+
+/* 클릭한 a링크 설정 */
+.f_section a:visited {
+    color: #aaaaaa;
+}
+
+/* 내용에 마우스오버시 색 지정 */
+.f_section .content:hover {
+    background-color: #ecf3ec;
+}
+
+/* 아이디 | 날짜 부분 여백 밑 색 지정 */
+.f_section .content div:last-of-type {
+    padding-left: 55px;
+    color: var(--font-color-sub2);
+}
+
+/* + g 영역 시작 */
+/* g영역 flexbox 지정 */
+.g_section {
+    grid-area: g;
+    display: flex;
+    flex-direction: column;
+}
+
+/* g영역 이미지 크기 밑 여백 지정 */
+.g_section img {
+    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+}
+
+/* g영역 표 크기 동적 지정 */
+.g_section > table {
+    table-layout: auto;
+    width: 100%;
+    height: 100%;
+}
+
+/* g영역 각 요소들 배치 밑 여백 지정 */
+.g_section th, td {
+    text-align: center;
+    padding-right: 5px;
+    border-bottom: 1px solid var(--boundary-color);
+}
+
+/* 테이블 상단 모양 밑 높이 지정 */
+.g_section thead {
+    height: 40px;
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--font-color-sub2);
+}
+
+/* 테이블 내용의 폰트 지정 */
+.g_section tbody {
+    font-family: 맑은 고딕, serif;
+    font-size: 14px;
+}
+
+/* 테이블 내용에 마우스 오버시 색 지정 */
+.g_section tbody :hover {
+    background-color: #ecf3ec;
+}
+
+/* 방문하지 않은 a링크 모양 설정 */
+.g_section a:link {
+    color: var(--font-color-main);
+    text-decoration: none;
+}
+
+/* 방문한 a링크 색 설정 */
+.g_section a:visited {
+    color: #aaaaaa;
+}
+
+/* g영역의 제목 부분 넘쳐도 모양 안 흐트리도록 지정 */
+.g_section .line-clamp {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* + h 영역 시작 */
+/* h영역 flexbox 지정 */
+.h_section {
+    grid-area: h;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* h영역 제목 여백 지정 */
+.h_section > .grid_title {
+    margin: 15px 0;
+}
+
+/* h영역 안 flexbox 모양 지정(가로로 배치) */
+.h_section > .flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* h영역 img 크기 지정 및 여백 지정 */
+.h_section img {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* h영역 윗 부분 게시글 제목 길이 지정*/
+.h_section .content_title {
+    width: 132px;
+    margin: 6px 0;
+}
+
+/* h영역 윗 부분 게시글 제목 2줄로 넘치지 않게끔 지정 */
+.h_section .flexbox .line-clamp {
+    font-family: 맑은 고딕, serif;
+    font-size: 13px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* h영역 flexbox2 부분 모양 지정(세로로 지정) */
+.h_section > .flexbox2 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+}
+
+/* h영역 아래 부분 게시글 제목 높이 및 폰트 및 배치 설정 */
+.h_section > .flexbox2 .content {
+    font-family: 맑은 고딕, serif;
+    font-size: 13px;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+/* h영역 아래 부분 상세 배치 설정 및 내용이 넘치지 않게 설정 */
+.h_section .flexbox2 .line-clamp {
+    max-width: 250px;
+    padding-left: 20px;
+    padding-right: 8px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 마우스 오버시 색깔이 나오게끔 변경 */
+.h_section .flexbox2 :hover {
+    background-color: #ecf3ec;
+}
+
+/* 방문하지 않은 a링크 색 설정 */
+.h_section a:link {
+    color: var(--font-color-main);
+    text-decoration: none;
+}
+
+/* 방문한 a링크 색 설정 */
+.h_section a:visited {
+    color: #aaaaaa;
+}
