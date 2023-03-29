@@ -1,27 +1,87 @@
-#퀴즈 {
-    text-align: center;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
-#퀴즈시작 {
-    margin: 30px;
+#container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #d9d9d9;
+    display: grid;
+    grid-template-rows: 1fr 0.5fr;
+    justify-content: center;
+    align-items: center;
 }
 
-#QuizStartButton {
-    height: 50px;
-    width: 150px;
-    box-shadow: 10px 10px 10px gray;
-    cursor: pointer;
+#container > div {
+    margin: 5px;
+}
+
+.quiz_start_view {
+    border: 2px solid white;
+    background-color: #f1f2f3;
+    width: 50vw;
+    height: 60vh;
     border-radius: 20px;
-    background-color: #27ae60;
-    font-size: 20px;
+    text-align: center;
+    justify-content: center;
+
 }
 
-#QuizStartButton:hover {
-    background-color: #27ae60;
-    box-shadow: 0px 0px 10px #27ae60;
+.quiz_start_ox_view {
+    display: grid;
+    border: 2px solid white;
+    background-color: #f1f2f3;
+    width: 50vw;
+    height: 20vh;
+    border-radius: 20px;
+    grid-template-columns: 1fr 1fr;
 }
 
-#QuizStartButton:active {
-    background-color: #27ae60;
-    box-shadow: inset 0px 0px 10px #27ae60;
+.o {
+    text-align: center;
+    grid-column: 1/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.x {
+    text-align: center;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.o > i {
+    color: #27ae60;
+    text-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+    font-size: 100px;
+}
+
+.x > i {
+    color: #27ae60;
+    text-shadow: 5px 5px 5px gray;
+    cursor: pointer;
+    font-size: 100px;
+}
+
+
+.quiz_page_number {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.quiz_page_number > h1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    text-align: right;
 }
