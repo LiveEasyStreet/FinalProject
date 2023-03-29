@@ -1,4 +1,4 @@
-package com.liveeasystreet.ecovalue.repository;
+package com.liveeasystreet.ecovalue.quiz.repository;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
 
