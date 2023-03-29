@@ -21,7 +21,7 @@
 }
 
 
-/* 기본적인  폰트 설정, 배경 설정 */
+/* 기본적인 폰트 설정, 배경 설정 */
 body {
     font-family: "Noto Sans KR", sans-serif;
 }
@@ -369,7 +369,6 @@ hr {
     text-align: left;
 }
 
-.name strong
 /* h영역 아래 부분 게시글 제목 높이 및 폰트 및 배치 설정 */
 .h_section > .flexbox2 .content {
     font-family: 맑은 고딕, serif;
