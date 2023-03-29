@@ -28,13 +28,12 @@ body {
 
 /* 그리드 영역 지정 및 사이즈 지정*/
 .mg_home_container {
-    width: 1280px;
-    top: 100px;
-    left: 200px;
     display: grid;
+    width: 1280px;
+    height: calc(100vh - 62px);
     grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 1fr 1fr;
-    grid-template-rows: 0.8fr 2fr 1fr 1.3fr 1.3fr;
-    grid-gap: 0.6rem;
+    grid-template-rows: 0.5fr 2fr 1fr 1.3fr 1.3fr;
+    grid-gap: 10px;
     grid-template-areas:
         'b b b b b b'
         'c c d d e e'
@@ -71,9 +70,7 @@ hr {
 }
 
 /* + b 영역 시작*/
-/* 0.8fr에 높이 지정 */
 .b_section {
-    height: 120px;
     grid-area: b;
 }
 
@@ -113,7 +110,6 @@ hr {
 
 /* 그래프 상단 여백 지정 */
 .c_section #myChart {
-    margin-top: 10px;
 }
 
 /* + d 영역 시작 */
