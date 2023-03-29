@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, links, script, content)">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-    <title>관리자 페이지</title>
+    <title th:replace="${title}">관리자 페이지</title>
 
     <link th:href="@{/assets/css/reset.css}" href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"/>
     <link th:href="@{/assets/css/manager-layout.css}" href="/static/assets/css/manager-layout.css" type="text/css"
           rel="stylesheet"/>
+
+
+    <th:block th:replace="${links}"></th:block>
+    <th:block th:replace="${script}"></th:block>
 </head>
 
 
@@ -85,7 +89,8 @@
 
     </div>
     <div class="mg_content">
-        내용
+        <div th:replace="${content}">
+        </div>
     </div>
 
 </div>

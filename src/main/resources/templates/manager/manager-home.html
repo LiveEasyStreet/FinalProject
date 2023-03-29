@@ -1,26 +1,24 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/manager-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/manager-home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
-          rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../static/assets/css/manager-home.css">
-    <script src="https://kit.fontawesome.com/71b528d146.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer src="/static/assets/js/manager-home.js"></script>
     <title>managerHome</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/reset.css}" href="/static/assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/manager-home.css}" href="/static/assets/css/manager-home.css">
+
+    <script defer src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+    <script defer src="https://kit.fontawesome.com/71b528d146.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="/static/assets/js/manager-home.js"></script>
 </head>
 <body>
-<section class="container">
+<section class="mg_home_container">
     <!--* 각 그리드 세션 별로 구현 -->
     <div class="b_section">
         <div class="grid_title">오늘의 할일<span>2</span></div>
@@ -217,35 +215,35 @@
             </thead>
             <tbody>
             <tr>
-                <td><img src="/img/dummy_image.png" alt=""></td>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
                 <td>[리사이클]</td>
                 <td class="line-clamp"><a href="#">광고성 게시판 제목aaaaaaaaaaaaa</a></td>
                 <td>50</td>
                 <td>24</td>
             </tr>
             <tr>
-                <td><img src="/img/dummy_image.png" alt=""></td>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
                 <td>[제로웨이스트]</td>
                 <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
                 <td>50</td>
                 <td>24</td>
             </tr>
             <tr>
-                <td><img src="/img/dummy_image.png" alt=""></td>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
                 <td>[리사이클]</td>
                 <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
                 <td>50</td>
                 <td>24</td>
             </tr>
             <tr>
-                <td><img src="/img/dummy_image.png" alt=""></td>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
                 <td>[업사이클]</td>
                 <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
                 <td>20</td>
                 <td>5</td>
             </tr>
             <tr>
-                <td><img src="/img/dummy_image.png" alt=""></td>
+                <td><img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt=""></td>
                 <td>[리사이클]</td>
                 <td class="line-clamp"><a href="#">광고성 게시판 제목</a></td>
                 <td>100</td>
@@ -259,7 +257,7 @@
         <hr>
         <div class="flexbox">
             <div>
-                <img src="/img/dummy_image.png" alt="">
+                <img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt="">
                 <div class="content_title">
                     <div class="line-clamp">
                         <a href="#1">실시간 인기있는 게시글1</a>
@@ -267,7 +265,7 @@
                 </div>
             </div>
             <div>
-                <img src="/img/dummy_image.png" alt="">
+                <img th:src="@{/img/dummy_image.png}" src="/static/img/dummy_image.png" alt="">
                 <div class="content_title">
                     <div class="line-clamp">
                         <a href="#2">실시간 인기있는 게시글2 입니다. 과연 넘쳐날 것인가?</a>

@@ -1,7 +1,7 @@
 @import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 @font-face {
     font-family: "TheJamsil5Bold";
     src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2") format("woff2");
@@ -132,7 +132,7 @@ body {
 }
 
 /* 메뉴이름 _ [마우스호버]시 숨겨진 서브메뉴 보여줌 */
-.menu:hover .sub_menu{
+.menu:hover .sub_menu {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,4 +293,9 @@ body {
 /* 풋터 문구 영역 [span 태그] 영역 */
 .footer_info span {
     padding: 5px;
+}
+
+.footer_info span a {
+    color: lightgray;
+    text-decoration: none;
 }
