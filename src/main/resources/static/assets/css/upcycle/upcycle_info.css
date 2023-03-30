@@ -396,11 +396,17 @@
     height: 100%;
 }
 
-.start-effect img {
+.start-effect img, .start-effect p {
     -webkit-animation: fade-out-up 0.8s forwards 0.7s;
     animation: fade-out-up 0.8s forwards 0.7s;
 }
-
+.start-effect p {
+    margin-left: 80px;
+    font-family: "TheJamsil5Bold", serif;
+    color: var(--point-color);
+    font-size: 40px;
+    font-weight: 800;
+}
 @-webkit-keyframes fade-out-up {
     to {
         -webkit-transform: translateY(-100px);
