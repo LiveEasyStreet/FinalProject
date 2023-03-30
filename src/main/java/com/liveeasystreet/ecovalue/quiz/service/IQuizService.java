@@ -5,7 +5,6 @@ import com.liveeasystreet.ecovalue.dto.QuizDTO;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public interface IQuizService {
 
@@ -48,7 +47,7 @@ public interface IQuizService {
      * @param id
      * @return Optional
      */
-    Optional<Quiz> findQuiz(Long id);
+    Quiz findQuiz(Long id);
 
     /**
      * <strong>문제 출제 메서드</strong><br><hr>
@@ -60,9 +59,10 @@ public interface IQuizService {
 
     /**
      * <strong>퀴즈 통계 메서드</strong><br><hr>
-     * 퀴즈의 나온 횟수와 맞춘 횟수를 받고 그 퀴즈의 정답률을 내는 메서드
+     * 퀴즈를 푼 결과 값을 Map<퀴즈 아이디, 정답여부> quizData 으로 받는다.<br>
+     * 그 후 퀴즈 필드의 맞춘 횟수, 나온 횟수를 카운트 해주는 메서드
      * @param quizData
      * @return int
      */
-    int updateQuizStatistics(Map<Long, Boolean> quizData);
+    void updateQuizStatistics(Map<Long, Boolean> quizData);
 }
