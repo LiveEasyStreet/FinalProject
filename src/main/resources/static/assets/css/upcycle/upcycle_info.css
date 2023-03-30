@@ -176,14 +176,14 @@
     background-repeat: no-repeat;
 }
 #sample1_back {
-    background-image: url("/assets/img/upcycle/upcycle_main/containerPark.png");
+    background-image: url("/img/upcycle/upcycle_main/containerPark.png");
 }
 #sample1_front {
 
 }
 #sample1_front::before{
     content: "";
-    background-image: url("/assets/img/upcycle/upcycle_main/containerPark.png");
+    background-image: url("/img/upcycle/upcycle_main/containerPark.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -195,14 +195,14 @@
     bottom: 0px;
 }
 #sample2_back {
-    background-image: url("/assets/img/upcycle/upcycle_main/trash_can.png");
+    background-image: url("/img/upcycle/upcycle_main/trash_can.png");
 }
 #sample2_front {
 
 }
 #sample2_front::before{
     content: "";
-    background-image: url("/assets/img/upcycle/upcycle_main/trash_can.png");
+    background-image: url("/img/upcycle/upcycle_main/trash_can.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -214,12 +214,12 @@
     bottom: 0px;
 }
 #sample3_back {
-    background-image: url("/assets/img/upcycle/upcycle_main/block-plastic.jpg");
+    background-image: url("/img/upcycle/upcycle_main/block-plastic.jpg");
 }
 
 #sample3_front::before{
     content: "";
-    background-image: url("/assets/img/upcycle/upcycle_main/block-plastic.jpg");
+    background-image: url("/img/upcycle/upcycle_main/block-plastic.jpg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -234,7 +234,7 @@
 
 }
 #sample4_back {
-    background-image: url("/assets/img/upcycle/upcycle_main/코알라.jpg");
+    background-image: url("/img/upcycle/upcycle_main/코알라.jpg");
 }
 
 #sample4_front {
@@ -242,7 +242,7 @@
 }
 #sample4_front::before{
     content: "";
-    background-image: url("/assets/img/upcycle/upcycle_main/코알라.jpg");
+    background-image: url("/img/upcycle/upcycle_main/코알라.jpg");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -256,9 +256,9 @@
 
 
 .end-screen{
-    background-image: url("/assets/img/upcycle/upcycle_main/upcycle_link3.jpg");
+    background-image: url("/img/upcycle/upcycle_main/upcycle_link3.jpg");
     background-position: center;
-    background-size: 100%;
+    background-size: 110%;
     flex-direction: column;
     z-index: 10;
     /*opacity: 0.7;*/
