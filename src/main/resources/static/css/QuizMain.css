@@ -26,13 +26,13 @@
 }
 
 .quiz_main_item1 {
-    background-color: #F5904B;
+    background-color: #f1f2f3;
     grid-area: a;
     display: flex;
 }
 
 .quiz_main_item2 {
-    background-color: #02D7C5;
+    background-color: #f1f2f3;
     grid-area: b;
 }
 
