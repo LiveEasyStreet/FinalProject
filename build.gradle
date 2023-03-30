@@ -23,6 +23,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'
+	
+//	엑셀을 읽어서 mapping 해주는 라이브러리
+	implementation 'org.apache.poi:poi:5.2.0'
+	implementation 'org.apache.poi:poi-ooxml:5.2.0'
+	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
