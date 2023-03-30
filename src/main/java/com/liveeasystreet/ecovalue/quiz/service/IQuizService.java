@@ -1,7 +1,7 @@
 package com.liveeasystreet.ecovalue.quiz.service;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
-import com.liveeasystreet.ecovalue.quiz.controller.QuizDTO;
+import com.liveeasystreet.ecovalue.dto.QuizDTO;
 
 import java.util.List;
 import java.util.Map;
