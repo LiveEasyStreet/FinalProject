@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>파이널 프로젝트 가치</title>
+  <link rel="stylesheet" th:href="@{/assets/css/upcycle/upcycle_info.css}">
+  <script defer th:src="@{/assets/js/upcycle/upcycle_info.js}"></script>
+</head>
+
+<body>
+
+<section>
+  <div class="start-effect">
+    <img src="/img/upcycle/upcycle_main/icon.png" alt=""/>
+  </div>
+  <div class="start-screen">
+    <img src="/img/upcycle/upcycle_main/earth-159131.svg">
+    <h1>"업사이클링"</h1>
+    <p><span>업그레이드</span>와 <span>리사이클링</span>의 합성어로<br />버려지는 제품을 재활용하는 차원을 넘어서 <br />새로운 가치를 창출하여 새로운 제품으로 <span id="p_color">재탄생</span>하는것</p>
+  </div>
+  <div class="upcycle_main">
+    <div class="sticky">
+      <div class="sticky-background">
+<!--        <h1>UPCYCLE EXAMPLE</h1>-->
+      </div>
+      <div class="card-frame">
+        <div class="card" id="card1">
+          <div class="front" id="sample1_front">
+            <h1>Container Park</h1>
+            <ul>
+              <li>폐컨테이너를 상점으로</li>
+              <li>자연친화적 업사이클링 하우스</li>
+            </ul>
+          </div>
+          <div class="back" id="sample1_back"></div>
+        </div>
+        <div class="card" id="card2">
+          <div class="front" id="sample2_front">
+            <h1>화분으로 탈바꿈한 캔</h1>
+            <ul>
+              <li>다양한 크기의 캔을 활용한 화분 제작</li>
+              <li>실내 인테리어에 안성맞춤</li>
+            </ul>
+          </div>
+          <div class="back" id="sample2_back">
+          </div>
+        </div>
+        <div class="card" id="card3">
+          <div class="front" id="sample3_front">
+            <h1>블록 컨테이너</h1>
+            <ul>
+              <li>아이들의 장난감부터</li>
+              <li>수납 공간으로 활용까지</li>
+            </ul>
+          </div>
+          <div class="back" id="sample3_back">
+          </div>
+        </div>
+        <div class="card" id="card4">
+          <div class="front" id="sample4_front">
+            <h1>기념품으로 재탄생한 플라스틱</h1>
+            <ul>
+              <li>단순한 활용뿐만 아니라</li>
+              <li>새로운 디자인으로 탈바꿈</li>
+            </ul>
+          </div>
+          <div class="back" id="sample4_back"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="end-screen" >
+    <div class="upcyle_main_text"><p>더 다양한 예시 보러가기</p></div>
+    <button type="button" class="move_upcycle_board"onclick="location.href='#' ">게시판으로 이동</button>
+<!--    <img src="/assets/img/upcycle/upcycle_main/upcycle_link.jpeg">-->
+  </div>
+</section>
+</body>
+</html>
