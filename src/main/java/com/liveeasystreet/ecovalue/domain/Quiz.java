@@ -14,7 +14,10 @@ public class Quiz {
     private String solve;
     private LocalDate date;
     private Boolean answer;
+    
+    // 출제수
     private Integer occurredProblemCount;
+    // 정답수
     private Integer numberOfHits;
 
     public static Quiz createQuiz(String category, String title, String detail, String solve, boolean answer) {
