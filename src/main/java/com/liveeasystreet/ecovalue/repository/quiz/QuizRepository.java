@@ -1,6 +1,7 @@
-package com.liveeasystreet.ecovalue.quiz.repository;
+package com.liveeasystreet.ecovalue.repository.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
+import com.liveeasystreet.ecovalue.dto.QuizDTO;
 
 import java.util.List;
 import java.util.Optional;

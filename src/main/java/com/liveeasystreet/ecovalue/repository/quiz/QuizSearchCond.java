@@ -1,4 +1,4 @@
-package com.liveeasystreet.ecovalue.quiz.repository;
+package com.liveeasystreet.ecovalue.repository.quiz;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
