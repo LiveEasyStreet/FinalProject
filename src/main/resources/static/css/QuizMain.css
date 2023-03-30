@@ -17,52 +17,25 @@
     width: 800px;
     height: 650px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     background-color: #d9d9d9;
+    gap: 10px;
     grid-template-areas:
-            'a b'
-            'a c'
-            'd c'
-            'e e';
+            'a a'
+            'b b';
 }
 
 .quiz_main_item1 {
     background-color: #F5904B;
     grid-area: a;
     display: flex;
-    justify-content: center;
-    overflow: hidden;
 }
-
-/*.quiz_main_item1 > img{*/
-/*    position: absolute;*/
-
-/*}*/
 
 .quiz_main_item2 {
     background-color: #02D7C5;
     grid-area: b;
 }
 
-.quiz_main_item3 {
-    background-color: #FFC91B;
-    grid-area: c;
-}
-
-.quiz_main_count_number {
-    background-color: #AC8EF8;
-    grid-area: d;
-}
-
-.quiz_main_item4 {
-    background-color: #71B2FF;
-    grid-area: e;
-}
-
-.quiz_main_picture {
-    width: 400px;
-    height: 400px;
-}
 
 
 
