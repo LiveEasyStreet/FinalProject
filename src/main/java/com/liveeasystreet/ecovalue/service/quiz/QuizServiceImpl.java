@@ -1,8 +1,8 @@
-package com.liveeasystreet.ecovalue.quiz.service;
+package com.liveeasystreet.ecovalue.service.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDTO;
-import com.liveeasystreet.ecovalue.quiz.repository.QuizRepository;
+import com.liveeasystreet.ecovalue.repository.quiz.QuizRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class QuizServiceImpl implements IQuizService {
     @Override
     public List<Quiz> findAllQuiz() {
         // 리포지토리에 저장되어 있는 모든 퀴즈를 반환한다.
-        return quizRepository.findAll();
+        return quizRepository.findAll(null);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class QuizServiceImpl implements IQuizService {
 
     @Override
     public List<Quiz> selectsQuiz() {
-        List<Quiz> allQuiz = quizRepository.findAll(); //퀴즈 전체 목록
+        List<Quiz> allQuiz = quizRepository.findAll(null); //퀴즈 전체 목록
         List<Quiz> selectsQuiz = new ArrayList<>(); //반환될 퀴즈 목록
 
         //퀴즈 전체 목록에 10개의 퀴즈가 없다면 예외를 던진다.

@@ -1,5 +1,8 @@
 package com.liveeasystreet.ecovalue.dto;
 
+import lombok.Data;
+
+@Data
 public class QuizDTO {
 
     private String category; //카테고리 !

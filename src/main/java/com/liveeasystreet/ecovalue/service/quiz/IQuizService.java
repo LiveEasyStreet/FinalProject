@@ -1,4 +1,4 @@
-package com.liveeasystreet.ecovalue.quiz.service;
+package com.liveeasystreet.ecovalue.service.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDTO;
