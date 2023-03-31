@@ -9,7 +9,7 @@
           th:href="@{/css/QuizSwiper.css}">
 
     <script src="/js/quizMain.js" defer
-            th:src="@{/js/quizMain.js}"></script>
+            th:src="@{/js/QuizQuestion.js}"></script>
 
     <script src="https://kit.fontawesome.com/fb84122c0e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
@@ -18,35 +18,34 @@
 
 <body>
 <section>
-    <div id="container">
-        <div class="quiz_wrap">
-            <div class="quiz_start_view">
-                <swiper-container class="mySwiper" keyboard="true" space-between="30" pagination="true"
-                                  pagination-clickable="true"
-                                  navigation="true">
-                    <swiper-slide>Quiz 1</swiper-slide>
-                    <swiper-slide>Quiz 2</swiper-slide>
-                    <swiper-slide>Quiz 3</swiper-slide>
-                    <swiper-slide>Quiz 4</swiper-slide>
-                    <swiper-slide>Quiz 5</swiper-slide>
-                    <swiper-slide>Quiz 6</swiper-slide>
-                    <swiper-slide>Quiz 7</swiper-slide>
-                    <swiper-slide>Quiz 8</swiper-slide>
-                    <swiper-slide>Quiz 9</swiper-slide>
-                    <swiper-slide>Quiz 10</swiper-slide>
-                </swiper-container>
+    <div class="quiz_wrap">
+        <div class="quiz_start_view">
+            <swiper-container class="mySwiper" keyboard="true" space-between="30" pagination="true"
+                              pagination-clickable="true"
+                              navigation="true">
+                <swiper-slide>Quiz 1</swiper-slide>
+                <swiper-slide>Quiz 2</swiper-slide>
+                <swiper-slide>Quiz 3</swiper-slide>
+                <swiper-slide>Quiz 4</swiper-slide>
+                <swiper-slide>Quiz 5</swiper-slide>
+                <swiper-slide>Quiz 6</swiper-slide>
+                <swiper-slide>Quiz 7</swiper-slide>
+                <swiper-slide>Quiz 8</swiper-slide>
+                <swiper-slide>Quiz 9</swiper-slide>
+                <swiper-slide>Quiz 10</swiper-slide>
+            </swiper-container>
+        </div>
+        <div class="quiz_start_ox_view">
+            <div class="o">
+                <i class="fa-solid fa-o" id="O" onclick="plusNumber('O'); moveToNextSlide();"></i>
             </div>
-            <div class="quiz_start_ox_view">
-                <div class="o">
-                    <i class="fa-solid fa-o" id="O" onclick="plusNumber('O'); moveToNextSlide();"></i>
-                </div>
-                <div class="x">
-                    <i class="fa-solid fa-x" id="X" onclick="plusNumber('X'); moveToNextSlide();"></i>
-                </div>
-                <span class="quiz_page_number"><h1 id="Quiz_count">1 / 10</h1></span>
+            <div class="x">
+                <i class="fa-solid fa-x" id="X" onclick="plusNumber('X'); moveToNextSlide();"></i>
             </div>
+            <span class="quiz_page_number"><h1 id="Quiz_count">1 / 10</h1></span>
         </div>
     </div>
+
 </section>
 </body>
 </html>
