@@ -64,5 +64,5 @@ public interface IQuizService {
      * @param quizData
      * @return int
      */
-    void updateQuizStatistics(Map<Long, Boolean> quizData);
+    int updateQuizStatistics(Map<Long, Boolean> quizData);
 }

@@ -39,9 +39,10 @@ public class QuizRepositoryImp implements QuizRepository {
         if (store.containsKey(id)) {
             Quiz quiz = store.get(id);
             quiz.setTitle(updateParam.getTitle());
-            quiz.setTitle(updateParam.getDetail());
-            quiz.setTitle(updateParam.getSolve());
-            quiz.setTitle(updateParam.getCategory());
+            quiz.setDetail(updateParam.getDetail());
+            quiz.setSolve(updateParam.getSolve());
+            quiz.setCategory(updateParam.getCategory());
+            quiz.setAnswer(updateParam.getAnswer());
         }
     }
 

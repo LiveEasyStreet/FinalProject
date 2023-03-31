@@ -68,7 +68,10 @@ public class QuizServiceImpl implements IQuizService {
     }
 
     @Override
-    public void updateQuizStatistics(Map<Long, Boolean> quizData) {
+    public int updateQuizStatistics(Map<Long, Boolean> quizData) {
+
+        int score = 0;
+
         //파라미터로 넘어온 퀴즈의 키와 값을 쓰기 위해 순회
         for (Map.Entry<Long, Boolean> getQuiz : quizData.entrySet()) {
             //파라미터로 넘어온 퀴즈의 ID로 특정 퀴즈를 찾는다.
@@ -79,8 +82,11 @@ public class QuizServiceImpl implements IQuizService {
 
             //특정 퀴즈의 맞춘 횟수를 카운트 하기 위해 조건문으로 확인 후 카운트
             if (getQuiz.getValue() == true) {
+                score += 10;
                 quiz.setNumberOfHits(quiz.getNumberOfHits() + 1);
             }
         }
+
+        return score;
     }
 }
