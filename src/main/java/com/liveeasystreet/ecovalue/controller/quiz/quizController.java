@@ -49,12 +49,17 @@ public class quizController {
      * 점수 화면에 점수, 퀴즈 10개, 퀴즈 오답내역을 전달
      */
     @GetMapping("/score")
-    public String score(@ModelAttribute Map<Long, Boolean> quizData, Model model) {
+    public String score(@ModelAttribute quizData quizData, Model model) {
 //        log.info("score invoked");
-        int score = quizService.updateQuizStatistics(quizData);
 
+        if (quizData.getData() == null) {
+            throw new RuntimeException("quizData에 데이터가 없습니다.");
+        }
+
+        int score = quizService.updateQuizStatistics(quizData.getData());
         Map<Long, Quiz> quizMap = new HashMap<>();
-        for (Long key : quizData.keySet()) {
+
+        for (Long key : quizData.getData().keySet()) {
             Quiz quiz = quizService.findQuiz(key);
             quizMap.put(quiz.getId(), quiz);
         }
@@ -62,7 +67,7 @@ public class quizController {
         model.addAttribute(score);
         model.addAttribute(quizMap);
         model.addAttribute(quizData);
-        
+
         return "/quiz/Score";
     }
 }
