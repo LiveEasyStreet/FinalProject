@@ -2,12 +2,20 @@ package com.liveeasystreet.ecovalue.quiz.service;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDTO;
+import com.liveeasystreet.ecovalue.quiz.repository.QuizRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Service
+@RequiredArgsConstructor
 public class QuizServiceImpl implements IQuizService {
+
+    private final QuizRepository quizRepository;
 
     @Override
     public void resistQuiz(QuizDTO updateParam) {
@@ -20,18 +28,22 @@ public class QuizServiceImpl implements IQuizService {
     }
 
     @Override
-    public void deleteQuiz(Long id) {
-
+    public void deleteQuiz(Long...idList) {
+        // 파라미터로 받은 id값을 가진 퀴즈를 찾아 삭제한다.
+        for(Long id:idList) {
+            quizRepository.delete(id);
+        }
     }
 
     @Override
     public List<Quiz> findAllQuiz() {
-        return null;
+        // 리포지토리에 저장되어 있는 모든 퀴즈를 반환한다.
+        return quizRepository.findAll();
     }
 
     @Override
-    public Optional<Quiz> findQuiz(Long id) {
-        return Optional.empty();
+    public Quiz findQuiz(Long id) {
+        return null;
     }
 
     @Override

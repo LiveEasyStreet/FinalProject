@@ -31,9 +31,9 @@ public interface IQuizService {
      * <strong>퀴즈 삭제 메서드</strong><br><hr>
      * 퀴즈 아이디를 파라미터 값으로 받아 특정 퀴즈를 삭제하는 메서드<br>
      * 필요에 따라 파라미터 값으로 여러개의 아이디를 받고 반복 삭제 작업 수행
-     * @param id
+     * @param idList
      */
-    void deleteQuiz(Long id);
+    void deleteQuiz(Long...idList);
 
     /**
      * <strong>퀴즈 전체조회 메서드</strong><br><hr>
@@ -48,7 +48,7 @@ public interface IQuizService {
      * @param id
      * @return Optional
      */
-    Optional<Quiz> findQuiz(Long id);
+    Quiz findQuiz(Long id);
 
     /**
      * <strong>문제 출제 메서드</strong><br><hr>
