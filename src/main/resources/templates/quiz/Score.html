@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="chrome">
+
+    <link rel="stylesheet" href="/static/css/Score.css"
+          th:href="@{/css/Score.css}">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
+    <script defer src="/static/js/Score.js"
+            th:src="@{/js/Score.js}"></script>
+
+    <title>EcoValue</title>
+</head>
+
+<body>
+<section>
+    <div class="quiz_wrap">
+        <div class="score_container">
+            <div class="score_box">
+            <span class="score_context_score"><u id="score">56</u><span
+                    class="score_context_dot">&nbsp;점</span></span>
+            </div>
+            <div class="score_result">
+                <p class="score_result_context" id="score_message">
+                    회원의 퀴즈풀이 점수에 따라 나오는 텍스트가 달라질 것이다.
+                </p>
+            </div>
+            <div class="score_wrong_quiz">틀린 문제의 번호를 나타낸다.</div>
+            <div class="score_correct_quiz">맞은 문제의 번호를 나타낸다</div>
+            <div class="incorrect_note">
+
+                <swiper-container class="mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true"
+                                  css-mode="true" id="slide_container">
+                </swiper-container>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+</body>
+</html>
