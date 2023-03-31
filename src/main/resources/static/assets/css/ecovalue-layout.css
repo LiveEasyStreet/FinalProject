@@ -246,6 +246,7 @@ body {
 /* 레이아웃 중간 콘텐츠 영역 _ 세로길이 유동적으로 변경 */
 .main_contents_wrap {
     width: 1280px;
+    min-height: 1000px;
     height: calc(100vh - 223px);
     margin: auto;
     padding: 20px;
