@@ -16,12 +16,14 @@ public class QuizServiceImpl implements IQuizService {
 
     @Override
     public void resistQuiz(QuizDTO updateParam) {
-
+        Quiz quiz = Quiz.createQuiz(updateParam.getCategory(), updateParam.getTitle(),
+                updateParam.getDetail(),updateParam.getSolve() ,updateParam.getAnswer());
+        quizRepository.save(quiz);
     }
 
     @Override
     public void updateQuiz(Long id, QuizDTO updateParam) {
-
+        quizRepository.update(id, updateParam);
     }
 
     @Override
