@@ -3,6 +3,7 @@ package com.liveeasystreet.ecovalue.service.quiz;
 import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDTO;
 import com.liveeasystreet.ecovalue.repository.quiz.QuizRepository;
+import lombok.Cleanup;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class QuizServiceImpl implements IQuizService {
     @Override
     public void resistQuiz(QuizDTO updateParam) {
         Quiz quiz = Quiz.createQuiz(updateParam.getCategory(), updateParam.getTitle(),
-                updateParam.getDetail(),updateParam.getSolve() ,updateParam.getAnswer());
+                updateParam.getDetail(), updateParam.getSolve(), updateParam.getAnswer());
         quizRepository.save(quiz);
     }
 
@@ -27,9 +28,9 @@ public class QuizServiceImpl implements IQuizService {
     }
 
     @Override
-    public void deleteQuiz(Long...idList) {
+    public void deleteQuiz(Long... idList) {
         // 파라미터로 받은 id값을 가진 퀴즈를 찾아 삭제한다.
-        for(Long id:idList) {
+        for (Long id : idList) {
             quizRepository.delete(id);
         }
     }
@@ -61,7 +62,9 @@ public class QuizServiceImpl implements IQuizService {
         //반복할 때 마다 생성되는 난수 값으로 특정 퀴즈를 반환될 퀴즈 목록에 담는다.
         while (selectsQuiz.size() < 10) {
             int randomNumber = new Random().nextInt(allQuiz.size());
-            selectsQuiz.add(allQuiz.get(randomNumber));
+            if (!selectsQuiz.contains(allQuiz.get(randomNumber))) {
+                selectsQuiz.add(allQuiz.get(randomNumber));
+            }
         }
 
         return selectsQuiz;
@@ -81,7 +84,7 @@ public class QuizServiceImpl implements IQuizService {
             quiz.setOccurredProblemCount(quiz.getOccurredProblemCount() + 1);
 
             //특정 퀴즈의 맞춘 횟수를 카운트 하기 위해 조건문으로 확인 후 카운트
-            if (getQuiz.getValue() == true) {
+            if (getQuiz.getValue()) {
                 score += 10;
                 quiz.setNumberOfHits(quiz.getNumberOfHits() + 1);
             }

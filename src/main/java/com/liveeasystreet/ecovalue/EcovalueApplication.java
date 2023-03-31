@@ -14,7 +14,7 @@ public class EcovalueApplication {
 	}
 
 	@Bean
-	@Profile("local")
+	@Profile({"local", "test"})
 	public TestQuizDataInit testQuizDataInit(QuizRepository quizRepository) {
 		return new TestQuizDataInit(quizRepository);
 	}
