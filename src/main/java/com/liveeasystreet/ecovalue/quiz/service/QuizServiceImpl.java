@@ -25,13 +25,17 @@ public class QuizServiceImpl implements IQuizService {
     }
 
     @Override
-    public void deleteQuiz(Long id) {
-
+    public void deleteQuiz(Long...idList) {
+        // 파라미터로 받은 id값을 가진 퀴즈를 찾아 삭제한다.
+        for(Long id:idList) {
+            quizRepository.delete(id);
+        }
     }
 
     @Override
     public List<Quiz> findAllQuiz() {
-        return null;
+        // 리포지토리에 저장되어 있는 모든 퀴즈를 반환한다.
+        return quizRepository.findAll();
     }
 
     @Override
