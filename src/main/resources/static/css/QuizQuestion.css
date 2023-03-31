@@ -40,7 +40,7 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.o {
+.quiz_o {
     text-align: center;
     grid-column: 1/2;
     display: flex;
@@ -49,7 +49,7 @@
     margin: 50px;
 }
 
-.x {
+.quiz_x {
     text-align: center;
     grid-column: 2/3;
     display: flex;
@@ -57,14 +57,14 @@
     align-items: center;
 }
 
-.o > i {
+.quiz_o > i {
     color: #27ae60;
     text-shadow: 5px 5px 5px gray;
     cursor: pointer;
     font-size: 100px;
 }
 
-.x > i {
+.quiz_x > i {
     color: #27ae60;
     text-shadow: 5px 5px 5px gray;
     cursor: pointer;
