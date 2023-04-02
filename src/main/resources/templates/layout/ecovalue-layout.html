@@ -6,10 +6,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <title th:replace="${title}">ecovalue</title>
 
-    <link th:href="@{/assets/css/reset.css}" href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"/>
-    <link th:href="@{/assets/css/ecovalue-layout.css}" href="/static/assets/css/ecovalue-layout.css" type="text/css"
-          rel="stylesheet"/>
-    <script defer th:src="@{/assets/js/ecovalue-script.js}" src="/static/assets/js/ecovalue-script.js"></script>
+    <link href="/static/assets/css/color.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/color.css}"/>
+    <link href="/static/assets/css/font.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/font.css}"/>
+    <link href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/reset.css}"/>
+    <link href="/assets/css/ecovalue-layout.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/ecovalue-layout.css}"/>
+
+    <script defer th:src="@{/assets/js/ecovalue-script.js}" src="/assets/js/ecovalue-script.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
 
@@ -17,7 +23,7 @@
     <th:block th:replace="${script}"></th:block>
 </head>
 <body>
-<div class="container">
+<div class="layout_container">
     <nav class="navbar">
         <div class="navbar_top">
             <div class="navbar_wrap">
@@ -40,7 +46,7 @@
                     <li class="menu">
                         <a class="menu_name" href="#">업사이클</a>
                         <ul class="sub_menu">
-                            <li><a href="#">업사이클 소개</a></li>
+                            <li><a href="/upcycleInfo">업사이클 소개</a></li>
                             <li><a href="#">업사이클 갤러리</a></li>
                             <li><a href="#">업사이클 게시물</a></li>
                         </ul>

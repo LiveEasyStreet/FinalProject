@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>echoValue</title>
+    <link href="/static/assets/css/quiz/quiz-main.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/quiz/quiz-main.css}">
+
+    <script src=""></script>
+</head>
+<body>
+<section>
+    <div class="quiz_wrap">
+        <div class="quiz_content">
+            <div class="quiz_main">
+                <div class="quiz_main_logo">가치</div>
+                <div class="quiz_text_wrap">
+                    <div class="quiz_text">와 같이</div>
+                    <div class="quiz_text">재활용 퀴즈를 풀어보아요.</div>
+                </div>
+            </div>
+            <div class="quiz_btn_wrap">
+                <button class="quiz_btn" onclick="location.href ='quiz/question'">Quiz Start</button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

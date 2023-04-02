@@ -3,19 +3,11 @@
       th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="chrome">
-
-    <link rel="stylesheet" href="/assets/css/quiz/Score.css"
-          th:href="@{/assets/css/quiz/Score.css}">
-
+    <link href="/static/assets/css/quiz/score.css" rel="stylesheet" th:href="@{/assets/css/quiz/score.css}">
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <script defer src="/assets/js/score.js" th:src="@{/assets/js/score.js}"></script>
 
-    <script defer src="/static/js/Score.js"
-            th:src="@{/js/Score.js}"></script>
-
-    <title>EcoValue</title>
+    <title>score</title>
 </head>
 
 <body>

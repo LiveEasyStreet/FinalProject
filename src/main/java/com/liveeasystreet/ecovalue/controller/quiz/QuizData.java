@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-public class quizData {
+public class QuizData {
     private Map<Long, Boolean> data;
 }

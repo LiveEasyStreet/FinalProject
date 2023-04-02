@@ -18,7 +18,7 @@ import java.util.Map;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-public class quizController {
+public class QuizController {
 
     private final IQuizService quizService;
 
@@ -28,7 +28,7 @@ public class quizController {
     @GetMapping
     public String quizMain() {
 //        log.info("quizStarter invoked");
-        return "/quiz/QuizMain";
+        return "quiz/quiz-main";
     }
 
     /**
@@ -40,7 +40,7 @@ public class quizController {
 //        log.info("question invoked");
         List<Quiz> quizList = quizService.selectsQuiz();
         model.addAttribute(quizList);
-        return "/quiz/QuizQuestion";
+        return "quiz/quiz-question";
     }
 
     /**
@@ -49,7 +49,7 @@ public class quizController {
      * 점수 화면에 점수, 퀴즈 10개, 퀴즈 오답내역을 전달
      */
     @GetMapping("/score")
-    public String score(@ModelAttribute quizData quizData, Model model) {
+    public String score(@ModelAttribute QuizData quizData, Model model) {
 //        log.info("score invoked");
 
         if (quizData.getData() == null) {
@@ -68,6 +68,6 @@ public class quizController {
         model.addAttribute(quizMap);
         model.addAttribute(quizData);
 
-        return "/quiz/Score";
+        return "quiz/score";
     }
 }
