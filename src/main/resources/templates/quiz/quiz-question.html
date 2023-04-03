@@ -3,22 +3,21 @@
       th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/assets/css/quiz/QuizQuestion.css"
-          th:href="@{/assets/css/quiz/QuizQuestion.css}">
-    <link rel="stylesheet" href="/assets/css/quiz/QuizSwiper.css"
-          th:href="@{/assets/css/quiz/QuizSwiper.css}">
 
-    <script src="/js/quizMain.js" defer
-            th:src="@{/js/QuizQuestion.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/quiz/quiz-question.css"
+          th:href="@{/assets/css/quiz/quiz-question.css}">
+    <link rel="stylesheet" href="/assets/css/quiz/quiz-swiper.css"
+          th:href="@{/assets/css/quiz/quiz-swiper.css}">
 
-    <script src="https://kit.fontawesome.com/fb84122c0e.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-    <title>EcoValue</title>
+    <script defer src="/assets/js/quiz-question.js" th:src="@{/assets/js/quiz-question.js}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <title>quiz-question</title>
 </head>
 
 <body>
 <section>
-        <div class="quiz_wrap">
+    <div class="quiz_wrap">
+        <div class="quiz_content">
             <div class="quiz_start_view">
                 <swiper-container class="mySwiper" keyboard="true" space-between="30" pagination="true"
                                   pagination-clickable="true"
@@ -36,15 +35,12 @@
                 </swiper-container>
             </div>
             <div class="quiz_start_ox_view">
-                <div class="quiz_o">
-                    <i class="fa-solid fa-o" id="O" onclick="plusNumber('O'); moveToNextSlide();"></i>
-                </div>
-                <div class="quiz_x">
-                    <i class="fa-solid fa-x" id="X" onclick="plusNumber('X'); moveToNextSlide();"></i>
-                </div>
-                <span class="quiz_page_number"><h1 id="Quiz_count">1 / 10</h1></span>
+                <i class="fa-solid fa-o" id="O" onclick="plusNumber('O'); moveToNextSlide();"></i>
+                <i class="fa-solid fa-x" id="X" onclick="plusNumber('X'); moveToNextSlide();"></i>
             </div>
+            <span class="quiz_page_number">1 / 10</span>
         </div>
+    </div>
 
 </section>
 </body>

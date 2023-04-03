@@ -1,0 +1,17 @@
+/* 폰트어썸 */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+/* 나눔스퀘어 */
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+/* 나눔 고딕 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/* 노토 산스 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+/* Changa One */
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@1&display=swap');
+/* 더잠실 */
+@font-face {
+    font-family: "TheJamsil5Bold";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
