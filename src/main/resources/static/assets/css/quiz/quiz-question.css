@@ -76,3 +76,9 @@
     padding: 20px;
     margin-bottom: 20px;
 }
+
+.quiz_start_ox_view div:active {
+    position: relative;
+    top: 3px;
+    left: 3px;
+}
