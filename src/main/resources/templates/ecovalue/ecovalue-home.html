@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>파이널 프로젝트 가치</title>
-    <link rel="stylesheet" href="#">
-    <script></script>
+    <link rel="stylesheet" href="/assets/css/ecovalue-home.css" th:href="@{assets/css/ecovalue-home.css}">
+    <script defer src="/assets/js/ecovalue-home.js" th:src="@{assets/js/ecovalue-home.js}"></script>
 </head>
 
 <body>
 
 <section>
-  <div>
-      텍스트
-  </div>
+    <div class="roulette">
+        <canvas id="my-roulette" width="380" height='380'></canvas>
+        <button class="roulette-button" onclick="rotateRoulette()">저녁 룰렛 돌리기</button>
+    </div>
 </section>
 
 </body>
