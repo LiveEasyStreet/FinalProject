@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/quiz/quiz-question.css"
           th:href="@{/assets/css/quiz/quiz-question.css}">
+    <script th:inline="javascript">
+        const quizList = /*[[${quizList}]]*/ {};
+    </script>
     <script src="/assets/js/quiz/quiz-question.js" defer
             th:src="@{/assets/js/quiz/quiz-question.js}"></script>
 
@@ -20,10 +23,11 @@
         <div class="quiz_start_view">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <th:block th:each="quiz : ${quizList}">
+                    <th:block th:each="quiz, i : ${quizList}">
                         <div class="swiper-slide">
                             <div class="quiz-title" th:text="${quiz.title}">퀴즈 제목</div>
                             <div class="quiz-detail" th:text="${quiz.detail}">퀴즈 내용</div>
+                            <div th:class="|quiz-user-answer${i.count}|"></div>
                         </div>
                     </th:block>
                 </div>

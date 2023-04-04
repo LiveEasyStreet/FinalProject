@@ -3,22 +3,12 @@ let swiper = new Swiper(".mySwiper", {
         el: ".swiper-pagination",
         type: "fraction",
     },
-    navigation: {
-        nextEl: ".arrow-right",
-        prevEl: ".arrow-left",
-    },
 });
 
 const oButton = document.querySelector(".quiz-o");
 const xButton = document.querySelector(".quiz-x");
-
-oButton.addEventListener('click', () => {
-    swiper.slideNext();
-});
-
-xButton.addEventListener('click', () => {
-    swiper.slideNext();
-})
+const leftArrow = document.querySelector(".arrow-left");
+const rightArrow = document.querySelector(".arrow-right");
 
 let counted_quiz = 1;
 const Quiz_User_Submit = {
@@ -32,27 +22,62 @@ const Quiz_User_Submit = {
     8: [false, false],
     9: [false, false],
     10: [false, false]
-
 }
 
+
+oButton.addEventListener('click', () => {
+    if (counted_quiz < 10) {
+        counted_quiz++;
+    }
+    setTimeout(() => {
+        swiper.slideNext();
+    }, 500);
+});
+
+xButton.addEventListener('click', () => {
+    if (counted_quiz < 10) {
+        counted_quiz++;
+    }
+    setTimeout(() => {
+        swiper.slideNext();
+    }, 500);
+});
+
+leftArrow.addEventListener('click', () => {
+    if (counted_quiz > 1) {
+        counted_quiz--;
+    }
+    swiper.slidePrev();
+})
+
+rightArrow.addEventListener('click', () => {
+    if (counted_quiz < 10) {
+        counted_quiz++;
+    }
+    swiper.slideNext();
+});
+
 let plusNumber = (value) => {
+
     if (value === 'O' || value === 'X') {
-        console.log(value, swiper.activeIndex);
+        let quizUserAnswer = document.querySelector(`.quiz-user-answer${counted_quiz}`);
+
         if (value === 'O') {
             Quiz_User_Submit[swiper.activeIndex + 1][0] = true;
             if (Quiz_User_Submit[swiper.activeIndex + 1][1] == false) {
                 Quiz_User_Submit[swiper.activeIndex + 1][1] = true;
             }
-        }
-        else {
+            quizUserAnswer.textContent = 'O';
+
+        } else {
             Quiz_User_Submit[swiper.activeIndex + 1][0] = false;
             if (Quiz_User_Submit[swiper.activeIndex + 1][1] == false) {
                 Quiz_User_Submit[swiper.activeIndex + 1][1] = true;
             }
+            quizUserAnswer.textContent = 'X';
         }
-        // console.log("위치 : ",counted_quiz, "값 : ",Quiz_User_Submit[swiper.activeIndex+1][0], "변환 여부 : ",Quiz_User_Submit[swiper.activeIndex+1][1]);
+        console.log("위치 : ",counted_quiz, "값 : ",Quiz_User_Submit[swiper.activeIndex+1][0], "변환 여부 : ",Quiz_User_Submit[swiper.activeIndex+1][1]);
     }
-
 }
 
 let quiz_submit = () => {
@@ -68,3 +93,5 @@ let quiz_submit = () => {
     }
 
 }
+
+console.log(quizList);
