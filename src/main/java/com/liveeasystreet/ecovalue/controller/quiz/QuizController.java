@@ -69,18 +69,19 @@ public class QuizController {
 //        return "quiz/score";
 //    }
 
-    @PostMapping("/score")
-    public String score(@RequestBody QuizData quizData, Model model) {
-//        log.info("score invoked");
+    @PostMapping("/sendData")
+    public String score(@RequestBody Map<Long, Boolean> quizData, Model model) {
+        log.info("score invoked");
+        log.info("quizData = {}", quizData);
 
-        if (quizData.getData() == null) {
+        if (quizData == null) {
             throw new RuntimeException("quizData에 데이터가 없습니다.");
         }
 
-        int score = quizService.updateQuizStatistics(quizData.getData());
+        int score = quizService.updateQuizStatistics(quizData);
         Map<Long, Quiz> quizMap = new HashMap<>();
 
-        for (Long key : quizData.getData().keySet()) {
+        for (Long key : quizData.keySet()) {
             Quiz quiz = quizService.findQuiz(key);
             quizMap.put(quiz.getId(), quiz);
         }

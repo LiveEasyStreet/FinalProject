@@ -76,7 +76,7 @@ let plusNumber = (value) => {
             }
             quizUserAnswer.textContent = 'X';
         }
-        console.log("위치 : ",counted_quiz, "값 : ",Quiz_User_Submit[counted_quiz][0], "변환 여부 : ",Quiz_User_Submit[counted_quiz][1]);
+        console.log("위치 : ", counted_quiz, "값 : ", Quiz_User_Submit[counted_quiz][0], "변환 여부 : ", Quiz_User_Submit[counted_quiz][1]);
         nextSlide()
         offbutton()
     }
@@ -98,22 +98,22 @@ let quiz_submit = () => {
             submit_index.push(i);
         }
     }
-    // if (submit_index.length > 0) {
-    //     alert("모든 문제를 푸셔야 제출할 수 있습니다. \n" +
-    //         "안푼 문제 : " + submit_index.join(' '));
-    // }
-    // else
-    {
+    if (submit_index.length > 0) {
+        alert("모든 문제를 푸셔야 제출할 수 있습니다. \n" +
+            "안푼 문제 : " + submit_index.join(' '));
+    } else {
         setSubmitData();
+        console.log(submitData);
+
         $.ajax({
             type: "POST",
-            url: "/score",
+            url: "/quiz/sendData",
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data: submitData,
+            data: JSON.stringify(submitData),
             // * 성공시
             success: function (res) {
                 console.log("성공", res);
+                // window.location.href = "/quiz/score";
             },
             // # 실패시
             error: function (e) {
