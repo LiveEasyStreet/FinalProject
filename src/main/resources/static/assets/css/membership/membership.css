@@ -1,21 +1,21 @@
-@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 .membership-main {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 3px solid white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px solid #d9d9d9;
     border-radius: 20px;
-    width: 1300px;
-    height: 900px;
+    width: 1280px;
+    height: 750px;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-row: repeat(1, 1fr);
     place-items: center;
-    background-color: #d9d9d9;
+    background-color: white;
     gap: 10px;
 }
+
+/* membership-main은 작업해야할 공간을 만들어둔 css
+   grid를 사용해서 페이지 구현하려면 위에꺼 복사해서 사용해도 무관
+*/
 
 .membership {
     display: grid;
@@ -26,18 +26,10 @@
     position: relative;
 }
 
-.options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-row: 2/3;
-    width: 80%;
-    height: 100%;
-}
-
 #text-title {
-    height: 80px;
+    height: 100px;
     text-align: center;
+    font-family: "NanumSquare", sans-serif;
 }
 
 #text-title > span {
@@ -45,60 +37,86 @@
 }
 
 .membership-text-form > div > input {
-    text-align: center;
-    border: 2px solid white;
-    height: 30px;
-    margin-bottom: 15px;
-    width: 240px;
-    border-radius: 4px;
+    text-align: left;
+    border: 2px solid #d9d9d9;
+    height: 50px;
+    width: 500px;
+    border-radius: 0px 4px 4px 0px;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
 }
 
-.membership > form{
+.membership > form {
     text-align: right;
 }
 
 .input-box-title {
-    display: inline;
-    width: 30px;
-}
-
-.membership-text-form-layout{
-    margin-right: 100px;
-}
-
-.membership-select-title{
+    display: inline-block;
+    border: 2px solid #d9d9d9;
+    width: 200px;
+    height: 50px;
+    border-right: none;
+    border-radius: 4px 0px 0px 4px;
     text-align: center;
-    font-size: 40px;
-    height: 80px;
-    width: 500px;
-}
-
-
-.Interest-box {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: 2px solid gray;
-    width: 500px;
-    margin-bottom: 30px;
 }
 
-.Interest-box > input {
+.label-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: start;
+    align-items: center;
+    margin-left: 20px;
+    font-size: 18px;
+    font-family: "NanumSquare", sans-serif;
+}
+
+.membership-text-form-layout {
+    display: flex;
+    margin-right: 100px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 50px;
+    margin-bottom: 10px;
+}
+
+#membership-cancel {
     margin: 10px;
+    width: 150px;
+    height: 70px;
+    background-color: #333333;
+    color: white;
+    border-radius: 8px;
+    font-size: 30px;
+    font-family: "NanumSquare", sans-serif;
+    text-align: center;
 }
 
-.funnel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: 2px solid gray;
-    width: 500px;
-    margin-bottom: 30px;
-    height: 40px;
+#create-membership {
+    width: 150px;
+    height: 70px;
+    margin: 10px;
+    background-color: #27ae60;
+    color: white;
+    border-radius: 8px;
+    font-size: 30px;
+    font-family: "NanumSquare", sans-serif;
 }
 
-.funnel > input {
-    margin: 8px;
+#membership-button-layout {
+    position: absolute;
+    right: 150px;
 }
+
+#create-membership:active {
+    background-color: #1e8449;
+}
+
+#membership-cancel:active{
+    background-color: #777777;
+}
+
+
+

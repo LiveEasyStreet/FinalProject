@@ -2,21 +2,37 @@
 <!--
 ** 작업 끝나면 여기 주석 풀기 **
 
-↓↓↓↓↓ 주석 풀기
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
-↑↑↑↑↑ 주석 풀기
 
-아래에 있는
+
 <html lang="ko"> 는 삭제
 -->
+
+<!--
+ **** 주의 사항 ****
+ 1 ) 기본적인 틀은 아래 section 태그 전부를 복사해서 사용하시면 됩니다.
+
+ 2 ) 만약 처음부터 만드시면 form태그를 전체로 감싸주는거 추천 (form태그가 여러개 있을 시에 js로 따로 또 작업이 필요함)
+
+ 3 ) form태그 안에 있는 input 태그를 보시면 name속성이 있습니다. 이 속성은 추후에 저희가 DTO객체를 @ModelAttribute를 사용해서 자동으로 바인딩 해주기 위해 사용
+     만약에 DTO(클래스 생성 후 필드 변수 생성하는 작업) 생성할 때 input태그의 name속성과 이름이 다를 경우 @ModelAttribute("이름") 해주는 작업이 필요
+
+ 4 ) 참고로 복사해서 사용 하실 경우 정원씨가 아래에 작성해둔  '직접 작성해서 사용 해야 되는 css / js 공간 [시작]' css경로 따로 지정해두지 않으면 계속 제 css파일을 불러오는 거니까 따로
+     css 파일 경로 수정 꼭 해주세요. 그냥 복붙해다가 쓰시면 개인이 작성한 css 전혀 안먹어요. <--- 중요
+
+ 5 ) **작업 끝나면 여기 주석 풀기** 이 부분은 정원씨한테 확실히 OK 받으면 처리하도록 하고 정원씨가 작성해둔 주석태그는 우선 삭제 하지 않기.
+
+-->
+
+
+
 <html lang="ko">
 <head>
     <meta charset="UTF-8"/>
 
     <!-- 각 페이지 타이틀 꼭 변경하기 -->
-    <title>타이틀 입력</title>
+    <title>Manager</title>
 
-    <!-- 코드 작성 끝나면 삭제 [시작] -->
     <link href="/static/assets/css/color.css" type="text/css" rel="stylesheet"/>
     <link href="/static/assets/css/font.css" type="text/css" rel="stylesheet"/>
     <link href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"/>
@@ -24,17 +40,15 @@
     <script defer src="/static/assets/js/ecovalue-script.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-    <!-- 코드 작성 끝나면 삭제 [끝] -->
 
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
-    <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/manager-login/manager-login.css">
     <script defer src=""></script>
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
 
 </head>
 <body>
 
-<!-- 코드 작성 끝나면 삭제 [시작] -->
 <div class="layout_container">
     <nav class="navbar">
         <div class="navbar_top">
@@ -111,23 +125,57 @@
 
     <div class="main_contents">
         <div class="main_contents_wrap">
-            <!-- 코드 작성 끝나면 삭제 [끝] -->
 
             <!-- 이 아래에 실제 코드 작성 -->
             <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
             <section>
-                <div>
-                    텍스트
+                <div class="manager-login-container">
+                    <div class="manager-login">
+                        <form action="#" method="post" class="manager-text-form">
+
+                            <div class="manager-text-form-layout">
+                                <div class="manager-input-box-title">
+                                    <label for="id-box" class="manager-label-layout">아이디</label>
+                                </div>
+                                <input type="text" placeholder=" 아이디를 입력해주세요." id="id-box" name="mangerId" class="manager-input-tag">
+                                <!--
+                                아래의 코드에서도 똑같지만 name이 있어야 인자를 넘겨주어서 자동 바인딩이 가능 가능
+                                MVC1편 ->> @ModelAttribute
+                                -->
+                            </div>
+
+                            <div class="manager-text-form-layout">
+                                <div class="manager-input-box-title">
+                                    <label for="first-password-box" class="manager-label-layout">1차 비밀번호</label>
+                                </div>
+                                <input type="text" placeholder=" 1차 비밀번호를 입력해주세요." id="first-password-box"
+                                       name="first-mangerPassword" class="manager-input-tag">
+                            </div>
+
+                            <div class="manager-text-form-layout">
+                                <div class="manager-input-box-title">
+                                    <label for="second-password-box" class="manager-label-layout">2차 비밀번호</label>
+                                </div>
+                                <input type="text" placeholder=" 2차 비밀번호를 입력해주세요." id="second-password-box"
+                                       name="second-mangerPassword" class="manager-input-tag">
+                            </div>
+
+                            <hr>
+
+                            <div id="manager-login-layout">
+                                <button type="submit" id="manager-login-button">로그인</button>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
+
             </section>
             <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
             <!-- 이 위에 실제 코드 작성 -->
-
-            <!-- 코드 작성 끝나면 삭제 [시작] -->
         </div>
     </div>
 
-    <!-- 코드 작성 끝나면 삭제 [시작] -->
     <footer class="footer">
         <div class="footer_wrap">
             <div class="footer_logo">가치</div>
@@ -145,6 +193,5 @@
         </div>
     </footer>
 </div>
-<!-- 코드 작성 끝나면 삭제 [끝] -->
 </body>
 </html>
