@@ -1,104 +1,120 @@
-@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
+/* 실제 작업 위치 표시 */
 .membership-main {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 3px solid white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px solid #d9d9d9;
     border-radius: 20px;
-    width: 1300px;
-    height: 900px;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    place-items: center;
-    background-color: #d9d9d9;
-    gap: 10px;
-}
-
-.membership {
-    display: grid;
-    place-items: center;
-    grid-row: 1/2;
-    width: 80%;
-    height: auto;
-    position: relative;
-}
-
-.options {
+    width: 1280px;
+    height: 750px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    background-color: white;
+    gap: 10px;
+
+}
+
+/* form 태그 전체를 감싸고 있는 membership 클래스이다.*/
+.membership {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    grid-row: 2/3;
-    width: 80%;
-    height: 100%;
+
 }
 
+/* 제목의 정렬을 위해 만들어 놓은 css */
 #text-title {
-    height: 80px;
-    text-align: center;
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    font-family: "NanumSquare", sans-serif;
 }
 
+/* 회원가입이라는 제목의 css설정   */
 #text-title > span {
     font-size: 40px;
 }
 
-.membership-text-form > div > input {
-    text-align: center;
-    border: 2px solid white;
-    height: 30px;
-    margin-bottom: 15px;
-    width: 240px;
-    border-radius: 4px;
+/* input 태그에 직접적인 css 작업을 하기위해 만들어 놓은 css이다. */
+.membership-input-box-layout {
+    text-align: left;
+    border: 1px solid #d9d9d9;
+    height: 50px;
+    width: 500px;
+    border-radius: 0px 4px 4px 0px;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
 }
 
-.membership > form{
-    text-align: right;
-}
-
+/* 라벨태그의 정렬을 위해 라벨 자체를 div태그로 한번 감싸놓았다.*/
 .input-box-title {
-    display: inline;
-    width: 30px;
+    border: 1px solid #d9d9d9;
+    width: 200px;
+    border-right: none;
+    border-radius: 4px 0px 0px 4px;
+
 }
 
-.membership-text-form-layout{
-    margin-right: 100px;
-}
-
-.membership-select-title{
-    text-align: center;
-    font-size: 40px;
-    height: 80px;
-    width: 500px;
-}
-
-
-.Interest-box {
+/* 라벨에 직접 접근 할 수 있는 class 모든 라벨에 이 클래스명이 붙어있다. 정렬을 해주기 위해서 작업한 css*/
+.label-layout {
     display: flex;
+    height: 100%;
     align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: 2px solid gray;
-    width: 500px;
-    margin-bottom: 30px;
+    margin-left: 20px;
+    font-size: 18px;
+    font-family: "NanumSquare", sans-serif;
 }
 
-.Interest-box > input {
-    margin: 10px;
-}
-
-.funnel {
+/* label태그와 input태그를 감싸고 있는 class이다.
+       이때 제목(회원 가입)의 위치에 맞게 폼의 위치를 가운데 배열 해주기 위해서 만든 css이다. 없을 경우 모든 폼들의 위치가 어긋남
+       그리고 flex를 설정 해주지 않으면 border영역 오른쪽을 제거 했기 때문에 모양이 이상해짐
+    */
+.membership-text-form-layout {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: 2px solid gray;
-    width: 500px;
-    margin-bottom: 30px;
-    height: 40px;
+    margin-bottom: 10px;
 }
 
-.funnel > input {
-    margin: 8px;
+/* 취소버튼에 직접적으로 css를 먹일 수 있는 css id  */
+#membership-cancel {
+    width: 150px;
+    height: 70px;
+    background-color: #333333;
+    color: white;
+    border-radius: 8px;
+    font-size: 30px;
+    font-family: "NanumSquare", sans-serif;
+    border: none;
 }
+
+/* 가입버튼에 직접적으로 접근 할 수 있는 id */
+#create-membership {
+    width: 150px;
+    height: 70px;
+    background-color: #27ae60;
+    color: white;
+    border-radius: 8px;
+    font-size: 30px;
+    font-family: "NanumSquare", sans-serif;
+    border: none;
+    margin: 0px 0px 0px 10px;
+}
+
+#membership-button-layout {
+    display: flex;
+    justify-content: right;
+
+}
+
+/* 가입 버튼을 클릭 시 색 변환 */
+#create-membership:active {
+    background-color: #1e8449;
+}
+
+/* 취소 버튼을 클릭 시 색 변환 */
+#membership-cancel:active {
+    background-color: #777777;
+}
+
+
+
