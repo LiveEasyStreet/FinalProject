@@ -71,7 +71,7 @@ public class QuizController {
 
     @PostMapping("/sendData")
     public String score(@RequestBody Map<Long, Boolean> quizData, Model model) {
-        log.info("score invoked");
+//        log.info("score invoked");
         log.info("quizData = {}", quizData);
 
         if (quizData == null) {
