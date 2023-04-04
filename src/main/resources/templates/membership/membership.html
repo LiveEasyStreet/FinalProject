@@ -1,0 +1,123 @@
+<!doctype html>
+
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/membership/membership.css"
+          th:href="@{/assets/css/membership/membership.css}">
+
+    <title>EcoValue</title>
+
+    <script></script>
+</head>
+
+<body>
+<section>
+    <div class="membership-main">
+        <div class="membership">
+            <form action="#" method="post" class="membership-text-form">
+                <div id="text-title">
+                    <span th:text="회원가입">회원가입</span>
+                    <hr>
+                </div>
+
+                <div class="membership-text-form-layout">
+                    <div class="input-box-title">
+                        <label for="id-box">아이디</label>
+                    </div>
+                    <input type="text" placeholder="아이디를 입력해주세요." id="id-box">
+                </div>
+
+                <div class="membership-text-form-layout">
+                    <div class="input-box-title">
+                        <label for="password-box">비밀번호</label>
+                    </div>
+                    <input type="text" placeholder="비밀번호를 입력해주세요." id="password-box">
+                </div>
+
+                <div class="membership-text-form-layout">
+                    <div class="input-box-title">
+                        <label for="password-check-box">비밀번호 확인</label>
+                    </div>
+                    <input type="text" placeholder="비밀번호를 한번 더 입력해주세요." id="password-check-box">
+                </div>
+
+                <div class="membership-text-form-layout">
+                    <div class="input-box-title">
+                        <label for="nickname-box">닉네임</label>
+                    </div>
+                    <input type="text" placeholder="닉네임을 입력해주세요." id="nickname-box">
+                </div>
+
+                <div class="membership-text-form-layout">
+                    <div class="input-box-title">
+                        <label for="name-box">이름</label>
+                    </div>
+                    <input type="text" placeholder="이름을 입력해주세요." id="name-box">
+                </div>
+
+                <div class="membership-text-form-layout">
+                    <div class="input-box-title">
+                        <label for="email-box">이메일</label>
+                    </div>
+                    <input type="text" placeholder="이메일을 입력해주세요." id="email-box">
+                </div>
+                <hr>
+            </form>
+        </div>
+
+        <div class="options">
+            <form action="" method="post">
+
+                <div class="membership-select-title">
+                    <span th:text="선택사항">선택사항</span>
+                    <hr>
+                </div>
+                <span>관심사</span>
+
+                <div class="Interest-box">
+                    <input type="checkbox" id="Interest-box-recycle">
+                    <label for="Interest-box-recycle" th:text="리사이클">리사이클</label>
+
+                    <input type="checkbox" id="Interest-box-upcycle">
+                    <label for="Interest-box-upcycle" th:text="업사이클">업사이클</label>
+
+                    <input type="checkbox" id="Interest-box-zero-waste">
+                    <label for="Interest-box-zero-waste" th:text="제로웨이스트">제로웨이스트</label>
+
+                    <input type="checkbox" id="Interest-box-store">
+                    <label for="Interest-box-store" th:text="상점">상점</label>
+
+                    <input type="checkbox" id="Interest-box-event">
+                    <label for="Interest-box-event" th:text="이벤트">이벤트</label>
+                </div>
+
+                <span>유입경로</span>
+
+                <div class="funnel">
+                    <input type="radio" id="funnel-instagram-box">
+                    <label for="funnel-instagram-box" th:text="인스타그램">인스타그램</label>
+
+                    <input type="radio" id="funnel-facebook-box">
+                    <label for="funnel-facebook-box" th:text="페이스북">페이스북</label>
+
+                    <input type="radio" id="funnel-search-box">
+                    <label for="funnel-search-box" th:text="인터넷검색">인터넷검색</label>
+
+                    <input type="radio" id="funnel-recommended-box">
+                    <label for="funnel-recommended-box" th:text="지인소개">지인소개</label>
+
+                    <input type="radio" id="funnel-etc-box">
+                    <label for="funnel-etc-box" th:text="기타">기타</label>
+                </div>
+
+                <hr>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

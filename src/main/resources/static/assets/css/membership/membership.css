@@ -1,0 +1,104 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+.membership-main {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 3px solid white;
+    border-radius: 20px;
+    width: 1300px;
+    height: 900px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+    background-color: #d9d9d9;
+    gap: 10px;
+}
+
+.membership {
+    display: grid;
+    place-items: center;
+    grid-row: 1/2;
+    width: 80%;
+    height: auto;
+    position: relative;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 2/3;
+    width: 80%;
+    height: 100%;
+}
+
+#text-title {
+    height: 80px;
+    text-align: center;
+}
+
+#text-title > span {
+    font-size: 40px;
+}
+
+.membership-text-form > div > input {
+    text-align: center;
+    border: 2px solid white;
+    height: 30px;
+    margin-bottom: 15px;
+    width: 240px;
+    border-radius: 4px;
+}
+
+.membership > form{
+    text-align: right;
+}
+
+.input-box-title {
+    display: inline;
+    width: 30px;
+}
+
+.membership-text-form-layout{
+    margin-right: 100px;
+}
+
+.membership-select-title{
+    text-align: center;
+    font-size: 40px;
+    height: 80px;
+    width: 500px;
+}
+
+
+.Interest-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid gray;
+    width: 500px;
+    margin-bottom: 30px;
+}
+
+.Interest-box > input {
+    margin: 10px;
+}
+
+.funnel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 2px solid gray;
+    width: 500px;
+    margin-bottom: 30px;
+    height: 40px;
+}
+
+.funnel > input {
+    margin: 8px;
+}

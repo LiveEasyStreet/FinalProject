@@ -18,7 +18,7 @@ import java.util.Map;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-public class QuizController {
+public class quizController {
 
     private final IQuizService quizService;
 
@@ -28,7 +28,7 @@ public class QuizController {
     @GetMapping
     public String quizMain() {
 //        log.info("quizStarter invoked");
-        return "quiz/quiz-main";
+        return "/quiz/quiz-main";
     }
 
     /**
@@ -40,7 +40,7 @@ public class QuizController {
 //        log.info("question invoked");
         List<Quiz> quizList = quizService.selectsQuiz();
         model.addAttribute(quizList);
-        return "quiz/quiz-question";
+        return "/quiz/quiz-question";
     }
 
     /**
@@ -48,26 +48,26 @@ public class QuizController {
      * 서비스의 후처리 메소드를 호출 해 통계 정보를 업데이트 한 뒤
      * 점수 화면에 점수, 퀴즈 10개, 퀴즈 오답내역을 전달
      */
-    @GetMapping("/score")
-    public String score(@ModelAttribute QuizData quizData, Model model) {
-//        log.info("score invoked");
-
-        if (quizData.getData() == null) {
-            throw new RuntimeException("quizData에 데이터가 없습니다.");
-        }
-
-        int score = quizService.updateQuizStatistics(quizData.getData());
-        Map<Long, Quiz> quizMap = new HashMap<>();
-
-        for (Long key : quizData.getData().keySet()) {
-            Quiz quiz = quizService.findQuiz(key);
-            quizMap.put(quiz.getId(), quiz);
-        }
-
-        model.addAttribute(score);
-        model.addAttribute(quizMap);
-        model.addAttribute(quizData);
-
-        return "quiz/score";
-    }
+//    @GetMapping("/score")
+//    public String score(@ModelAttribute quizData quizData, Model model) {
+////        log.info("score invoked");
+//
+//        if (quizData.getData() == null) {
+//            throw new RuntimeException("quizData에 데이터가 없습니다.");
+//        }
+//
+//        int score = quizService.updateQuizStatistics(quizData.getData());
+//        Map<Long, Quiz> quizMap = new HashMap<>();
+//
+//        for (Long key : quizData.getData().keySet()) {
+//            Quiz quiz = quizService.findQuiz(key);
+//            quizMap.put(quiz.getId(), quiz);
+//        }
+//
+//        model.addAttribute(score);
+//        model.addAttribute(quizMap);
+//        model.addAttribute(quizData);
+//
+//        return "/quiz/score";
+//    }
 }
