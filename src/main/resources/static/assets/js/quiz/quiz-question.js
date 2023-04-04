@@ -86,10 +86,14 @@ let submitData = {};
 let setSubmitData = () => {
     submitData = {};
     for (let i = 1; i <= 10; i++) {
-        submitData[quizList[i - 1].id] = Quiz_User_Submit[i][0];
+        if (Quiz_User_Submit[i][0] === quizList[i-1].answer) {
+            submitData[quizList[i - 1].id] = true
+        } else {
+            submitData[quizList[i - 1].id] = false
+        }
     }
     console.log(submitData);
-    console.log(typeof submitData[Object.keys(submitData)[0]]);
+    // console.log(typeof submitData[Object.keys(submitData)[0]]);
 };
 let quiz_submit = () => {
     let submit_index = new Array();
@@ -103,7 +107,6 @@ let quiz_submit = () => {
             "안푼 문제 : " + submit_index.join(' '));
     } else {
         setSubmitData();
-        console.log(submitData);
 
         $.ajax({
             type: "POST",
@@ -113,7 +116,8 @@ let quiz_submit = () => {
             // * 성공시
             success: function (res) {
                 console.log("성공", res);
-                // window.location.href = "/quiz/score";
+                sessionStorage.setItem('quiz-result-data', JSON.stringify(res));
+                window.location.href = "/quiz/score";
             },
             // # 실패시
             error: function (e) {

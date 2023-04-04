@@ -68,9 +68,9 @@ public class QuizController {
 //
 //        return "quiz/score";
 //    }
-
+    @ResponseBody
     @PostMapping("/sendData")
-    public String score(@RequestBody Map<Long, Boolean> quizData, Model model) {
+    public QuizResultData score(@RequestBody Map<Long, Boolean> quizData) {
 //        log.info("score invoked");
         log.info("quizData = {}", quizData);
 
@@ -86,10 +86,11 @@ public class QuizController {
             quizMap.put(quiz.getId(), quiz);
         }
 
-        model.addAttribute(score);
-        model.addAttribute(quizMap);
-        model.addAttribute(quizData);
+        return new QuizResultData(quizData, quizMap, score);
+    }
 
+    @GetMapping("score")
+    public String result() {
         return "quiz/score";
     }
 }
