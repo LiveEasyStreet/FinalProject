@@ -64,7 +64,7 @@ const rotate = function () {
     if (number === textArrLength) {
         number = 0;
     }
-    console.log(number)
+    // console.log(number)
     document.querySelector(".tip_comment").textContent = textArr[number];
 };
 
@@ -74,7 +74,7 @@ const backRotate = function () {
     if (number === -1) {
         number = textArrLength-1;
     }
-    console.log(number)
+    // console.log(number)
     document.querySelector(".tip_comment").textContent = textArr[number];
 };
 

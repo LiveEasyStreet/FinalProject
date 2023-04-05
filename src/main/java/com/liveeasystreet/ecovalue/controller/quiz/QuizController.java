@@ -6,9 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,26 +46,51 @@ public class QuizController {
      * 서비스의 후처리 메소드를 호출 해 통계 정보를 업데이트 한 뒤
      * 점수 화면에 점수, 퀴즈 10개, 퀴즈 오답내역을 전달
      */
-    @GetMapping("/score")
-    public String score(@ModelAttribute QuizData quizData, Model model) {
+//    @GetMapping("/score")
+//    public String score(@ModelAttribute QuizData quizData, Model model) {
+////        log.info("score invoked");
+//
+//        if (quizData.getData() == null) {
+//            throw new RuntimeException("quizData에 데이터가 없습니다.");
+//        }
+//
+//        int score = quizService.updateQuizStatistics(quizData.getData());
+//        Map<Long, Quiz> quizMap = new HashMap<>();
+//
+//        for (Long key : quizData.getData().keySet()) {
+//            Quiz quiz = quizService.findQuiz(key);
+//            quizMap.put(quiz.getId(), quiz);
+//        }
+//
+//        model.addAttribute(score);
+//        model.addAttribute(quizMap);
+//        model.addAttribute(quizData);
+//
+//        return "quiz/score";
+//    }
+    @ResponseBody
+    @PostMapping("/sendData")
+    public QuizResultData score(@RequestBody Map<Long, Boolean> quizData) {
 //        log.info("score invoked");
+        log.info("quizData = {}", quizData);
 
-        if (quizData.getData() == null) {
+        if (quizData == null) {
             throw new RuntimeException("quizData에 데이터가 없습니다.");
         }
 
-        int score = quizService.updateQuizStatistics(quizData.getData());
+        int score = quizService.updateQuizStatistics(quizData);
         Map<Long, Quiz> quizMap = new HashMap<>();
 
-        for (Long key : quizData.getData().keySet()) {
+        for (Long key : quizData.keySet()) {
             Quiz quiz = quizService.findQuiz(key);
             quizMap.put(quiz.getId(), quiz);
         }
 
-        model.addAttribute(score);
-        model.addAttribute(quizMap);
-        model.addAttribute(quizData);
+        return new QuizResultData(quizData, quizMap, score);
+    }
 
+    @GetMapping("score")
+    public String result() {
         return "quiz/score";
     }
 }
