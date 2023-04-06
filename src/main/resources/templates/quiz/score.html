@@ -3,39 +3,36 @@
       th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 <head>
     <meta charset="UTF-8">
-    <link href="/static/assets/css/quiz/score.css" rel="stylesheet" th:href="@{/assets/css/quiz/score.css}">
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <link href="/static/assets/css/quiz/score.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/quiz/score.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script defer src="/assets/js/quiz/score.js" th:src="@{/assets/js/quiz/score.js}"></script>
-
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <title>score</title>
 </head>
 
 <body>
 <section>
-    <div class="quiz_wrap">
+    <div class="score-wrap">
         <div class="score_container">
             <div class="score_box">
-            <span class="score_context_score"><u id="score">56</u><span
-                    class="score_context_dot">&nbsp;점</span></span>
+                <div class="score_context_score">
+                    <span id="score">56</span>
+                    <span>&nbsp;점</span>
+                </div>
             </div>
             <div class="score_result">
                 <p class="score_result_context" id="score_message">
-                    회원의 퀴즈풀이 점수에 따라 나오는 텍스트가 달라질 것이다.
+                    회원의 퀴즈풀이 점수
                 </p>
             </div>
             <div class="score_wrong_quiz">틀린 문제 번호 :&nbsp;</div>
             <div class="score_correct_quiz">맞은 문제 번호 :&nbsp;</div>
             <div class="incorrect_note">
-
-                <swiper-container class="mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true"
-                                  css-mode="true" id="slide_container">
-                </swiper-container>
-
+                <div class="mistake-log" id="slide_container"></div>
             </div>
         </div>
     </div>
-
-
 </section>
 </body>
 </html>

@@ -25,8 +25,9 @@ for (const key in quizResultData.data) {
 }
 
 for (let i = 0; i < wrongQuizList.length; i++) {
-    const slide = document.createElement('swiper-slide');
-    slide.innerHTML = `<div>${wrongQuizList[i].id}번 문제 해설</div>` + `<div>${wrongQuizList[i].solve}</div>`;
+    const slide = document.createElement('div');
+    slide.innerHTML =
+        `<div class="mistake-log-name">${wrongQuizList[i].id}번 문제 해설</div>` + `<div class="mistake-log-text">${wrongQuizList[i].solve}</div>`;
     slideInsert.appendChild(slide);
     wrongScoreIdList.innerText += `${wrongQuizList[i].id},` + '\u00A0';
 }
@@ -36,27 +37,12 @@ for (let i = 0; i < correctQuizList.length; i++) {
 }
 
 if (score >= 0 && score <= 50) {
-    messageElem.innerText = '0 ~ 50점 : 많이 노력해야되겠다는 멘트';
+    messageElem.innerText = '0 ~ 50점 : 무지렁이';
 } else if (score >= 51 && score <= 70) {
-    messageElem.innerText = '51 ~ 70 : 기초지식은 있다는 멘트';
+    messageElem.innerText = '51 ~ 70 : 일반인';
 } else if (score >= 71 && score <= 100) {
-    messageElem.innerText = '71 ~ 100 : 지구를 위해 주위 지인분들에게 알려줘야한다는 멘트를 날려준다.';
+    messageElem.innerText = '71 ~ 100 : 지구방위대';
 }
 
 sessionStorage.removeItem('quiz-result-data')
-
-let swiper = new Swiper('.mySwiper', {
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-        hideOnClick: true,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    keyboard: true,
-    cssMode: true,
-    loop: true
-});
 
