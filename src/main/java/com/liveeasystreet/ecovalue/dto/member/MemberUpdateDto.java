@@ -1,11 +1,21 @@
 package com.liveeasystreet.ecovalue.dto.member;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
 public class MemberUpdateDto {
-    private String name;
-    // TODO 나머지 객체 실제 코드 작성 시 생성해야됨
+
+    private String nickName;
+
+    private String memberName;
+
+    private String memberPassword;
+
+    private String memberPasswordValidate;
+
+    private String email;
+
 }
