@@ -2,7 +2,7 @@
 .membership-main {
     margin-top: 30px;
     margin-bottom: 30px;
-    border: 2px solid #d9d9d9;
+    border: 1px solid #d9d9d9;
     border-radius: 20px;
     width: 1280px;
     height: 750px;
@@ -34,6 +34,7 @@
 /* 회원가입이라는 제목의 css설정   */
 #text-title > span {
     font-size: 40px;
+    font-weight: 800;
 }
 
 /* input 태그에 직접적인 css 작업을 하기위해 만들어 놓은 css이다. */
@@ -78,26 +79,27 @@
 /* 취소버튼에 직접적으로 css를 먹일 수 있는 css id  */
 #membership-cancel {
     width: 150px;
-    height: 70px;
+    height: 50px;
     background-color: #333333;
     color: white;
     border-radius: 8px;
     font-size: 30px;
     font-family: "NanumSquare", sans-serif;
     border: none;
+    margin: 10px 0px 0px 10px;
 }
 
 /* 가입버튼에 직접적으로 접근 할 수 있는 id */
 #create-membership {
     width: 150px;
-    height: 70px;
+    height: 50px;
     background-color: #27ae60;
     color: white;
     border-radius: 8px;
     font-size: 30px;
     font-family: "NanumSquare", sans-serif;
     border: none;
-    margin: 0px 0px 0px 10px;
+    margin: 10px 0px 0px 10px;
 }
 
 #membership-button-layout {
