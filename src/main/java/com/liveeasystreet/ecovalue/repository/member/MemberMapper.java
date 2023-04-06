@@ -1,5 +1,6 @@
 package com.liveeasystreet.ecovalue.repository.member;
 
+import com.liveeasystreet.ecovalue.cond.member.MemberSearchCond;
 import com.liveeasystreet.ecovalue.domain.Member;
 import com.liveeasystreet.ecovalue.dto.member.MemberUpdateDto;
 import org.apache.ibatis.annotations.Mapper;
@@ -13,9 +14,9 @@ import java.util.Optional;
 public interface MemberMapper {
 
     void save(Member member);
-    void update(@Param("memberId") Long id, @Param("updateParam") MemberUpdateDto updateDto);
+    void update(@Param("id") Long id, @Param("updateDto") MemberUpdateDto updateDto);
     Optional<Member> findById(Long id);
-    List<Member> findAll();
+    List<Member> findAll(MemberSearchCond memberSearchCond);
     void deleteById(Long id);
 
 }

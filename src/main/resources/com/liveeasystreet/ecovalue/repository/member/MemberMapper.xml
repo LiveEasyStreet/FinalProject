@@ -10,10 +10,48 @@
             (#{loginId}, #{memberPassword},#{nickName},#{memberName},#{email},now(),#{blackList},#{memberPoint})
     </insert>
 
+    <update id="update">
+        update member
+        set NICK_NAME=#{updateDto.nickName},
+            MEMBER_NAME=#{updateDto.memberName},
+            MEMBER_PASSWORD=#{updateDto.memberPassword},
+            EMAIL=#{updateDto.email}
+        where MEMBER_ID=#{id}
+    </update>
+
     <select id="findById" resultType="Member">
         select MEMBER_ID, LOGIN_ID, MEMBER_PASSWORD, NICK_NAME, MEMBER_NAME, EMAIL, JOIN_DATE, BLACK_LIST, MEMBER_POINT
         from member
         where MEMBER_ID = #{id}
     </select>
+
+    <select id="findAll" resultType="Member">
+        select MEMBER_ID, LOGIN_ID, MEMBER_PASSWORD, NICK_NAME, MEMBER_NAME, EMAIL, JOIN_DATE, BLACK_LIST, MEMBER_POINT
+        from member
+        <where>
+            <if test="loginId != null and loginId != ''">
+                and LOGIN_ID like concat('%',#{loginId},'%')
+            </if>
+
+            <if test="nickName != null and nickName != ''">
+                and NICK_NAME like concat('%',#{nickName},'%')
+            </if>
+
+            <if test="memberName != null and memberName != ''">
+                and MEMBER_NAME like concat('%',#{memberName},'%')
+            </if>
+
+            <if test="email != null and email != ''">
+                and EMAIL like concat('%',#{email},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteById">
+        delete from member
+        where MEMBER_ID=#{id}
+    </delete>
+
+
 
 </mapper>

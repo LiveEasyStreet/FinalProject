@@ -1,5 +1,6 @@
 package com.liveeasystreet.ecovalue.repository.member;
 
+import com.liveeasystreet.ecovalue.cond.member.MemberSearchCond;
 import com.liveeasystreet.ecovalue.domain.Member;
 import com.liveeasystreet.ecovalue.dto.member.MemberUpdateDto;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,8 @@ public class MyBatisMemberRepository implements MemberRepository {
     }
 
     @Override
-    public List<Member> findAll() {
-        return memberMapper.findAll();
+    public List<Member> findAll(MemberSearchCond memberSearchCond) {
+        return memberMapper.findAll(memberSearchCond);
     }
 
     @Override
