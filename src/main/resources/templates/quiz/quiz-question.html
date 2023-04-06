@@ -3,45 +3,58 @@
       th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 <head>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/css/quiz/quiz-question.css"
           th:href="@{/assets/css/quiz/quiz-question.css}">
-    <link rel="stylesheet" href="/assets/css/quiz/quiz-swiper.css"
-          th:href="@{/assets/css/quiz/quiz-swiper.css}">
+    <script defer th:inline="javascript">
+        const quizList = /*[[${quizList}]]*/ {};
+    </script>
+    <script src="/assets/js/quiz/quiz-question.js" defer
+            th:src="@{/assets/js/quiz/quiz-question.js}"></script>
 
-    <script defer src="/assets/js/quiz-question.js" th:src="@{/assets/js/quiz-question.js}"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-    <title>quiz-question</title>
+    <script src="https://kit.fontawesome.com/fb84122c0e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <title>EcoValue</title>
 </head>
 
 <body>
 <section>
     <div class="quiz_wrap">
-        <div class="quiz_content">
-            <div class="quiz_start_view">
-                <swiper-container class="mySwiper" keyboard="true" space-between="30" pagination="true"
-                                  pagination-clickable="true"
-                                  navigation="true">
-                    <swiper-slide>Quiz 1</swiper-slide>
-                    <swiper-slide>Quiz 2</swiper-slide>
-                    <swiper-slide>Quiz 3</swiper-slide>
-                    <swiper-slide>Quiz 4</swiper-slide>
-                    <swiper-slide>Quiz 5</swiper-slide>
-                    <swiper-slide>Quiz 6</swiper-slide>
-                    <swiper-slide>Quiz 7</swiper-slide>
-                    <swiper-slide>Quiz 8</swiper-slide>
-                    <swiper-slide>Quiz 9</swiper-slide>
-                    <swiper-slide>Quiz 10</swiper-slide>
-                </swiper-container>
+        <div class="quiz_start_view">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <th:block th:each="quiz, i : ${quizList}">
+                        <div class="swiper-slide">
+                            <div class="quiz-title" th:text="${quiz.title}">퀴즈 제목</div>
+                            <div class="quiz-detail" th:text="${quiz.detail}">퀴즈 내용</div>
+                            <div th:class="|quiz-user-answer${i.count}|"></div>
+                        </div>
+                    </th:block>
+                </div>
             </div>
-            <div class="quiz_start_ox_view">
-                <i class="fa-solid fa-o" id="O" onclick="plusNumber('O'); moveToNextSlide();"></i>
-                <i class="fa-solid fa-x" id="X" onclick="plusNumber('X'); moveToNextSlide();"></i>
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="quiz_start_ox_view">
+            <div class="arrow-left">
+                <i class="fa-solid fa-arrow-right fa-rotate-180"></i>
             </div>
-            <span class="quiz_page_number">1 / 10</span>
+            <div class="quiz-o">
+                <i class="fa-solid fa-o" id="O" onclick="plusNumber('O')"></i>
+            </div>
+            <div class="quiz-x">
+                <i class="fa-solid fa-x" id="X" onclick="plusNumber('X')"></i>
+            </div>
+            <div class="arrow-right">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            <div class="submit-button">
+                <i class="fa-solid fa-check" onclick="quiz_submit()"></i>
+            </div>
         </div>
     </div>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 </section>
 </body>
 </html>

@@ -26,6 +26,8 @@ public interface QuizRepository {
      */
     List<Quiz> findAll(QuizSearchCond cond);
 
+
+
     /**
      * 퀴즈의 key(id)목록을 전체 검색(조회)하는 메서드.
      * @return the list

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link href="/static/assets/css/quiz/score.css" rel="stylesheet" th:href="@{/assets/css/quiz/score.css}">
     <script defer src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
-    <script defer src="/assets/js/score.js" th:src="@{/assets/js/score.js}"></script>
+    <script defer src="/assets/js/quiz/score.js" th:src="@{/assets/js/quiz/score.js}"></script>
 
     <title>score</title>
 </head>
@@ -23,8 +23,8 @@
                     회원의 퀴즈풀이 점수에 따라 나오는 텍스트가 달라질 것이다.
                 </p>
             </div>
-            <div class="score_wrong_quiz">틀린 문제의 번호를 나타낸다.</div>
-            <div class="score_correct_quiz">맞은 문제의 번호를 나타낸다</div>
+            <div class="score_wrong_quiz">틀린 문제 번호 :&nbsp;</div>
+            <div class="score_correct_quiz">맞은 문제 번호 :&nbsp;</div>
             <div class="incorrect_note">
 
                 <swiper-container class="mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true"
