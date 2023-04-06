@@ -6,27 +6,28 @@
     border-radius: 20px;
     width: 1280px;
     height: 750px;
-    display: grid;
-    grid-template-row: repeat(1, 1fr);
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: white;
     gap: 10px;
+
 }
 
 /* form 태그 전체를 감싸고 있는 membership 클래스이다.*/
 .membership {
-    display: grid;
-    place-items: center;
-    grid-row: 1/2;
-    width: 80%;
-    height: auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 /* 제목의 정렬을 위해 만들어 놓은 css */
 #text-title {
+    display: flex;
     height: 100px;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
     font-family: "NanumSquare", sans-serif;
 }
 
@@ -48,22 +49,17 @@
 
 /* 라벨태그의 정렬을 위해 라벨 자체를 div태그로 한번 감싸놓았다.*/
 .input-box-title {
-    display: inline-block;
-    border: 2px solid #d9d9d9;
+    border: 1px solid #d9d9d9;
     width: 200px;
-    height: 50px;
     border-right: none;
     border-radius: 4px 0px 0px 4px;
-    text-align: center;
-    align-items: center;
+
 }
 
 /* 라벨에 직접 접근 할 수 있는 class 모든 라벨에 이 클래스명이 붙어있다. 정렬을 해주기 위해서 작업한 css*/
 .label-layout {
     display: flex;
-    width: 100%;
     height: 100%;
-    justify-content: start;
     align-items: center;
     margin-left: 20px;
     font-size: 18px;
@@ -76,16 +72,11 @@
     */
 .membership-text-form-layout {
     display: flex;
-    margin-right: 100px;
-    position: relative;
-    left: 50px;
     margin-bottom: 10px;
-
 }
 
 /* 취소버튼에 직접적으로 css를 먹일 수 있는 css id  */
 #membership-cancel {
-    margin: 10px;
     width: 150px;
     height: 70px;
     background-color: #333333;
@@ -93,7 +84,6 @@
     border-radius: 8px;
     font-size: 30px;
     font-family: "NanumSquare", sans-serif;
-    text-align: center;
     border: none;
 }
 
@@ -101,19 +91,19 @@
 #create-membership {
     width: 150px;
     height: 70px;
-    margin: 10px;
     background-color: #27ae60;
     color: white;
     border-radius: 8px;
     font-size: 30px;
     font-family: "NanumSquare", sans-serif;
     border: none;
+    margin: 0px 0px 0px 10px;
 }
 
-/* 취소 버튼과 가입 버튼의 위치를 지정해주기 위한 id*/
 #membership-button-layout {
-    position: absolute;
-    right: 150px;
+    display: flex;
+    justify-content: right;
+
 }
 
 /* 가입 버튼을 클릭 시 색 변환 */
