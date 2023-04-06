@@ -1,4 +1,4 @@
-
+/* 실제 작업 위치 표시 */
 .membership-main {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -13,10 +13,7 @@
     gap: 10px;
 }
 
-/* membership-main은 작업해야할 공간을 만들어둔 css
-   grid를 사용해서 페이지 구현하려면 위에꺼 복사해서 사용해도 무관
-*/
-
+/* form 태그 전체를 감싸고 있는 membership 클래스이다.*/
 .membership {
     display: grid;
     place-items: center;
@@ -26,19 +23,22 @@
     position: relative;
 }
 
+/* 제목의 정렬을 위해 만들어 놓은 css */
 #text-title {
     height: 100px;
     text-align: center;
     font-family: "NanumSquare", sans-serif;
 }
 
+/* 회원가입이라는 제목의 css설정   */
 #text-title > span {
     font-size: 40px;
 }
 
-.membership-text-form > div > input {
+/* input 태그에 직접적인 css 작업을 하기위해 만들어 놓은 css이다. */
+.membership-input-box-layout {
     text-align: left;
-    border: 2px solid #d9d9d9;
+    border: 1px solid #d9d9d9;
     height: 50px;
     width: 500px;
     border-radius: 0px 4px 4px 0px;
@@ -46,10 +46,7 @@
     font-size: 18px;
 }
 
-.membership > form {
-    text-align: right;
-}
-
+/* 라벨태그의 정렬을 위해 라벨 자체를 div태그로 한번 감싸놓았다.*/
 .input-box-title {
     display: inline-block;
     border: 2px solid #d9d9d9;
@@ -61,6 +58,7 @@
     align-items: center;
 }
 
+/* 라벨에 직접 접근 할 수 있는 class 모든 라벨에 이 클래스명이 붙어있다. 정렬을 해주기 위해서 작업한 css*/
 .label-layout {
     display: flex;
     width: 100%;
@@ -72,16 +70,20 @@
     font-family: "NanumSquare", sans-serif;
 }
 
+/* label태그와 input태그를 감싸고 있는 class이다.
+       이때 제목(회원 가입)의 위치에 맞게 폼의 위치를 가운데 배열 해주기 위해서 만든 css이다. 없을 경우 모든 폼들의 위치가 어긋남
+       그리고 flex를 설정 해주지 않으면 border영역 오른쪽을 제거 했기 때문에 모양이 이상해짐
+    */
 .membership-text-form-layout {
     display: flex;
     margin-right: 100px;
-    justify-content: center;
-    align-items: center;
     position: relative;
     left: 50px;
     margin-bottom: 10px;
+
 }
 
+/* 취소버튼에 직접적으로 css를 먹일 수 있는 css id  */
 #membership-cancel {
     margin: 10px;
     width: 150px;
@@ -92,8 +94,10 @@
     font-size: 30px;
     font-family: "NanumSquare", sans-serif;
     text-align: center;
+    border: none;
 }
 
+/* 가입버튼에 직접적으로 접근 할 수 있는 id */
 #create-membership {
     width: 150px;
     height: 70px;
@@ -103,18 +107,22 @@
     border-radius: 8px;
     font-size: 30px;
     font-family: "NanumSquare", sans-serif;
+    border: none;
 }
 
+/* 취소 버튼과 가입 버튼의 위치를 지정해주기 위한 id*/
 #membership-button-layout {
     position: absolute;
     right: 150px;
 }
 
+/* 가입 버튼을 클릭 시 색 변환 */
 #create-membership:active {
     background-color: #1e8449;
 }
 
-#membership-cancel:active{
+/* 취소 버튼을 클릭 시 색 변환 */
+#membership-cancel:active {
     background-color: #777777;
 }
 
