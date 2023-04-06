@@ -1,8 +1,11 @@
 package com.liveeasystreet.ecovalue.dto;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class QuizDTO {
 
     private String category; //카테고리 !

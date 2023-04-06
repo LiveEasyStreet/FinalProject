@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/membership")
-public class MemberShipController {
+public class MembershipController {
 
     @GetMapping
     public String membershipHome(){

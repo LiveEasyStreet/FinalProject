@@ -3,9 +3,8 @@ package com.liveeasystreet.ecovalue.cond.member;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
-@Data
+@Getter @Setter
 public class MemberSearchCond {
 
     // 가입시 입력하는 로그인 아이디
@@ -17,7 +16,7 @@ public class MemberSearchCond {
     // 이메일
     private String email;
 
-    public MemberSearchCond(){
+    public MemberSearchCond() {
 
     }
 
