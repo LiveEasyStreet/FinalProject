@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberShipController {
 
     @GetMapping
-    public String membership_Home(){
+    public String membershipHome(){
         return "membership/membership";
     }
 
