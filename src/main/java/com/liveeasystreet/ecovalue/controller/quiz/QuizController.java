@@ -26,7 +26,7 @@ public class QuizController {
     @GetMapping
     public String quizMain() {
 //        log.info("quizStarter invoked");
-        return "quiz/quiz-main";
+        return "ecovalue/quiz/quiz-main";
     }
 
     /**
@@ -38,7 +38,7 @@ public class QuizController {
 //        log.info("question invoked");
         List<Quiz> quizList = quizService.selectsQuiz();
         model.addAttribute(quizList);
-        return "quiz/quiz-question";
+        return "ecovalue/quiz/quiz-question";
     }
 
     /**
@@ -91,6 +91,6 @@ public class QuizController {
 
     @GetMapping("score")
     public String result() {
-        return "quiz/score";
+        return "ecovalue/quiz/score";
     }
 }

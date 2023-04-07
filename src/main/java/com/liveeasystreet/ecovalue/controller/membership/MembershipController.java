@@ -10,7 +10,7 @@ public class MembershipController {
 
     @GetMapping
     public String membershipHome(){
-        return "membership/membership";
+        return "ecovalue/membership/membership";
     }
 
 }

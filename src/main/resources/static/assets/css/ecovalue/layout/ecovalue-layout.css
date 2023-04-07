@@ -1,0 +1,277 @@
+body {
+    height: 100%;
+    background: var(--background-color-main);
+}
+
+.layout-container {
+    z-index: 6000;
+}
+
+/* 네비게이션 상단 바 */
+.navbar-top {
+    width: auto;
+    min-width: 1280px;
+    border-bottom: 1px solid var(--point-color);
+    background-color: white;
+}
+
+/* 네비게이션 내부 아이템들 감싸는 영역 */
+.navbar-wrap {
+    margin: auto;
+    width: 1280px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+/* 로고 아이템들 감싸는 영역 */
+.logo-wrap {
+
+}
+
+/* 로고 영역 */
+.logo {
+    font-family: "TheJamsil5Bold", serif;
+    color: var(--point-color);
+    font-size: 40px;
+    font-weight: 800;
+}
+
+/* 메뉴 아이템들 감싸는 영역 */
+.menu-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 300px;
+}
+
+/* 메뉴이름 영역 하단에 위치하도록 위 여백 적용 */
+.menu {
+    padding-top: 20px;
+    position: relative;
+}
+
+/* 메뉴 이름 [a태그] 영역 */
+.menu-name {
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--font-color-main);
+    padding: 15px 25px;
+}
+
+/* 메뉴이름 [a태그] 영역 - 마우스호버시 색변환 */
+.menu-name:hover {
+    color: var(--point-color);
+}
+
+/* 메뉴이름 [a태그] 영역하단 직사가형 박스 디자인 - 마우스호버시만 보여줌 */
+.menu-name:before {
+    position: absolute;
+    content: '';
+    background-color: var(--point-color);
+    width: 0;
+    height: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -14px;
+    transition: 0.2s;
+}
+
+/* 메뉴이름 [a태그] 영역하단 직사가형 박스 디자인 - [마우스호버]시 보여주기 */
+.menu-name:hover:before {
+    width: 100%;
+}
+
+/* 메뉴이름 밑에 숨겨진 서브메뉴 디자인 - [마우스호버]시만 보여줌 */
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 58px;
+    left: 50%;
+    width: 500px;
+    height: 50px;
+    transform: translateX(-50%);
+
+}
+
+/* 메뉴이름 밑에 숨겨진 서브메뉴 [a태그] 디자인 - [마우스호버]시만 보여줌 */
+.sub-menu a {
+    font-family: "NanumSquare", sans-serif;
+    font-size: 16px;
+    color: var(--font-color-main);
+    font-weight: 600;
+    padding: 14px 10px;
+}
+
+/* 메뉴이름 - [마우스호버]시 숨겨진 서브메뉴 보여줌 */
+.menu:hover .sub-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 서브메뉴 [마우스호버]시 색변환 */
+.sub-menu a:hover {
+    color: var(--point-color);
+}
+
+/* 로그인 회원가입 감싸는 영역 */
+.login-wrap {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 로그인 회원가입 영역 하단에 배치되도록 상단 여백 */
+.login-wrap li {
+    padding-top: 25px;
+}
+
+/* 로그인 회원가입 [a태그] 영역 */
+.login-wrap li a {
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 700;
+    padding: 10px 10px;
+    color: var(--font-color-main);
+}
+
+/* 로그인 회원가입 [a태그] [마우스호버]시 색변환 */
+.login-wrap li a:hover {
+    color: var(--point-color);
+}
+
+/* 하단 네비게이션 바 */
+.navbar-bottom {
+    min-width: 1280px;
+    width: auto;
+    border-bottom: 1px solid var(--boundary-color);
+    background-color: var(--background-color-sub);
+}
+
+/* 하단 네비게이션 바 내부아이템 감싸는 영역 */
+.navbar-bottom-wrap {
+    width: 1280px;
+    height: 50px;
+    margin: auto;
+    padding: 0 50px;
+}
+
+/* 하단 네비게이션 바 컨텐츠 영역 - 여기를 기준으로 자바스크립트 숨김 기능 적용 */
+.nav-contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+}
+
+/* 하단 네비게이션 바 왼쪽 고정 문구 */
+.contents-text {
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 600;
+    color: var(--point-color);
+    width: 30%;
+}
+
+/* 하단 네비게이션 바 오른쪽 문구 감싸는 영역 */
+.tip-wrap {
+    width: 70%;
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    align-items: center;
+    font-family: '돋움', serif;
+    font-size: 13px;
+}
+
+/* sort 아이콘 영역 */
+#sort {
+    font-size: 18px;
+    position: relative;
+}
+
+/* sort 아이콘 클릭용 [div] 영역 up */
+#sort-up {
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 12px;
+    cursor: pointer;
+    top: -2px;
+}
+
+/* sort 아이콘 클릭용 [div] 영역 down */
+#sort-down {
+    position: absolute;
+    display: block;
+    height: 10px;
+    width: 12px;
+    cursor: pointer;
+    bottom: -2px;
+}
+
+/* 레이아웃 중간 콘텐츠 감싸는 영역 */
+.main-contents {
+    min-width: 1280px;
+    background: var(--background-color-main);
+    padding: 20px;
+}
+
+/* 레이아웃 중간 콘텐츠 영역 - 세로길이 유동적으로 변경 */
+.main-contents-wrap {
+    width: 1280px;
+    min-height: calc(100vh - 263px);
+    margin: auto;
+}
+
+/* 레이아웃 하단 풋터 영역 */
+.footer {
+    width: auto;
+    min-width: 1280px;
+    background-color: var(--background-color-sub);
+    border-top: 1px solid var(--boundary-color);
+}
+
+/* 레이아웃 하단 풋터 감싸는 영역 */
+.footer-wrap {
+    width: 1280px;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--font-color-sub);
+}
+
+/* 풋터 로고 영역 */
+.footer-logo {
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 25px;
+    font-weight: 800;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 풋터 문구 영역 */
+.footer-info {
+    font-family: '돋움', serif;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+/* 풋터 문구 영역 [span 태그] 영역 */
+.footer-info span {
+    padding: 5px;
+}
+
+.footer-info span a {
+    color: lightgray;
+    text-decoration: none;
+}
