@@ -1,9 +1,8 @@
 package com.liveeasystreet.ecovalue.service.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
-import com.liveeasystreet.ecovalue.dto.QuizDTO;
+import com.liveeasystreet.ecovalue.dto.QuizDto;
 import com.liveeasystreet.ecovalue.repository.quiz.QuizRepository;
-import lombok.Cleanup;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +15,14 @@ public class QuizServiceImpl implements IQuizService {
     private final QuizRepository quizRepository;
 
     @Override
-    public void resistQuiz(QuizDTO updateParam) {
+    public void resistQuiz(QuizDto updateParam) {
         Quiz quiz = Quiz.createQuiz(updateParam.getCategory(), updateParam.getTitle(),
                 updateParam.getDetail(), updateParam.getSolve(), updateParam.getAnswer());
         quizRepository.save(quiz);
     }
 
     @Override
-    public void updateQuiz(Long id, QuizDTO updateParam) {
+    public void updateQuiz(Long id, QuizDto updateParam) {
         quizRepository.update(id, updateParam);
     }
 

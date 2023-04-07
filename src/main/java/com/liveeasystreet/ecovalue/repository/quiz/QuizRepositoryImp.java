@@ -1,7 +1,7 @@
 package com.liveeasystreet.ecovalue.repository.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
-import com.liveeasystreet.ecovalue.dto.QuizDTO;
+import com.liveeasystreet.ecovalue.dto.QuizDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -35,7 +35,7 @@ public class QuizRepositoryImp implements QuizRepository {
     }
 
     @Override
-    public void update(Long id, QuizDTO updateParam) {
+    public void update(Long id, QuizDto updateParam) {
         if (store.containsKey(id)) {
             Quiz quiz = store.get(id);
             quiz.setTitle(updateParam.getTitle());

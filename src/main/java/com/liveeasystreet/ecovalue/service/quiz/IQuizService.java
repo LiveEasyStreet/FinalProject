@@ -1,7 +1,7 @@
 package com.liveeasystreet.ecovalue.service.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
-import com.liveeasystreet.ecovalue.dto.QuizDTO;
+import com.liveeasystreet.ecovalue.dto.QuizDto;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +15,7 @@ public interface IQuizService {
      * 후에 리포지토리에 저장
      * @param updateParam
      */
-    void resistQuiz(QuizDTO updateParam);
+    void resistQuiz(QuizDto updateParam);
 
     /**
      * <strong>퀴즈 수정 메서드</strong><br><hr>
@@ -24,7 +24,7 @@ public interface IQuizService {
      * @param id
      * @param updateParam
      */
-    void updateQuiz(Long id, QuizDTO updateParam);
+    void updateQuiz(Long id, QuizDto updateParam);
 
     /**
      * <strong>퀴즈 삭제 메서드</strong><br><hr>

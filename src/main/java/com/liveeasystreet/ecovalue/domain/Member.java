@@ -1,6 +1,8 @@
 package com.liveeasystreet.ecovalue.domain;
 
+import com.liveeasystreet.ecovalue.dto.member.MemberUpdateDto;
 import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -25,5 +27,13 @@ public class Member {
     private String blackList;
     // 포인트
     private int memberPoint;
+
+    public Member() {
+
+    }
+
+    public Member(MemberUpdateDto updateDTO) {
+
+    }
 
 }
