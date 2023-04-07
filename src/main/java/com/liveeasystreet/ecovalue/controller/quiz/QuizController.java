@@ -79,11 +79,17 @@ public class QuizController {
         }
 
         int score = quizService.updateQuizStatistics(quizData);
+        log.info("{}",score);
         Map<Long, Quiz> quizMap = new HashMap<>();
-
-        for (Long key : quizData.keySet()) {
-            Quiz quiz = quizService.findQuiz(key);
-            quizMap.put(quiz.getId(), quiz);
+        try {
+            for (Long key : quizData.keySet()) {
+                Quiz quiz = quizService.findQuiz(key);
+                quizMap.put(quiz.getId(), quiz);
+            }
+        }
+        catch (Exception e){
+            log.info("{}",quizData);
+            log.info("{}",score);
         }
 
         return new QuizResultData(quizData, quizMap, score);
