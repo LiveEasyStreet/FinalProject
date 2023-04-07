@@ -1,0 +1,98 @@
+
+.membership-login-container {
+    margin-top: 30px;
+    width: 1280px;
+    height: 750px;
+    border: 2px solid #d9d9d9;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.membership-input-tag {
+    text-align:left;
+    border: 2px solid #d9d9d9;
+    border-radius: 0px 10px 10px 0px;
+    width: 500px;
+    height: 50px;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+}
+
+.membership-input-box-title {
+    width: 200px;
+    height: 50px;
+    border: 2px solid #d9d9d9;
+    border-radius: 10px 0px 0px 10px;
+    border-right: none;
+}
+
+.membership-label-layout {
+    margin-left: 20px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+}
+
+.membership-text-form-layout {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.membership-login-button {
+    margin: 10px 0;
+    width: 700px;
+    height:50px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #27ae60;
+    color: white;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 23px;
+}
+
+.membership-login-button:active {
+    background-color: #1e8449;
+}
+
+.submit_wrap{
+    width700px;
+}
+.create-membership-button {
+    /*margin-left: 5px;
+    margin-right: 5px;*/
+    width: 347px;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    color: white;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 23px;
+}
+
+.find-idwd-button {
+    /*margin-left: 5px;
+    margin-right: 5px;*/
+    width: 347px;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    color: white;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 23px;
+}
+
+.hr {
+    margin: auto;
+    border: 2px solid #d9d9d9;
+    width: 700px;
+}
+
