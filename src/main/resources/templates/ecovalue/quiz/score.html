@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{ecovalue/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <link href="/assets/css/ecovalue/quiz/score.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/ecovalue/quiz/score.css}">
+    <script defer src="/assets/js/ecovalue/quiz/score.js"
+            th:src="@{/assets/js/ecovalue/quiz/score.js}"></script>
+    <title>score</title>
+</head>
+
+<body>
+<section>
+    <div class="score-wrap">
+        <div class="score-container">
+            <div class="score-box">
+                <div class="score-context-score">
+                    <span id="score">56</span>
+                    <span> 점</span>
+                </div>
+            </div>
+            <div class="score-result">
+                <p class="score-result-context" id="score-message">
+                    회원의 퀴즈풀이 점수
+                </p>
+            </div>
+            <div class="score-wrong-quiz">틀린 문제 번호 : </div>
+            <div class="score-correct-quiz">맞은 문제 번호 : </div>
+            <div class="incorrect-note">
+                <div class="mistake-log" id="slide-container"></div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

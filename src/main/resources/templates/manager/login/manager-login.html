@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{manager/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+
+
+
+<head>
+    <meta charset="UTF-8"/>
+
+    <!-- 각 페이지 타이틀 꼭 변경하기 -->
+    <title>Manager</title>
+
+    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/ecovalue/manager-login/manager-login.css"
+          th:href="@{/assets/css/ecovalue/manager-login/manager-login.css}">
+    <script defer src=""></script>
+    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
+
+</head>
+<body>
+
+<section>
+    <div class="manager-login-container">
+        <form action="#" method="post" class="manager-text-form">
+
+            <div class="manager-text-form-layout">
+                <div class="manager-input-box-title">
+                    <label for="id-box" class="manager-label-layout">아이디</label>
+                </div>
+                <input type="text" placeholder="아이디를 입력해주세요." id="id-box" name="mangerId"
+                       class="manager-input-tag">
+            </div>
+
+            <div class="manager-text-form-layout">
+                <div class="manager-input-box-title">
+                    <label for="first-password-box" class="manager-label-layout">1차 비밀번호</label>
+                </div>
+                <input type="text" placeholder="1차 비밀번호를 입력해주세요." id="first-password-box"
+                       name="first-mangerPassword" class="manager-input-tag">
+            </div>
+
+            <div class="manager-text-form-layout">
+                <div class="manager-input-box-title">
+                    <label for="second-password-box" class="manager-label-layout">2차 비밀번호</label>
+                </div>
+                <input type="text" placeholder="2차 비밀번호를 입력해주세요." id="second-password-box"
+                       name="second-mangerPassword" class="manager-input-tag">
+            </div>
+
+            <hr>
+            <button type="submit" id="manager-login-button">로그인</button>
+        </form>
+    </div>
+</section>
+</body>
+</html>

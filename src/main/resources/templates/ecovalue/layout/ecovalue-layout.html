@@ -1,46 +1,35 @@
 <!DOCTYPE html>
-<!--
-** 작업 끝나면 여기 주석 풀기 **
-
-↓↓↓↓↓ 주석 풀기
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{ecovalue/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
-↑↑↑↑↑ 주석 풀기
-
-아래에 있는
-<html lang="ko"> 는 삭제
--->
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (title, links, script, content)">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title th:replace="${title}">ecovalue</title>
 
-    <!-- 각 페이지 타이틀 꼭 변경하기 -->
-    <title>타이틀 입력</title>
+    <link href="/static/assets/css/color.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/color.css}"/>
+    <link href="/static/assets/css/font.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/font.css}"/>
+    <link href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/reset.css}"/>
+    <link href="/static/assets/css/ecovalue/layout/ecovalue-layout.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/ecovalue/layout/ecovalue-layout.css}"/>
 
-    <!-- 코드 작성 끝나면 삭제 [시작] -->
-    <link href="/static/assets/css/color.css" type="text/css" rel="stylesheet"/>
-    <link href="/static/assets/css/font.css" type="text/css" rel="stylesheet"/>
-    <link href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"/>
-    <link href="/assets/css/ecovalue/layout/ecovalue-layout.css" type="text/css" rel="stylesheet"/>
-    <script defer src="/assets/js/ecovalue/layout/ecovalue-script.js"></script>
+    <script defer src="/static/assets/js/ecovalue/layout/ecovalue-script.js"
+            th:src="@{/assets/js/ecovalue/layout/ecovalue-script.js}"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-    <!-- 코드 작성 끝나면 삭제 [끝] -->
 
-    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
-    <link rel="stylesheet" type="text/css" href="">
-    <script defer src=""></script>
-    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
-
+    <th:block th:replace="${links}"></th:block>
+    <th:block th:replace="${script}"></th:block>
 </head>
 <body>
-
-<!-- 코드 작성 끝나면 삭제 [시작] -->
 <div class="layout-container">
     <nav class="navbar">
         <div class="navbar-top">
             <div class="navbar-wrap">
 
-                <a class="logo-wrap" href="/">
+                <a class="logo-wrap" href="/#">
                     <div class="logo">
                         가치
                     </div>
@@ -87,8 +76,8 @@
                 </ul>
 
                 <ul class="login-wrap">
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/membership">회원가입</a></li>
                 </ul>
 
             </div>
@@ -111,23 +100,13 @@
 
     <div class="main-contents">
         <div class="main-contents-wrap">
-            <!-- 코드 작성 끝나면 삭제 [끝] -->
+            <div th:replace="${content}">
 
-            <!-- 이 아래에 실제 코드 작성 -->
-            <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
-            <section>
-                <div>
-                    텍스트
-                </div>
-            </section>
-            <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
-            <!-- 이 위에 실제 코드 작성 -->
-
-            <!-- 코드 작성 끝나면 삭제 [시작] -->
+            </div>
         </div>
     </div>
 
-    <!-- 코드 작성 끝나면 삭제 [시작] -->
+
     <footer class="footer">
         <div class="footer-wrap">
             <div class="footer-logo">가치</div>
@@ -139,12 +118,13 @@
                     <span>팔자피조</span><span>팀장 : 갓대혁</span><span>팀원 : 이예림 김하영 하유미 신원균 김태경 서정원 고찬솔</span>
                 </div>
                 <div class="footer-manager">
-                    <span><a href="/manager-home">관리자 페이지</a></span>
+                    <span><a th:href="@{/manager-home}" href="/manager-home">관리자 페이지</a></span>
                 </div>
             </div>
         </div>
     </footer>
+
 </div>
-<!-- 코드 작성 끝나면 삭제 [끝] -->
+
 </body>
 </html>

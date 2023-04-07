@@ -9,6 +9,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "ecovalue/ecovalue-home";
+        return "ecovalue/home/ecovalue-home";
     }
 }
