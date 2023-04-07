@@ -1,7 +1,7 @@
 package com.liveeasystreet.ecovalue.repository.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
-import com.liveeasystreet.ecovalue.dto.QuizDTO;
+import com.liveeasystreet.ecovalue.dto.QuizDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,7 +48,7 @@ public interface QuizRepository {
      * @param id          the id
      * @param updateParam the update param
      */
-    void update(Long id, QuizDTO updateParam);
+    void update(Long id, QuizDto updateParam);
 
     /**
      * 퀴즈 수정 메서드.
