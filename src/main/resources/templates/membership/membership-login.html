@@ -1,186 +1,52 @@
 <!DOCTYPE html>
-<!--
-** 작업 끝나면 여기 주석 풀기 **
 
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 
-
-<html lang="ko"> 는 삭제
--->
-
-<!--
- **** 주의 사항 ****
- 1 ) 기본적인 틀은 아래 section 태그 전부를 복사해서 사용하시면 됩니다.
-
- 2 ) 만약 처음부터 만드시면 form태그를 전체로 감싸주는거 추천 (form태그가 여러개 있을 시에 js로 따로 또 작업이 필요함)
-
- 3 ) form태그 안에 있는 input 태그를 보시면 name속성이 있습니다. 이 속성은 추후에 저희가 DTO객체를 @ModelAttribute를 사용해서 자동으로 바인딩 해주기 위해 사용
-     만약에 DTO(클래스 생성 후 필드 변수 생성하는 작업) 생성할 때 input태그의 name속성과 이름이 다를 경우 @ModelAttribute("이름") 해주는 작업이 필요
-
- 4 ) 참고로 복사해서 사용 하실 경우 정원씨가 아래에 작성해둔  '직접 작성해서 사용 해야 되는 css / js 공간 [시작]' css경로 따로 지정해두지 않으면 계속 제 css파일을 불러오는 거니까 따로
-     css 파일 경로 수정 꼭 해주세요. 그냥 복붙해다가 쓰시면 개인이 작성한 css 전혀 안먹어요. <--- 중요
-
- 5 ) **작업 끝나면 여기 주석 풀기** 이 부분은 정원씨한테 확실히 OK 받으면 처리하도록 하고 정원씨가 작성해둔 주석태그는 우선 삭제 하지 않기.
-
--->
-
-
-<html lang="ko">
 <head>
     <meta charset="UTF-8"/>
 
     <!-- 각 페이지 타이틀 꼭 변경하기 -->
     <title>Membership Login</title>
 
-    <link href="/static/assets/css/color.css" type="text/css" rel="stylesheet"/>
-    <link href="/static/assets/css/font.css" type="text/css" rel="stylesheet"/>
-    <link href="/static/assets/css/reset.css" type="text/css" rel="stylesheet"/>
-    <link href="/static/assets/css/ecovalue-layout.css" type="text/css" rel="stylesheet"/>
-    <script defer src="/static/assets/js/ecovalue-script.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
-    <link rel="stylesheet" type="text/css" href="/static/assets/css/membership/membership-login.css">
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/membership/membership-login.css"
+          th:href="@{/assets/css/membership/membership-login.css}">
     <script defer src=""></script>
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
 
 </head>
 <body>
+<section>
+    <div class="membership-login-container">
+        <form action="#" method="post">
 
-<div class="layout_container">
-    <nav class="navbar">
-        <div class="navbar_top">
-            <div class="navbar_wrap">
+            <div class="membership-text-form-layout">
+                <div class="membership-input-box-title">
 
-                <a class="logo_wrap" href="/">
-                    <div class="logo">
-                        가치
-                    </div>
-                </a>
-
-                <ul class="menu_wrap">
-                    <li class="menu">
-                        <a class="menu_name" href="#">리사이클</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">재활용 방법</a></li>
-                            <li><a href="#">나만의 노하우</a></li>
-                            <li><a href="/quiz">재활용 퀴즈</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a class="menu_name" href="#">업사이클</a>
-                        <ul class="sub_menu">
-                            <li><a href="/upcycleInfo">업사이클 소개</a></li>
-                            <li><a href="#">업사이클 갤러리</a></li>
-                            <li><a href="#">업사이클 게시물</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a class="menu_name" href="#">제로웨이스트</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">제로웨이스트 소개</a></li>
-                            <li><a href="#">챌린지 목록</a></li>
-                            <li><a href="#">DIY 만들기</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a class="menu_name" href="#">상점</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">오프라인 상점</a></li>
-                            <li><a href="#">온라인 상점</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a class="menu_name" href="#">이벤트</a>
-                        <ul class="sub_menu">
-                            <li><a href="#">이벤트 목록</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <ul class="login_wrap">
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
-                </ul>
-
-            </div>
-        </div>
-        <div class="navbar_bottom">
-            <div class="navbar_bottom_wrap">
-                <div class="nav_contents" id="nav_contents_wrap">
-                    <p class="contents_text">같이하는 작은 실천, 의미있는 큰 가치</p>
-                    <div class="tip_wrap">
-                        <p class="tip_comment">오염된 비닐은 재활용이 불가해요</p>
-                        <i id="sort" class="fa-solid fa-sort">
-                            <span id="sort_up" onclick="upButton()"></span>
-                            <span id="sort_down" onclick="downButton()"></span>
-                        </i>
-                    </div>
+                    <label class="membership-label-layout" for="id-box">아이디</label>
                 </div>
+                <input type="text" placeholder="아이디를 입력해주세요." id="id-box" name="userId"
+                       class="membership-input-tag">
             </div>
-        </div>
-    </nav>
 
-    <div class="main_contents">
-        <div class="main_contents_wrap">
-
-            <!-- 이 아래에 실제 코드 작성 -->
-            <!-- ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ -->
-            <section>
-                <div class="membership-login-container">
-                    <form action="#" method="post" class="membership-login-form">
-
-                        <div class="membership-text-form-layout">
-                            <div class="membership-input-box-title">
-                                <label class="membership-label-layout">아이디</label>
-                            </div>
-                            <input type="text" placeholder=" 아이디를 입력해주세요. " id="id-box" name="userId"
-                                   class="membership-input-tag">
-                        </div>
-
-                        <div class="membership-text-form-layout">
-                            <div class="membership-input-box-title">
-                                <label class="membership-label-layout">비밀번호</label>
-                            </div>
-                            <input type="password" placeholder=" 비밀번호를 입력해주세요. " id="password-box" name="userPasswd"
-                                   class="membership-input-tag">
-                        </div>
-
-
-                        <hr class="hr">
-
-                        <button type="submit" class="membership-login-button" id="login-button">로그인</button>
-                        <br>
-                        <div class="submit_wrap">
-                            <button type="submit" class="create-membership-button" id="create-membership-button">회원가입</button>
-                            <button type="submit" class="find-idwd-button" id="find-id/wd-button">ID/PW찾기</button>
-                        </div>
-
-                    </form>
+            <div class="membership-text-form-layout">
+                <div class="membership-input-box-title">
+                    <label class="membership-label-layout" for="password-box">비밀번호</label>
                 </div>
-            </section>
-            <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
-            <!-- 이 위에 실제 코드 작성 -->
-        </div>
+                <input type="password" placeholder="비밀번호를 입력해주세요. " id="password-box" name="userPasswd"
+                       class="membership-input-tag">
+            </div>
+
+            <hr class="hr">
+            <button type="submit" class="membership-login-button" id="login-button">로그인</button>
+
+            <div class="submit_wrap">
+                <button type="button" onclick="" class="create-membership-button">회원가입</button>
+                <button type="button" onclick="" class="find-id-wd-button">ID/PW찾기</button>
+            </div>
+
+        </form>
     </div>
-
-    <footer class="footer">
-        <div class="footer_wrap">
-            <div class="footer_logo">가치</div>
-            <div class="footer_info">
-                <div class="footer_first_line">
-                    <span>고객센터</span><span>서울 특별시 역삼동 역삼역</span>
-                </div>
-                <div class="footer_second_line">
-                    <span>팔자피조</span><span>팀장 : 갓대혁</span><span>팀원 : 이예림 김하영 하유미 신원균 김태경 서정원 고찬솔</span>
-                </div>
-                <div class="footer_manager">
-                    <span><a href="/manager-home">관리자 페이지</a></span>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+</section>
 </body>
 </html>
