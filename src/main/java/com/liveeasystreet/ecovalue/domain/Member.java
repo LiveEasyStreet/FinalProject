@@ -1,6 +1,6 @@
 package com.liveeasystreet.ecovalue.domain;
 
-import com.liveeasystreet.ecovalue.dto.member.MemberUpdateDto;
+import com.liveeasystreet.ecovalue.dto.member.MembershipDto;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -28,12 +28,20 @@ public class Member {
     // 포인트
     private int memberPoint;
 
+    // 기본 생성자
     public Member() {
-
+        this.blackList = "N";
+        this.memberPoint = 100;
     }
 
-    public Member(MemberUpdateDto updateDTO) {
-
+    // 회원가입 dto 를 매개변수로 받는 생성자
+    public Member(MembershipDto membershipDto) {
+        super();
+        this.loginId = membershipDto.getLoginId();
+        this.memberPassword = membershipDto.getMemberPassword();
+        this.nickName = membershipDto.getNickName();
+        this.memberName = membershipDto.getMemberName();
+        this.email = membershipDto.getEmail();
     }
 
 }

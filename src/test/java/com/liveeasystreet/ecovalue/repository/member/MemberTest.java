@@ -33,8 +33,6 @@ public class MemberTest {
         member.setNickName("테스트");
         member.setMemberName("테스트");
         member.setEmail("test@naver.com");
-        member.setBlackList("N");
-        member.setMemberPoint(0);
 
         // member 객체 db 에 저장
         memberRepository.save(member);
@@ -62,8 +60,6 @@ public class MemberTest {
         member.setNickName("테스트222");
         member.setMemberName("테스트");
         member.setEmail("test222@naver.com");
-        member.setBlackList("N");
-        member.setMemberPoint(0);
 
         // member 객체 db에 저장
         memberRepository.save(member);
@@ -102,8 +98,6 @@ public class MemberTest {
         member1.setNickName("member1");
         member1.setMemberName("member1");
         member1.setEmail("member1@naver.com");
-        member1.setBlackList("N");
-        member1.setMemberPoint(0);
         memberRepository.save(member1);
 
         // member 총 3명의 객체 생성 + 초기화 진행
@@ -113,8 +107,6 @@ public class MemberTest {
         member2.setNickName("member2");
         member2.setMemberName("member2");
         member2.setEmail("member2@naver.com");
-        member2.setBlackList("N");
-        member2.setMemberPoint(0);
         memberRepository.save(member2);
 
         // member 총 3명의 객체 생성 + 초기화 진행
@@ -124,8 +116,6 @@ public class MemberTest {
         member3.setNickName("member3");
         member3.setMemberName("member3");
         member3.setEmail("member3@naver.com");
-        member3.setBlackList("N");
-        member3.setMemberPoint(0);
         memberRepository.save(member3);
 
         // MemberSearchCond 에 조회에 사용 될 데이터를 담는다
@@ -159,8 +149,6 @@ public class MemberTest {
         member4.setNickName("member4");
         member4.setMemberName("member4");
         member4.setEmail("member4@naver.com");
-        member4.setBlackList("N");
-        member4.setMemberPoint(0);
         memberRepository.save(member4);
 
         // 회원 삭제에 사용 될 member 객체 3개를 생성 및 초기화
@@ -170,8 +158,6 @@ public class MemberTest {
         member5.setNickName("member5");
         member5.setMemberName("member5");
         member5.setEmail("member5@naver.com");
-        member5.setBlackList("N");
-        member5.setMemberPoint(0);
         memberRepository.save(member5);
 
         // 회원 삭제에 사용 될 member 객체 3개를 생성 및 초기화
@@ -181,8 +167,6 @@ public class MemberTest {
         member6.setNickName("member6");
         member6.setMemberName("member6");
         member6.setEmail("member6@naver.com");
-        member6.setBlackList("N");
-        member6.setMemberPoint(0);
         memberRepository.save(member6);
 
         // member5 id 로 삭제를 진행
