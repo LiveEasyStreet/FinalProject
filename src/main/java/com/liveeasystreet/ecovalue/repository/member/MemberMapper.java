@@ -15,8 +15,17 @@ public interface MemberMapper {
 
     void save(Member member);
     void update(@Param("id") Long id, @Param("updateDto") MemberUpdateDto updateDto);
+
     Optional<Member> findById(Long id);
+
+    Optional<Member> findByLoginId(String loginId);
+
+    Optional<Member> findByNickName(String nickName);
+
+    Optional<Member> findByEmail(String email);
+
     List<Member> findAll(MemberSearchCond memberSearchCond);
+
     void deleteById(Long id);
 
 }

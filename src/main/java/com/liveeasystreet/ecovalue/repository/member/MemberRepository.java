@@ -16,6 +16,12 @@ public interface MemberRepository {
 
     Optional<Member> findById(Long id);
 
+    Optional<Member> findByLoginId(String loginId);
+
+    Optional<Member> findByNickName(String nickName);
+
+    Optional<Member> findByEmail(String email);
+
     List<Member> findAll(MemberSearchCond memberSearchCond);
 
     void deleteById(Long id);

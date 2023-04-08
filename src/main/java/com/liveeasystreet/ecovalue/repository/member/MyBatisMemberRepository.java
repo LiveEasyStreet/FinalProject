@@ -31,6 +31,21 @@ public class MyBatisMemberRepository implements MemberRepository {
     }
 
     @Override
+    public Optional<Member> findByLoginId(String loginId) {
+        return memberMapper.findByLoginId(loginId);
+    }
+
+    @Override
+    public Optional<Member> findByNickName(String nickName) {
+        return memberMapper.findByNickName(nickName);
+    }
+
+    @Override
+    public Optional<Member> findByEmail(String email) {
+        return memberMapper.findByEmail(email);
+    }
+
+    @Override
     public List<Member> findAll(MemberSearchCond memberSearchCond) {
         return memberMapper.findAll(memberSearchCond);
     }

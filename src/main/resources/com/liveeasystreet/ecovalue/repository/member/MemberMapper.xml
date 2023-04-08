@@ -25,6 +25,24 @@
         where MEMBER_ID = #{id}
     </select>
 
+    <select id="findByLoginId" resultType="Member">
+        select MEMBER_ID, LOGIN_ID, MEMBER_PASSWORD, NICK_NAME, MEMBER_NAME, EMAIL, JOIN_DATE, BLACK_LIST, MEMBER_POINT
+        from member
+        where LOGIN_ID = #{loginId}
+    </select>
+
+    <select id="findByNickName" resultType="Member">
+        select MEMBER_ID, LOGIN_ID, MEMBER_PASSWORD, NICK_NAME, MEMBER_NAME, EMAIL, JOIN_DATE, BLACK_LIST, MEMBER_POINT
+        from member
+        where NICK_NAME = #{nickName}
+    </select>
+
+    <select id="findByEmail" resultType="Member">
+        select MEMBER_ID, LOGIN_ID, MEMBER_PASSWORD, NICK_NAME, MEMBER_NAME, EMAIL, JOIN_DATE, BLACK_LIST, MEMBER_POINT
+        from member
+        where EMAIL = #{email}
+    </select>
+
     <select id="findAll" resultType="Member">
         select MEMBER_ID, LOGIN_ID, MEMBER_PASSWORD, NICK_NAME, MEMBER_NAME, EMAIL, JOIN_DATE, BLACK_LIST, MEMBER_POINT
         from member
