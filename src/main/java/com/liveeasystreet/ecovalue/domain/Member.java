@@ -36,7 +36,7 @@ public class Member {
 
     // 회원가입 dto 를 매개변수로 받는 생성자
     public Member(MembershipDto membershipDto) {
-        super();
+        this();
         this.loginId = membershipDto.getLoginId();
         this.memberPassword = membershipDto.getMemberPassword();
         this.nickName = membershipDto.getNickName();
