@@ -116,5 +116,8 @@
     background-color: #777777;
 }
 
-
-
+/* 검증 오류 */
+.field-error {
+    border-color: red;
+    color: red;
+}

@@ -21,7 +21,7 @@
 <section>
     <div class="membership-main">
         <div class="membership">
-            <form action="#" method="post" class="membership-text-form">
+            <form action="#" th:action th:object="${membershipDto}" method="post" class="membership-text-form">
                 <div id="text-title">
                     <span>회원가입</span>
                 </div>
@@ -30,16 +30,18 @@
                     <div class="input-box-title">
                         <label for="id-box" class="label-layout">아이디</label>
                     </div>
-                    <input type="text" placeholder="아이디를 입력해주세요." id="id-box" name="userId"
-                           class="membership-input-box-layout">
+                    <input type="text" placeholder="아이디를 입력해주세요." id="id-box" th:field="*{loginId}"
+                           th:errorclass="field-error" class="membership-input-box-layout">
+                    <div class="field-error" th:errors="*{loginId}">아이디 오류</div>
                 </div>
 
                 <div class="membership-text-form-layout">
                     <div class="input-box-title">
                         <label for="password-box" class="label-layout">비밀번호</label>
                     </div>
-                    <input type="password" placeholder="비밀번호를 입력해주세요." id="password-box" name="userPassword"
-                           class="membership-input-box-layout">
+                    <input type="password" placeholder="비밀번호를 입력해주세요." id="password-box" th:field="*{memberPassword}"
+                           th:errorclass="field-error" class="membership-input-box-layout">
+                    <div class="field-error" th:errors="*{memberPassword}">비밀번호 오류</div>
                 </div>
 
                 <div class="membership-text-form-layout">
@@ -47,31 +49,35 @@
                         <label for="password-check-box" class="label-layout">비밀번호 확인</label>
                     </div>
                     <input type="password" placeholder="비밀번호를 한번 더 입력해주세요." id="password-check-box"
-                           name="userCheckPassword" class="membership-input-box-layout">
+                           th:field="*{checkMemberPassword}" th:errorclass="field-error" class="membership-input-box-layout">
+                    <div class="field-error" th:errors="*{checkMemberPassword}">비밀번호 확인 오류</div>
                 </div>
 
                 <div class="membership-text-form-layout">
                     <div class="input-box-title">
                         <label for="nickname-box" class="label-layout">닉네임</label>
                     </div>
-                    <input type="text" placeholder="닉네임을 입력해주세요." id="nickname-box" name="nickName"
-                           class="membership-input-box-layout">
+                    <input type="text" placeholder="닉네임을 입력해주세요." id="nickname-box" th:field="*{nickName}"
+                           th:errorclass="field-error" class="membership-input-box-layout">
+                    <div class="field-error" th:errors="*{nickName}">닉네임 오류</div>
                 </div>
 
                 <div class="membership-text-form-layout">
                     <div class="input-box-title">
                         <label for="name-box" class="label-layout">이름</label>
                     </div>
-                    <input type="text" placeholder="이름을 입력해주세요." id="name-box" name="userName"
-                           class="membership-input-box-layout">
+                    <input type="text" placeholder="이름을 입력해주세요." id="name-box" th:field="*{memberName}"
+                           th:errorclass="field-error" class="membership-input-box-layout">
+                    <div class="field-error" th:errors="*{memberName}">이름 오류</div>
                 </div>
 
                 <div class="membership-text-form-layout">
                     <div class="input-box-title">
                         <label for="email-box" class="label-layout">이메일</label>
                     </div>
-                    <input type="text" placeholder="이메일을 입력해주세요." id="email-box" name="userEmail"
-                           class="membership-input-box-layout">
+                    <input type="text" placeholder="이메일을 입력해주세요." id="email-box" th:field="*{email}"
+                           th:errorclass="field-error" class="membership-input-box-layout">
+                    <div class="field-error" th:errors="*{email}">이메일 오류</div>
                 </div>
 
                 <div id="membership-button-layout">
