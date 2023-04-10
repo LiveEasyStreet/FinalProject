@@ -55,7 +55,7 @@ public class MembershipController {
         Member member = new Member(membershipDto);
         membershipService.addMember(member);
 
-        return "redirect:ecovalue/ecovalue-home";
+        return "redirect:/";
     }
 
 }

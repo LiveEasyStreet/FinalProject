@@ -40,7 +40,7 @@ public class MembershipValidator implements Validator {
         }
 
         //memberPassword 검증
-        if (membershipService.checkPassword(membershipDto)) {
+        if (!membershipService.checkPassword(membershipDto)) {
             errors.rejectValue("checkMemberPassword", "checkPassword");
         }
     }
