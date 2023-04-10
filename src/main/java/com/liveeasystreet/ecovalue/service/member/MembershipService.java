@@ -19,8 +19,8 @@ public class MembershipService {
      * 클라이언트가 입력한 정보를 리포지토리에 저장
      * @param membershipDto
      */
-    public void addMember(MembershipDto membershipDto) {
-        memberRepository.save(new Member(membershipDto));
+    public void addMember(Member member) {
+        memberRepository.save(member);
     }
 
     /**
@@ -64,10 +64,6 @@ public class MembershipService {
      * @return true or false
      */
     public boolean checkPassword(MembershipDto membershipDto) {
-        if (membershipDto.getMemberPassword() != membershipDto.getCheckMemberPassword()) {
-            return false;
-        } else {
-            return true;
-        }
+        return membershipDto.getMemberPassword().equals(membershipDto.getCheckMemberPassword());
     }
 }
