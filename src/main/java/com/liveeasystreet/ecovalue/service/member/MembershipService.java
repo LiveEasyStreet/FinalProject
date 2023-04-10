@@ -17,7 +17,7 @@ public class MembershipService {
     /**
      * 회원 저장 메서드<hr>
      * 클라이언트가 입력한 정보를 리포지토리에 저장
-     * @param membershipDto
+     * @param member
      */
     public void addMember(Member member) {
         memberRepository.save(member);
