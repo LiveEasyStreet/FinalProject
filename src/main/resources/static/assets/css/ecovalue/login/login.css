@@ -101,9 +101,13 @@
     cursor: pointer;
 }
 
-/*  */
+/* 줄바꿈 */
 .hr {
     border: 1px solid #d9d9d9;
     width: 700px;
 }
 
+/* 검증 오류 */
+.field-error {
+    color: red;
+}

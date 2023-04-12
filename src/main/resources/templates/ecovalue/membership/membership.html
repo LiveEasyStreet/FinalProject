@@ -81,7 +81,8 @@
                 </div>
 
                 <div id="membership-button-layout">
-                    <button type="button" onclick="location.href='../../../static/index.html'"
+                    <button type="button" onclick=""
+                            th:onclick="|location.href='@{/}'|"
                             id="membership-cancel">취소
                     </button>
                     <button type="submit" id="create-membership">가입</button>
