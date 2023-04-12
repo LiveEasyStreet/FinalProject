@@ -50,18 +50,18 @@ public class ForgotPasswordController {
 
         log.info("member => {}", member);
         redirectAttributes.addFlashAttribute("foundMember", member);
-        return "redirect:/temp";
+        return "redirect:/forgot-email-result";
     }
 
     /**
      * 임시적으로 temp.html을 만들어서 제대로 동작하는지 확인
      *
      * @param member
-     * @return temp.html
+     * @return forgot-password-result.html
      */
-    @GetMapping("/temp")
+    @GetMapping("/forgot-email-result")
     public String temp(@ModelAttribute(name = "foundMember") Member member) {
         log.info("foundMember=> {}", member);
-        return "ecovalue/forgot-password/temp";
+        return "ecovalue/forgot-password/forgot-password-result";
     } // End temp
 } // End Class
