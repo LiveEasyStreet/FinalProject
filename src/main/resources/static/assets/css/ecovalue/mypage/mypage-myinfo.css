@@ -1,26 +1,39 @@
-button{
-
-background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer}
-.menu-top {
-    float: right;
-    width: 1350px;
+/* 버튼 초기화*/
+button {
+    background: inherit ;
+    box-shadow:none;
+    border-radius:0;
+    padding:0;
+    overflow:visible;
+    cursor:pointer
+}
+/* 마이페이지 상단 부분*/
+.mypage-menu-top {
+    width: 1280px;
     display: block;
     margin: 0 auto;
-}
-
-.manu-name {
-    padding: 15px 20px;
-
 
 }
-
-.menu-wrap {
+/* 마이페이지 상단 감싸는 영역*/
+.mypage-menu-wrap {
+display: flex;
+gap: 10px;
+justify-content : end;
     list-style: none;
-}
+    padding-bottom: 20px;
 
-.menu {
-    float: left;
-    border: #black;
+}
+/* 마이페이지 메뉴 부분 */
+.mypage-menu {
+        float: left;
+        padding-top: 3px;
+        padding-right: 20px;
+        padding-bottom: 3px;
+        padding-left: 20px;
+        border: 1px solid;
+        border-radius: 30px;
+        border-color: #d9d9d9;
+        background-color: white;
 }
 
 /* 컨텐츠 제일 밖에서 감싸는 영역 */
@@ -42,7 +55,7 @@ background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; 
     font-size: 17px;
     font-weight: 500;
     padding: 10px;
-    margin-left: 10px;
+
 }
 
 /* label input 감싸는 영역 */
@@ -76,7 +89,7 @@ background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; 
 .mypage-myinfo-input {
     text-align: left;
     border: 1px solid #d9d9d9;
-    height: 48px;
+    height: 50px;
     width: 500px;
     border-radius: 0 4px 4px 0;
     font-family: "NanumSquare", sans-serif;
@@ -89,28 +102,27 @@ background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; 
 #mypage-myinfo-button {
     width: 700px;
     height: 50px;
-    margin: 10px;
     background-color: #27ae60;
     color: white;
     border-radius: 10px;
     font-size: 30px;
     font-family: "NanumSquare", sans-serif;
     border: 1px solid #27ae60;
+    margin: 0;
+    margin-top: 10px;
 
 }
 
 /* 수정 버튼*/
 .modify {
-       /* width: 76px; */
-       /* height: 40px; */
-       background-color: white;
-       color: #333333;
+        width: 65px;
        border-radius: 8px;
-       border-color: red;
        border: 1px solid;
+       border-color: #d9d9d9;
        font-size: 20px;
        font-family: "NanumSquare", sans-serif;
-       margin: 3px;
+       padding: 3px;
+
 }
 
 /* hr 태그 */
@@ -120,6 +132,7 @@ hr {
     border-width: 1px;
     border-color: #E6E6E6;
     width: 700px;
+    margin: 0px;
 }
 
 /* 버튼 클릭시 색변환 */
