@@ -22,7 +22,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns(
                         "/", "/assets/**", "/login", "logout", "/forgot-**",
-                        "/add", "/upcycleInfo"
+                        "/add", "/upcycleInfo", "/favicon.ico", "/error"
                 );
     }
 }
