@@ -82,8 +82,8 @@ public class QuizController {
         Map<Long, Quiz> quizMap = new HashMap<>();
 
         for (Long key : quizData.keySet()) {
-            Quiz quiz = quizService.findQuiz(key);
-            quizMap.put(quiz.getId(), quiz);
+            Quiz quiz = quizService.findQuiz(key).orElse(null);
+            quizMap.put(quiz.getQuizId(), quiz);
         }
 
         return new QuizResultData(quizData, quizMap, score);

@@ -32,7 +32,7 @@ public interface QuizRepository {
      * 퀴즈의 key(id)목록을 전체 검색(조회)하는 메서드.
      * @return the list
      */
-    List<Long> findAllkeyList();
+    List<Long> findAllKeyList();
 
     /**
      * 퀴즈 단건검색(조회) 메서드.

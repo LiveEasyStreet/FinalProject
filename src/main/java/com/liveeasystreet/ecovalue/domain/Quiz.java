@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Data
 public class Quiz {
 
-    private Long Id; //퀴즈번호
+    private Long quizId; //퀴즈번호
     private String category; //카테고리 (DTO)
     private String title; //퀴즈제목 (DTO)
     private String detail; //퀴즈내용 (DTO)
@@ -17,18 +17,22 @@ public class Quiz {
     private Integer occurredProblemCount; //나온횟수
     private Integer numberOfHits; //맞춘횟수
 
-    public static Quiz createQuiz(String category, String title, String detail, String solve, boolean answer) {
-        Quiz quiz = new Quiz();
-        quiz.setCategory(category);
-        quiz.setTitle(title);
-        quiz.setDetail(detail);
-        quiz.setSolve(solve);
-        quiz.setAnswer(answer);
-        quiz.setDate(LocalDate.now());
-        quiz.setOccurredProblemCount(0);
-        quiz.setNumberOfHits(0);
-
-        return quiz;
+    public Quiz() {
+        this.occurredProblemCount = 0;
+        this.numberOfHits = 0;
     }
 
+    public Quiz(String category, String title, String detail, String solve, Boolean answer) {
+        this();
+        this.setCategory(category);
+        this.setTitle(title);
+        this.setDetail(detail);
+        this.setSolve(solve);
+        this.setAnswer(answer);
+        this.setDate(LocalDate.now());
+    }
+
+
 }
+
+
