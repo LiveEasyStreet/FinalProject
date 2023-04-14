@@ -52,7 +52,7 @@ public class MemberLoginCheckInterceptor implements HandlerInterceptor {
                                 Exception ex) throws Exception {
 
         String requestURI = request.getRequestURI();
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
 
         log.info("RESPONSE [{}][{}][{}]", session.getId(), requestURI, handler);
 
