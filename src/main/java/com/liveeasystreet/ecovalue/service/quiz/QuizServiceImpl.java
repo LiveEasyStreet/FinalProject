@@ -4,11 +4,13 @@ import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDto;
 import com.liveeasystreet.ecovalue.repository.quiz.QuizRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class QuizServiceImpl implements IQuizService {
 
@@ -16,14 +18,21 @@ public class QuizServiceImpl implements IQuizService {
 
     @Override
     public void resistQuiz(QuizDto updateParam) {
-        Quiz quiz = Quiz.createQuiz(updateParam.getCategory(), updateParam.getTitle(),
+        Quiz quiz = new Quiz(updateParam.getCategory(), updateParam.getTitle(),
                 updateParam.getDetail(), updateParam.getSolve(), updateParam.getAnswer());
         quizRepository.save(quiz);
     }
 
     @Override
     public void updateQuiz(Long id, QuizDto updateParam) {
-        quizRepository.update(id, updateParam);
+        if ((updateParam.getCategory() !=null&& updateParam.getCategory()!="") ||
+                (updateParam.getTitle() !=null&& updateParam.getTitle()!="") ||
+                (updateParam.getDetail() !=null&& updateParam.getDetail()!="") ||
+                (updateParam.getSolve() !=null&& updateParam.getSolve()!="") ||
+                updateParam.getAnswer() !=null
+        ){
+            quizRepository.update(id, updateParam);
+        }
     }
 
     @Override
@@ -41,11 +50,10 @@ public class QuizServiceImpl implements IQuizService {
     }
 
     @Override
-    public Quiz findQuiz(Long id) {
+    public Optional<Quiz> findQuiz(Long id) {
         //파라미터 값으로 받은 아이디로 레포지토리에서 퀴즈를 찾고 반환한다.
         //만약 퀴즈가 없다면 .orElseThrow()메소드로 예외를 던진다.
-        return quizRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("리포지토리에 해당 퀴즈가 없습니다."));
+        return quizRepository.findById(id);
     }
 
     @Override
@@ -69,6 +77,10 @@ public class QuizServiceImpl implements IQuizService {
         return selectsQuiz;
     }
 
+    /**
+     *
+     * 수정 필요
+     */
     @Override
     public int updateQuizStatistics(Map<Long, Boolean> quizData) {
 
@@ -77,7 +89,7 @@ public class QuizServiceImpl implements IQuizService {
         //파라미터로 넘어온 퀴즈의 키와 값을 쓰기 위해 순회
         for (Map.Entry<Long, Boolean> getQuiz : quizData.entrySet()) {
             //파라미터로 넘어온 퀴즈의 ID로 특정 퀴즈를 찾는다.
-            Quiz quiz = this.findQuiz(getQuiz.getKey());
+            Quiz quiz = this.findQuiz(getQuiz.getKey()).orElse(null);
 
             //특정 퀴즈의 맞춘 횟수를 카운트
             quiz.setOccurredProblemCount(quiz.getOccurredProblemCount() + 1);

@@ -15,8 +15,8 @@ public class QuizRepositoryImp implements QuizRepository {
     @Override
     public void save(Quiz quiz) {
         Sequence++;
-        quiz.setId(Sequence);
-        store.put(quiz.getId(), quiz);
+        quiz.setQuizId(Sequence);
+        store.put(quiz.getQuizId(), quiz);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class QuizRepositoryImp implements QuizRepository {
     }
 
     @Override
-    public List<Long> findAllkeyList() {
+    public List<Long> findAllKeyList() {
         return new ArrayList<>(store.keySet());
     }
 
@@ -48,7 +48,7 @@ public class QuizRepositoryImp implements QuizRepository {
 
     @Override
     public void update(Quiz quiz) {
-        Long id = quiz.getId();
+        Long id = quiz.getQuizId();
         Quiz savedQuiz = this.findById(id).orElseThrow(() -> new IllegalArgumentException("store 안에 해당 퀴즈가 없습니다."));
         savedQuiz.setOccurredProblemCount(quiz.getOccurredProblemCount());
         savedQuiz.setNumberOfHits(quiz.getNumberOfHits());

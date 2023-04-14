@@ -1,7 +1,6 @@
 package com.liveeasystreet.ecovalue.service.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
-import com.liveeasystreet.ecovalue.repository.quiz.QuizRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ class QuizServiceImplTest {
 
         Set<Long> quizIdSet = new HashSet<>();
         for (Quiz quiz : quizzes) {
-            quizIdSet.add(quiz.getId());
+            quizIdSet.add(quiz.getQuizId());
         }
 
         Assertions.assertThat(quizIdSet.size()).isEqualTo(10);

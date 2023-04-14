@@ -5,6 +5,7 @@ import com.liveeasystreet.ecovalue.dto.QuizDto;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface IQuizService {
 
@@ -47,7 +48,7 @@ public interface IQuizService {
      * @param id
      * @return Optional
      */
-    Quiz findQuiz(Long id);
+    Optional<Quiz> findQuiz(Long id);
 
     /**
      * <strong>문제 출제 메서드</strong><br><hr>
