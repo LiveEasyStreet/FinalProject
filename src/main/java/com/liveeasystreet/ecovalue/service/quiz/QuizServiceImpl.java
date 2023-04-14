@@ -3,6 +3,7 @@ package com.liveeasystreet.ecovalue.service.quiz;
 import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDto;
 import com.liveeasystreet.ecovalue.repository.quiz.QuizRepository;
+import com.liveeasystreet.ecovalue.repository.quiz.QuizSearchCond;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,12 @@ public class QuizServiceImpl implements IQuizService {
 
     private final QuizRepository quizRepository;
 
+
+    /**
+     * quiDto를 받아서 퀴즈를 생성하는 곳, 퀴즈 자체를 받아서 만들 수 있는 부분도 추가 예정
+     * @param updateParam
+     *
+     */
     @Override
     public void resistQuiz(QuizDto updateParam) {
         Quiz quiz = new Quiz(updateParam.getCategory(), updateParam.getTitle(),
@@ -23,6 +30,13 @@ public class QuizServiceImpl implements IQuizService {
         quizRepository.save(quiz);
     }
 
+
+    /**
+     * 퀴즈를 업데이트 하는 부분
+     * 조건 : updateParam의 값 중 단 하나라도 null이 아니어야함
+     * @param id
+     * @param updateParam
+     */
     @Override
     public void updateQuiz(Long id, QuizDto updateParam) {
         if ((updateParam.getCategory() !=null&& updateParam.getCategory()!="") ||
@@ -35,6 +49,11 @@ public class QuizServiceImpl implements IQuizService {
         }
     }
 
+    /**
+     * 퀴즈 삭제 부분
+     * 퀴즈의 id를 받아서 퀴즈 삭제
+     * @param idList
+     */
     @Override
     public void deleteQuiz(Long... idList) {
         // 파라미터로 받은 id값을 가진 퀴즈를 찾아 삭제한다.
@@ -43,10 +62,15 @@ public class QuizServiceImpl implements IQuizService {
         }
     }
 
+    /**
+     * 퀴즈 전체를 탐색
+     * findAll cond값에 따라 달라짐
+     * @return
+     */
     @Override
-    public List<Quiz> findAllQuiz() {
+    public List<Quiz> findAllQuiz(QuizSearchCond cond) {
         // 리포지토리에 저장되어 있는 모든 퀴즈를 반환한다.
-        return quizRepository.findAll(null);
+        return quizRepository.findAll(cond);
     }
 
     @Override
@@ -77,28 +101,27 @@ public class QuizServiceImpl implements IQuizService {
         return selectsQuiz;
     }
 
-    /**
-     *
-     * 수정 필요
-     */
+
     @Override
     public int updateQuizStatistics(Map<Long, Boolean> quizData) {
 
         int score = 0;
+        log.info("quizData : {}",quizData);
 
         //파라미터로 넘어온 퀴즈의 키와 값을 쓰기 위해 순회
         for (Map.Entry<Long, Boolean> getQuiz : quizData.entrySet()) {
             //파라미터로 넘어온 퀴즈의 ID로 특정 퀴즈를 찾는다.
             Quiz quiz = this.findQuiz(getQuiz.getKey()).orElse(null);
 
-            //특정 퀴즈의 맞춘 횟수를 카운트
-            quiz.setOccurredProblemCount(quiz.getOccurredProblemCount() + 1);
-
-            //특정 퀴즈의 맞춘 횟수를 카운트 하기 위해 조건문으로 확인 후 카운트
-            if (getQuiz.getValue()) {
-                score += 10;
-                quiz.setNumberOfHits(quiz.getNumberOfHits() + 1);
+            if(quiz !=null){
+                if(getQuiz.getValue()!=null){
+                    quizRepository.update(quiz.getQuizId(),getQuiz.getValue());
+                    if(getQuiz.getValue()){
+                        score+=10;
+                    }
+                }
             }
+
         }
 
         return score;

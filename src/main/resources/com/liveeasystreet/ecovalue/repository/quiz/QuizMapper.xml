@@ -35,15 +35,7 @@
         from quiz
     </select>
 
-<!--    <update id="update">-->
-<!--        update quiz-->
-<!--        set quiz_category=#{updateParam.category},-->
-<!--            quiz_title=#{updateParam.title},-->
-<!--            quiz_detail=#{updateParam.detail},-->
-<!--            quiz_solve=#{updateParam.solve},-->
-<!--            quiz_answer=#{updateParam.answer}-->
-<!--        where quiz_id = #{quizId}-->
-<!--    </update>-->
+
 
     <update id="update">
         update quiz
@@ -70,9 +62,9 @@
     <update id="updateScore">
         update quiz
         <set>
-            quiz_occurred_problem_count  = quiz_occurred_problem_count+1;
-            <if test="score">
-                quiz_number_of_hits=quiz_number_of_hits +1;
+            quiz_occurred_problem_count  = quiz_occurred_problem_count +1,
+            <if test="score != null and score">
+                quiz_number_of_hits=quiz_number_of_hits +1
             </if>
         </set>
         where quiz_id = #{quizId}

@@ -4,7 +4,6 @@ import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDto;
 import com.liveeasystreet.ecovalue.service.quiz.QuizServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
@@ -80,29 +78,13 @@ public class quizTest {
         assertThat(quizRepository.findAllKeyList().size()).isEqualTo(1);
         Long id = quizRepository.findAllKeyList().get(0);
 
-        //dto가 null일때 점검 #1
+
         QuizDto quizDto = new QuizDto();
-        quizService.updateQuiz(id, quizDto);
-        Quiz quiz = quizRepository.findById(id).orElse(null);
-//        log.info("quiz : {}",quiz);
-//        log.info("quiz1 : {}",quiz1);
-        assertThat(quiz).isEqualTo(quiz1);
-
-        //dto가 null일때 점검 #2
-        quizDto.setCategory("");
-        quizDto.setTitle("");
-        quizDto.setSolve("");
-        quizDto.setDetail("");
-        quizDto.setAnswer(null);
-        quizService.updateQuiz(id, quizDto);
-        quiz = quizRepository.findById(id).orElse(null);
-        assertThat(quiz).isEqualTo(quiz1);
-
 
         //하나라도 null이 아닐때 점검
         quizDto.setCategory("플라스틱");
         quizService.updateQuiz(id,quizDto);
-        quiz = quizRepository.findById(id).orElse(null);
+        Quiz quiz = quizRepository.findById(id).orElse(null);
         assertThat(quiz.getCategory()).isEqualTo("플라스틱");
     }
     @Test

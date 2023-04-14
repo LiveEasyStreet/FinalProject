@@ -2,6 +2,7 @@ package com.liveeasystreet.ecovalue.service.quiz;
 
 import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDto;
+import com.liveeasystreet.ecovalue.repository.quiz.QuizSearchCond;
 
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,10 @@ public interface IQuizService {
     /**
      * <strong>퀴즈 전체조회 메서드</strong><br><hr>
      * 리포지토리에서 퀴즈를 전체조회하는 메서드
+     * 전체조회할때 cond 값에 따라 조건 부여 가능
      * @return List
      */
-    List<Quiz> findAllQuiz();
+    List<Quiz> findAllQuiz(QuizSearchCond cond);
 
     /**
      * <strong>퀴즈 선택조회 메서드</strong><br><hr>
