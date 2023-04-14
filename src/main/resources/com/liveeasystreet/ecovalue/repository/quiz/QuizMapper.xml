@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liveeasystreet.ecovalue.repository.quiz.QuizMapper">
+    <insert id="save" useGeneratedKeys="true" keyProperty="quizId">
+        insert into quiz(quiz_category,quiz_title, quiz_detail, quiz_solve,quiz_answer,quiz_occurred_problem_count,quiz_number_of_hits,quiz_date)
+        values (#{category},#{title},#{detail},#{solve},#{answer},#{occurredProblemCount},#{numberOfHits},#{date})
+    </insert>
+
+    <select id="findAll" resultType="Quiz">
+        select quiz_id,quiz_category as category,quiz_title as title, quiz_detail as detail, quiz_solve as solve,quiz_answer as answer,quiz_occurred_problem_count as occurred_problem_count,quiz_number_of_hits as number_of_hits,quiz_date as date
+        from quiz
+        <where>
+            <if test="category != null and category != ''">
+                and quiz_category like concat('%',#{category},'%')
+            </if>
+            <if test="title != null and title != ''">
+                and quiz_title like concat('%',#{title},'%')
+            </if>
+            <if test="detail != null and detail != ''">
+                and quiz_detail like concat('%',#{detail},'%')
+            </if>
+            <if test="quizId != null">
+                and quiz_id == #{quiz_id}
+            </if>
+        </where>
+    </select>
+    <select id="findById" resultType="Quiz">
+        select quiz_id,quiz_category as category,quiz_title as title, quiz_detail as detail, quiz_solve as solve,quiz_answer as answer,quiz_occurred_problem_count as occurred_problem_count,quiz_number_of_hits as number_of_hits,quiz_date as date
+        from quiz
+        where quiz_id = #{quizId}
+    </select>
+    <select id="findAllKeyList" resultType="Long">
+        select quiz_id
+        from quiz
+    </select>
+
+<!--    <update id="update">-->
+<!--        update quiz-->
+<!--        set quiz_category=#{updateParam.category},-->
+<!--            quiz_title=#{updateParam.title},-->
+<!--            quiz_detail=#{updateParam.detail},-->
+<!--            quiz_solve=#{updateParam.solve},-->
+<!--            quiz_answer=#{updateParam.answer}-->
+<!--        where quiz_id = #{quizId}-->
+<!--    </update>-->
+
+    <update id="update">
+        update quiz
+        <set>
+            <if test="updateParam.category != null and updateParam.category != ''">
+                quiz_category=#{updateParam.category},
+            </if>
+            <if test="updateParam.title != null and updateParam.title != ''">
+                quiz_title=#{updateParam.title},
+            </if>
+            <if test="updateParam.detail != null and updateParam.detail != ''">
+                quiz_detail=#{updateParam.detail},
+            </if>
+            <if test="updateParam.solve != null and updateParam.solve != ''">
+                quiz_solve=#{updateParam.solve},
+            </if>
+            <if test="updateParam.answer != null">
+                quiz_answer=#{updateParam.answer},
+            </if>
+        </set>
+        where quiz_id = #{quizId}
+    </update>
+
+    <update id="updateScore">
+        update quiz
+        <set>
+            quiz_occurred_problem_count  = quiz_occurred_problem_count+1;
+            <if test="score">
+                quiz_number_of_hits=quiz_number_of_hits +1;
+            </if>
+        </set>
+        where quiz_id = #{quizId}
+    </update>
+
+    <delete id="delete">
+        delete from quiz
+        where quiz_id = #{quizId}
+    </delete>
+</mapper>
