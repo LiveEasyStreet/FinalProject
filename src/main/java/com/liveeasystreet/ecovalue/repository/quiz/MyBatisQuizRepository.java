@@ -43,11 +43,6 @@ public class MyBatisQuizRepository implements QuizRepository{
         quizMapper.update(id,updateParam);
     }
 
-    //아직 미구현
-    @Override
-    public void update(Quiz quiz){
-        ;
-    }
 
     @Override
     public void update(Long id, Boolean score) {

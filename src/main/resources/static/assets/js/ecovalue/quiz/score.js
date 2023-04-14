@@ -8,9 +8,9 @@ const correctScoreIdList = document.querySelector('.score-correct-quiz');
 const wrongQuizList = [];
 const correctQuizList = [];
 
-console.log(quizResultData);
-console.log(correctQuizList);
-console.log(wrongQuizList);
+// console.log(quizResultData);
+// console.log(correctQuizList);
+// console.log(wrongQuizList);
 
 scoreElem.textContent = score;
 
@@ -27,13 +27,13 @@ for (const key in quizResultData.data) {
 for (let i = 0; i < wrongQuizList.length; i++) {
     const slide = document.createElement('div');
     slide.innerHTML =
-        `<div class="mistake-log-name">${wrongQuizList[i].id}번 문제 해설</div>` + `<div class="mistake-log-text">${wrongQuizList[i].solve}</div>`;
+        `<div class="mistake-log-name">${wrongQuizList[i].quizId}번 문제 해설</div>` + `<div class="mistake-log-text">${wrongQuizList[i].solve}</div>`;
     slideInsert.appendChild(slide);
-    wrongScoreIdList.innerText += `${wrongQuizList[i].id},` + '\u00A0';
+    wrongScoreIdList.innerText += `${wrongQuizList[i].quizId},` + '\u00A0';
 }
 
 for (let i = 0; i < correctQuizList.length; i++) {
-    correctScoreIdList.innerText += `${correctQuizList[i].id},` + '\u00A0';
+    correctScoreIdList.innerText += `${correctQuizList[i].quizId},` + '\u00A0';
 }
 
 if (score >= 0 && score <= 50) {
