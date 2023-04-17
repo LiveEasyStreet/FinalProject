@@ -24,7 +24,7 @@ justify-content : end;
 
 }
 /* 마이페이지 메뉴 부분 */
-.mypage-menu {
+.mypage-manu-name {
         float: left;
         padding-top: 3px;
         padding-right: 20px;
@@ -34,6 +34,15 @@ justify-content : end;
         border-radius: 30px;
         border-color: #d9d9d9;
         background-color: white;
+}
+
+/* 마이페이지 메뉴 이름 영역 - 색 초기화 */
+.mypage-manu-name{color: #000;}
+
+/* 마이페이지 메뉴 이름 역역 - 마우스호버 색변환 */
+.mypage-manu-name:hover {
+    background-color: #27ae60;
+    color:#fff;
 }
 
 /* 컨텐츠 제일 밖에서 감싸는 영역 */
@@ -98,7 +107,7 @@ justify-content : end;
     margin-right: 10px;
 }
 
-/* */
+/* 내 정보 수정 버튼*/
 #mypage-myinfo-button {
     width: 700px;
     height: 50px;
@@ -115,7 +124,7 @@ justify-content : end;
 
 /* 수정 버튼*/
 .modify {
-        width: 65px;
+       width: 65px;
        border-radius: 8px;
        border: 1px solid;
        border-color: #d9d9d9;
