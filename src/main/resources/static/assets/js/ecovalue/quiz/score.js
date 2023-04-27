@@ -1,4 +1,35 @@
 const quizResultData = JSON.parse(sessionStorage.getItem('quiz-result-data'));
+function isEmpty(data){
+    if(typeof (data) ==='object'){
+        if(!data){
+            return true;
+        }else if (JSON.stringify(data)==='{}' || JSON.stringify(data)==='[]'){
+            return true;
+        }
+        return false;
+    }
+    else if (typeof(data) === 'string'){
+        if(!data.trim()){
+            return true;
+        }
+        return false;
+    }
+    else if (typeof(data)==='undefined'){
+        return true;
+    }
+    else if(isNaN(data)=== true){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+function redirect(score){
+    if(isEmpty(score)){
+        window.location.replace("/quiz");
+    }
+}
+redirect(quizResultData);
 const score = quizResultData.score;
 const scoreElem = document.getElementById('score');
 const messageElem = document.getElementById('score-message');
@@ -44,5 +75,5 @@ if (score >= 0 && score <= 50) {
     messageElem.innerText = '71 ~ 100 : 지구방위대';
 }
 
-sessionStorage.removeItem('quiz-result-data')
+// sessionStorage.removeItem('quiz-result-data')
 

@@ -4,7 +4,7 @@ let swiper = new Swiper(".mySwiper", {
         type: "fraction",
     },
 });
-
+sessionStorage.removeItem('quiz-result-data');
 const oButton = document.querySelector(".quiz-o");
 const xButton = document.querySelector(".quiz-x");
 const leftArrow = document.querySelector(".arrow-left");
