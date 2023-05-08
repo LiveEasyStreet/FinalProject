@@ -1,4 +1,5 @@
 const quizResultData = JSON.parse(sessionStorage.getItem('quiz-result-data'));
+// data가 빈 값인지 확인
 function isEmpty(data){
     if(typeof (data) ==='object'){
         if(!data){
@@ -24,6 +25,7 @@ function isEmpty(data){
         return false;
     }
 }
+// 빈값이면 리다이렉트 하는 부분
 function redirect(score){
     if(isEmpty(score)){
         window.location.replace("/quiz");
