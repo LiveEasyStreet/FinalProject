@@ -4,6 +4,7 @@ import com.liveeasystreet.ecovalue.cond.member.MemberSearchCond;
 import com.liveeasystreet.ecovalue.domain.Member;
 import com.liveeasystreet.ecovalue.dto.member.MemberUpdateDto;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,7 +14,10 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
+
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
@@ -28,9 +32,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class MemberTest {
 
     /**
-     * MemberRepository 클래스를 테스트 하는 클래스이므로, 의존성을 주입함. <br>
+     * MemberRepository 클래스를 테스트 하는 클래스이므로, 의존성을 주입함.<br>
+     *
      * @Autowired : 필요한 의존 객체의 “타입"에 해당하는 Bean을 찾아 주입하는 어노테이션. <br>
-     *              기본값이 true이기 때문에 의존성 주입을 할 대상을 찾지 못한다면 애플리케이션 구동에 실패함.
+     * 기본값이 true이기 때문에 의존성 주입을 할 대상을 찾지 못한다면 애플리케이션 구동에 실패함.
      */
     @Autowired
 
@@ -45,7 +50,6 @@ public class MemberTest {
     @Test
     @DisplayName("회원가입 테스트")
     public void save() {
-
 
         // member 객체 생성 + 초기화 진행
         Member member = new Member();
@@ -68,7 +72,6 @@ public class MemberTest {
         // 저장 전 객체와 저장해서 꺼낸 객체가 같은지 확인
         // Member 가 hashcode equal 가 재정의 돼 있기때문에 같은 값을 가지는지 확인 가능
         Assertions.assertThat(member).isEqualTo(findMember);
-
     }
 
     /**
@@ -110,7 +113,7 @@ public class MemberTest {
      * <strong>회원 수정 테스트 메소드.</strong><br>
      * 객체를 생성 및 초기화 진행 후 db에 저장하고,<br>
      * memberUpdateDto를 생성하여 변경 될 값을 넣어주고 db에 해당 내용을 반영함.<br>
-     * memberId를 통해 수정된 회원을 불러 온 뒤, 데이터가 잘 수정되었는지 확인함. <br>
+     * memberId를 통해 수정된 회원을 불러 온 뒤, 데이터가 잘 수정되었는지 확인함.<br>
      * 로직을 수행했을 때의 기대값은 테스트 성공이다.
      */
     @Test
@@ -195,7 +198,249 @@ public class MemberTest {
 
         // db에 memberUpdateDto 내용을 반영했을 때 이메일이 중복되어 예외 발생
         assertThrows(DuplicateKeyException.class, () -> memberRepository.update(member4.getMemberId(), memberUpdateDto));
+    }
 
+    /**
+     * <strong>로그인 ID로 회원 찾기 메소드.</strong><br>
+     * 객체를 생성 및 초기화 진행 후 db에 저장하고,<br>
+     * 찾고자 하는 로그인Id를 db에서 찾고 findMemberLoginId에 넣어줌.<br>
+     * findMemberLoginId의 데이터와 member 객체의 데이터가 같은지 확인함.<br>
+     * 로직을 수행했을 때의 기대값은 테스트 성공이다.
+     */
+    @Test
+    @DisplayName("회원 로그인 ID 찾기 테스트")
+    public void findByLoginId() {
+
+        // member 객체 생성 + 초기화 진행
+        Member member12 =  new Member();
+        member12.setLoginId("test444");
+        member12.setMemberPassword("test444");
+        member12.setNickName("테스트444");
+        member12.setMemberName("이름444");
+        member12.setEmail("test444@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member12);
+        log.info("member12 = {}", member12);
+
+        // member 객체 생성 + 초기화 진행
+        Member member13 = new Member();
+        member13.setLoginId("test445");
+        member13.setMemberPassword("test445");
+        member13.setNickName("테스트445");
+        member13.setMemberName("이름445");
+        member13.setEmail("test445@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member13);
+        log.info("member13 = {}", member13);
+
+        // db에서 찾고자 하는 loginId를 찾아 객체에 담음
+        Member findMemberLoginId = memberRepository.findByLoginId("test445").get();
+        log.info("findMemberLoginId = {}", findMemberLoginId);
+
+        // findMemberLoginId와 db의 member 객체의 loginId와 같은 지 검증
+        Assertions.assertThat(findMemberLoginId.getLoginId()).isEqualTo(member13.getLoginId());
+    }
+
+    /**
+     * <strong>로그인 ID로 회원 찾기 실패 메소드.</strong><br>
+     * 객체를 생성 및 초기화 진행 후 db에 저장하고,<br>
+     * 찾으려는 loginID가 db에 없을 경우, NoSuchElementException이 발생함.<br>
+     * 로직을 수행했을 때의 기대값은 테스트 성공이다.
+     */
+    @Test
+    @DisplayName("회원 로그인 ID 찾기 실패 테스트")
+    public void findByLoginIdFail() {
+
+        // member 객체 생성 + 초기화 진행
+        Member member14 = new Member();
+        member14.setLoginId("test555");
+        member14.setMemberPassword("test555");
+        member14.setNickName("테스트555");
+        member14.setMemberName("이름555");
+        member14.setEmail("test555@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member14);
+        log.info("member14 = {}", member14);
+
+        // member 객체 생성 + 초기화 진행
+        Member member15 = new Member();
+        member15.setLoginId("test556");
+        member15.setMemberPassword("test556");
+        member15.setNickName("테스트556");
+        member15.setMemberName("이름556");
+        member15.setEmail("test556@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member15);
+        log.info("member15 = {}", member15);
+
+        // 찾고자 하는 loginId가 db에 없을 경우, 예외가 발생
+        assertThrows(NoSuchElementException.class, () -> memberRepository.findByLoginId("test111").get());
+    }
+
+    /**
+     * <strong>닉네임으로 회원 찾기 메소드.</strong><br>
+     * 객체를 생성 및 초기화 진행 후 db에 저장하고,<br>
+     * 찾고자 하는 닉네임을 db에서 찾고 findMemberNickName에 넣어줌.<br>
+     * findMemberNickName의 데이터와 member 객체의 데이터가 같은지 확인함.<br>
+     * 로직을 수행했을 때의 기대값은 테스트 성공이다.
+     */
+    @Test
+    @DisplayName("회원 닉네임 찾기 테스트")
+    public void findByNickName() {
+
+        // member 객체 생성 + 초기화 진행
+        Member member16 = new Member();
+        member16.setLoginId("test666");
+        member16.setMemberPassword("test666");
+        member16.setNickName("테스트666");
+        member16.setMemberName("이름666");
+        member16.setEmail("test666@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member16);
+        log.info("member16 = {}", member16);
+
+        // member 객체 생성 + 초기화 진행
+        Member member17 = new Member();
+        member17.setLoginId("test667");
+        member17.setMemberPassword("test667");
+        member17.setNickName("테스트667");
+        member17.setMemberName("이름667");
+        member17.setEmail("test667@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member17);
+        log.info("member17 = {}", member17);
+
+        // db에서 찾고자 하는 nickName를 찾아 객체에 담음
+        Member findMemberNickName = memberRepository.findByNickName("테스트667").get();
+        log.info("findMemberNickName = {}", findMemberNickName);
+
+        // findMemberNickName과 db의 member 객체 nickName과 같은 지 검증
+        Assertions.assertThat(findMemberNickName.getNickName()).isEqualTo(member17.getNickName());
+    }
+
+    /**
+     * <strong>닉네임으로 회원 찾기 실패 메소드.</strong><br>
+     * 객체를 생성 및 초기화 진행 후 db에 저장하고,<br>
+     * 찾으려는 nickName이 db에 없을 경우, NoSuchElementException이 발생함.<br>
+     * 로직을 수행했을 때의 기대값은 테스트 성공이다.
+     */
+    @Test
+    @DisplayName("회원 닉네임 찾기 실패 테스트")
+    public void findByNickNameFail() {
+
+        // member 객체 생성 + 초기화 진행
+        Member member18 = new Member();
+        member18.setLoginId("test777");
+        member18.setMemberPassword("test777");
+        member18.setNickName("테스트777");
+        member18.setMemberName("이름777");
+        member18.setEmail("test777@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member18);
+        log.info("member18 = {}", member18);
+
+        // member 객체 생성 + 초기화 진행
+        Member member19 = new Member();
+        member19.setLoginId("test778");
+        member19.setMemberPassword("test778");
+        member19.setNickName("테스트778");
+        member19.setMemberName("이름778");
+        member19.setEmail("test778@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member19);
+        log.info("member19 = {}", member19);
+
+        // 찾고자 하는 닉네임이 db에 없을 경우, 예외가 발생
+        assertThrows(NoSuchElementException.class, () -> memberRepository.findByNickName("test111").get());
+    }
+
+    /**
+     * <strong>이메일로 회원 찾기 메소드.</strong><br>
+     * 객체를 생성 및 초기화 진행 후 db에 저장하고,<br>
+     * 찾고자 하는 이메일을 db에서 찾고 findMemberEmail에 넣어줌.<br>
+     * findMemberEmail의 데이터와 member 객체의 데이터가 같은지 확인함.<br>
+     * 로직을 수행했을 때의 기대값은 테스트 성공이다.
+     */
+    @Test
+    @DisplayName("회원 이메일 찾기 테스트")
+    public void findByEmail() {
+
+        // member 객체 생성 + 초기화 진행
+        Member member20 = new Member();
+        member20.setLoginId("test888");
+        member20.setMemberPassword("test888");
+        member20.setNickName("테스트888");
+        member20.setMemberName("이름888");
+        member20.setEmail("test888@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member20);
+        log.info("member20 = {}", member20);
+
+        // member 객체 생성 + 초기화 진행
+        Member member21 = new Member();
+        member21.setLoginId("test889");
+        member21.setMemberPassword("test889");
+        member21.setNickName("테스트889");
+        member21.setMemberName("이름889");
+        member21.setEmail("test889@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member21);
+        log.info("member21 = {}", member21);
+
+        //  db에서 찾고자 하는 email를 찾아 객체에 담음
+        Member findMemberEmail = memberRepository.findByEmail("test888@naver.com").get();
+        log.info("findMemberEmail = {}", findMemberEmail);
+
+        // findMemberEmail과 db의 member 객체 email과 같은 지 검증
+        Assertions.assertThat(findMemberEmail.getEmail()).isEqualTo(member20.getEmail());
+    }
+
+    /**
+     * <strong>이메일로 회원 찾기 실패 메소드.</strong><br>
+     * 객체를 생성 및 초기화 진행 후 db에 저장하고,<br>
+     * 찾으려는 email이 db에 없을 경우, NoSuchElementException이 발생함.<br>
+     * 로직을 수행했을 때의 기대값은 테스트 성공이다.
+     */
+    @Test
+    @DisplayName("회원 이메일 찾기 실패 테스트")
+    public void findByEmailFail() {
+
+        // member 객체 생성 + 초기화 진행
+        Member member22 = new Member();
+        member22.setLoginId("test999");
+        member22.setMemberPassword("test999");
+        member22.setNickName("테스트999");
+        member22.setMemberName("이름999");
+        member22.setEmail("test999@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member22);
+        log.info("member22 = {}", member22);
+
+        // member 객체 생성 + 초기화 진행
+        Member member23 = new Member();
+        member23.setLoginId("test9999");
+        member23.setMemberPassword("test9999");
+        member23.setNickName("테스트9999");
+        member23.setMemberName("이름9999");
+        member23.setEmail("test9999@naver.com");
+
+        // member 객체 db에 저장
+        memberRepository.save(member23);
+        log.info("member23 = {}", member23);
+
+        // 찾고자 하는 닉네임이 db에 없을 경우, 예외가 발생
+        assertThrows(NoSuchElementException.class, () -> memberRepository.findByEmail("test9999@gmail.com").get());
     }
 
     /**
@@ -308,7 +553,6 @@ public class MemberTest {
         MemberSearchCond memberSearchCond = new MemberSearchCond();
         List<Member> all = memberRepository.findAll(memberSearchCond);
         Assertions.assertThat(all.size()).isEqualTo(2);
-
     }
 }
 
