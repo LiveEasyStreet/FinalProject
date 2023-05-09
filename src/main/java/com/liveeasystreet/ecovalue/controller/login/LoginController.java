@@ -17,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Slf4j
 @Controller
@@ -33,6 +34,7 @@ public class LoginController {
     @PostMapping("/login")
     public String join(@Validated @ModelAttribute MemberLoginDto memberLoginDto,
                        BindingResult bindingResult,
+                       @RequestParam(defaultValue = "/") String redirectURL,
                        HttpServletRequest request) {
 
         if (bindingResult.hasErrors()) {
@@ -56,7 +58,7 @@ public class LoginController {
 
         session.setAttribute(SessionConst.MEMBER_LOGIN, memberSession);
 
-        return "redirect:/";
+        return "redirect:" + redirectURL;
     }
 
     @GetMapping("/logout")

@@ -10,7 +10,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +30,7 @@ public class TestQuizDataInit {
         // repository에 있는 모든 퀴즈 제거
         List<Quiz> allQuizList = quizRepository.findAll(null);
         for (Quiz quiz : allQuizList) {
-            quizRepository.delete(quiz.getId());
+            quizRepository.delete(quiz.getQuizId());
         }
 
         // 퀴즈 파일 경로 지정
@@ -52,7 +51,7 @@ public class TestQuizDataInit {
                 Row row = sheet.getRow(i);
 
                 // 행의 col을 값을 통해 Quiz 도메인 생성
-                Quiz quiz = Quiz.createQuiz(row.getCell(0).getStringCellValue(),
+                Quiz quiz = new Quiz(row.getCell(0).getStringCellValue(),
                         row.getCell(1).getStringCellValue(),
                         row.getCell(2).getStringCellValue(),
                         row.getCell(3).getStringCellValue(),

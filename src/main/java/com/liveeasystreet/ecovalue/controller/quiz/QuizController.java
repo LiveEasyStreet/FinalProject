@@ -68,6 +68,12 @@ public class QuizController {
 //
 //        return "quiz/score";
 //    }
+
+    /**
+     * 퀴즈의 결과를 퀴즈번호와 정답여부를 받아서 결과 data를 얻는 부분
+     * @param quizData
+     * @return
+     */
     @ResponseBody
     @PostMapping("/sendData")
     public QuizResultData score(@RequestBody Map<Long, Boolean> quizData) {
@@ -82,8 +88,8 @@ public class QuizController {
         Map<Long, Quiz> quizMap = new HashMap<>();
 
         for (Long key : quizData.keySet()) {
-            Quiz quiz = quizService.findQuiz(key);
-            quizMap.put(quiz.getId(), quiz);
+            Quiz quiz = quizService.findQuiz(key).orElse(null);
+            quizMap.put(quiz.getQuizId(), quiz);
         }
 
         return new QuizResultData(quizData, quizMap, score);

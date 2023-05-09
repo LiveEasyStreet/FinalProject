@@ -4,7 +4,8 @@ let swiper = new Swiper(".mySwiper", {
         type: "fraction",
     },
 });
-
+//퀴즈 시작할때 데이터 남아있으면 삭제하기 위해 사용
+sessionStorage.removeItem('quiz-result-data');
 const oButton = document.querySelector(".quiz-o");
 const xButton = document.querySelector(".quiz-x");
 const leftArrow = document.querySelector(".arrow-left");
@@ -76,7 +77,7 @@ let plusNumber = (value) => {
             }
             quizUserAnswer.textContent = 'X';
         }
-        console.log("위치 : ", countedQuiz, "값 : ", QuizUserSubmit[countedQuiz][0], "변환 여부 : ", QuizUserSubmit[countedQuiz][1]);
+        // console.log("위치 : ", countedQuiz, "값 : ", QuizUserSubmit[countedQuiz][0], "변환 여부 : ", QuizUserSubmit[countedQuiz][1]);
         nextSlide()
         offButton()
     }
@@ -87,12 +88,13 @@ let setSubmitData = () => {
     submitData = {};
     for (let i = 1; i <= 10; i++) {
         if (QuizUserSubmit[i][0] === quizList[i-1].answer) {
-            submitData[quizList[i - 1].id] = true
+            submitData[quizList[i - 1].quizId] = true
         } else {
-            submitData[quizList[i - 1].id] = false
+            submitData[quizList[i - 1].quizId] = false
         }
     }
-    console.log(submitData);
+    // console.log("퀴즈 전체 : ",quizList);
+    // console.log("데이터 전체 : ",submitData);
     // console.log(typeof submitData[Object.keys(submitData)[0]]);
 };
 let quizSubmit = () => {
@@ -117,12 +119,12 @@ let quizSubmit = () => {
             success: function (res) {
                 console.log("성공", res);
                 sessionStorage.setItem('quiz-result-data', JSON.stringify(res));
-                window.location.href = "/quiz/score";
+                window.location.replace("/quiz/score");
             },
             // # 실패시
             error: function (e) {
                 console.log(e);
-                console.log("실패");
+                console.log("실패 :  가져올 수 없음");
             }
         })
     }

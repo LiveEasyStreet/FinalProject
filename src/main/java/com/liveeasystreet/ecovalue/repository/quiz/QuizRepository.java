@@ -32,7 +32,7 @@ public interface QuizRepository {
      * 퀴즈의 key(id)목록을 전체 검색(조회)하는 메서드.
      * @return the list
      */
-    List<Long> findAllkeyList();
+    List<Long> findAllKeyList();
 
     /**
      * 퀴즈 단건검색(조회) 메서드.
@@ -50,13 +50,15 @@ public interface QuizRepository {
      */
     void update(Long id, QuizDto updateParam);
 
+
+
+
     /**
      * 퀴즈 수정 메서드.
      * 매개변수로 퀴즈를 받아 출제 횟수, 정답 횟수 등을 수정(변경)한다.
-     * @param quiz the quiz
+     * @param score the quiz
      */
-    void update(Quiz quiz);
-
+    void update(Long id, Boolean score);
     /**
      * 퀴즈 삭제 메서드
      * 매개변수로 id값을 받아 해당되는 퀴즈를 삭제한다.

@@ -17,10 +17,10 @@ public class EcovalueApplication {
 		SpringApplication.run(EcovalueApplication.class, args);
 	}
 
-	@Bean
-	@Profile({"local", "test"})
-	public TestQuizDataInit testQuizDataInit(QuizRepository quizRepository) {
-		return new TestQuizDataInit(quizRepository);
-	}
+//	@Bean
+//	@Profile({"local", "test"})
+//	public TestQuizDataInit testQuizDataInit(QuizRepository quizRepository) {
+//		return new TestQuizDataInit(quizRepository);
+//	}
 
 }
