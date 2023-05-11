@@ -35,6 +35,7 @@ document
         subMenu.style.display = "none";
     });
 
+
 // [마우스 아웃] 시 [menu_wrap] 보이게 설정
 document
     .querySelector(".menu-wrap")
@@ -88,4 +89,42 @@ const indexFind = function () {
         }
     }
 }
+
+function isEmpty(data){
+    if(typeof (data) ==='object'){
+        if(!data){
+            return true;
+        }else if (JSON.stringify(data)==='{}' || JSON.stringify(data)==='[]'){
+            return true;
+        }
+        return false;
+    }
+    else if (typeof(data) === 'string'){
+        if(!data.trim()){
+            return true;
+        }
+        return false;
+    }
+    else if (typeof(data)==='undefined'){
+        return true;
+    }
+    else if(isNaN(data)=== true){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+let member = document.querySelector(".member");
+function userMatching(member){
+    if(isEmpty(member)){
+        member.addEventListener("mouseenter", function () {
+            subMenu.style.display = "none";
+        });
+        member.addEventListener("mouseleave", function () {
+            subMenu.style.display = "flex";
+        });
+    }
+}
+userMatching(member);
 

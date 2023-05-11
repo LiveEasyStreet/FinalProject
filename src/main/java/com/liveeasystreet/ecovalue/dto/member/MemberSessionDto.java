@@ -14,6 +14,7 @@ public class MemberSessionDto {
 
     private String loginId;
     private String memberName;
+    private int memberPoint;
 
     public MemberSessionDto() {
 
@@ -22,5 +23,6 @@ public class MemberSessionDto {
     public MemberSessionDto(Member member) {
         this.loginId = member.getLoginId();
         this.memberName = member.getMemberName();
+        this.memberPoint = member.getMemberPoint();
     }
 }

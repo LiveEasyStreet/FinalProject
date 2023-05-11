@@ -76,8 +76,23 @@
                 </ul>
 
                 <ul class="login-wrap">
-                    <li><a href="/login">로그인</a></li>
-                    <li><a href="/membership/add">회원가입</a></li>
+                    <li class="member" th:if="${session.loginMember}">
+                        <a class="memberName" th:text="${session.loginMember.memberName}" href="#">회원 id</a>
+                        <ul class="member-menu">
+                            <li><a href="#">내정보</a></li>
+                            <li><a href="#">알림</a></li>
+                            <li><a href="#">게시물 관리</a></li>
+                            <li><a href="#">활동 점수</a></li>
+                            <li><a href="#">문의</a></li>
+                            <li><a href="/logout">로그아웃</a></li>
+                        </ul>
+                    </li>
+                    <li th:unless="${session.loginMember}"><a href="/login">로그인</a></li>
+                    <i th:if="${session.loginMember}" id="seedling" class="fa-solid fa-seedling">
+                        <span th:text="|${session.loginMember.memberPoint}p|"></span>
+                    </i>
+                    <i th:if="${session.loginMember}" id="bell" class="fa-solid fa-bell"></i>
+                    <li th:unless="${session.loginMember}"><a href="/membership/add">회원가입</a></li>
                 </ul>
 
             </div>

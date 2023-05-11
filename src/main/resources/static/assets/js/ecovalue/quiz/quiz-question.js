@@ -4,7 +4,8 @@ let swiper = new Swiper(".mySwiper", {
         type: "fraction",
     },
 });
-
+//퀴즈 시작할때 데이터 남아있으면 삭제하기 위해 사용
+sessionStorage.removeItem('quiz-result-data');
 const oButton = document.querySelector(".quiz-o");
 const xButton = document.querySelector(".quiz-x");
 const leftArrow = document.querySelector(".arrow-left");
