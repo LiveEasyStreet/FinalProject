@@ -27,7 +27,13 @@ public class LoginController {
     private final MemberLoginService memberLoginService;
 
     @GetMapping("/login")
-    public String join(@ModelAttribute("memberLoginDto") MemberLoginDto memberLoginDto) {
+    public String join(@ModelAttribute("memberLoginDto") MemberLoginDto memberLoginDto,HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+
+        if (session != null) {
+            return "redirect:/";
+        }
+
         return "ecovalue/login/login";
     }
 

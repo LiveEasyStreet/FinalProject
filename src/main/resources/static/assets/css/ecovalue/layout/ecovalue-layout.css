@@ -92,11 +92,28 @@ body {
     width: 500px;
     height: 50px;
     transform: translateX(-50%);
+}
 
+/* 마찬가지로 member menu도 숨겨진 메뉴 */
+.member-menu{
+    display: none;
+    position: absolute;
+    top: 58px;
+    width: 500px;
+    height: 50px;
+    transform: translateX(-50%);
 }
 
 /* 메뉴이름 밑에 숨겨진 서브메뉴 [a태그] 디자인 - [마우스호버]시만 보여줌 */
 .sub-menu a {
+    font-family: "NanumSquare", sans-serif;
+    font-size: 16px;
+    color: var(--font-color-main);
+    font-weight: 600;
+    padding: 14px 10px;
+}
+
+.member-menu a{
     font-family: "NanumSquare", sans-serif;
     font-size: 16px;
     color: var(--font-color-main);
@@ -110,6 +127,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+.member:hover .member-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* 서브메뉴 [마우스호버]시 색변환 */
 .sub-menu a:hover {
@@ -118,7 +140,7 @@ body {
 
 /* 로그인 회원가입 감싸는 영역 */
 .login-wrap {
-    width: 150px;
+    width: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +177,7 @@ body {
     width: 1280px;
     height: 50px;
     margin: auto;
-    padding: 0 50px;
+    padding: 0 40px;
 }
 
 /* 하단 네비게이션 바 컨텐츠 영역 - 여기를 기준으로 자바스크립트 숨김 기능 적용 */
@@ -209,6 +231,29 @@ body {
     width: 12px;
     cursor: pointer;
     bottom: -2px;
+}
+/**/
+#memberName{
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 700;
+}
+/* 로그인 했을때 나오는 점수*/
+#seedling{
+    padding-top: 25px;
+    padding-left: 10px;
+    color: var(--point-color);
+}
+#seedling span{
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 700;
+    color: var(--font-color-main);
+    font-size: 15px;
+}
+/*로그인 했을때 나오는 알림*/
+#bell {
+    padding-top: 25px;
+    padding-left: 10px;
+    color: var(--font-color-main);
 }
 
 /* 레이아웃 중간 콘텐츠 감싸는 영역 */

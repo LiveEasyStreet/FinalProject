@@ -1,30 +1,30 @@
 const quizResultData = JSON.parse(sessionStorage.getItem('quiz-result-data'));
 // data가 빈 값인지 확인
-function isEmpty(data){
-    if(typeof (data) ==='object'){
-        if(!data){
-            return true;
-        }else if (JSON.stringify(data)==='{}' || JSON.stringify(data)==='[]'){
-            return true;
-        }
-        return false;
-    }
-    else if (typeof(data) === 'string'){
-        if(!data.trim()){
-            return true;
-        }
-        return false;
-    }
-    else if (typeof(data)==='undefined'){
-        return true;
-    }
-    else if(isNaN(data)=== true){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
+// function isEmpty(data){
+//     if(typeof (data) ==='object'){
+//         if(!data){
+//             return true;
+//         }else if (JSON.stringify(data)==='{}' || JSON.stringify(data)==='[]'){
+//             return true;
+//         }
+//         return false;
+//     }
+//     else if (typeof(data) === 'string'){
+//         if(!data.trim()){
+//             return true;
+//         }
+//         return false;
+//     }
+//     else if (typeof(data)==='undefined'){
+//         return true;
+//     }
+//     else if(isNaN(data)=== true){
+//         return true;
+//     }
+//     else{
+//         return false;
+//     }
+// }
 // 빈값이면 리다이렉트 하는 부분
 function redirect(score){
     if(isEmpty(score)){
