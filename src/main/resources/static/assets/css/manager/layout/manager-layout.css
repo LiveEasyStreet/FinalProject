@@ -37,9 +37,13 @@
 
 /* 상단 얇은 가로바 오른쪽 감싸는 영역 */
 .mg_top_bar_right {
-    width: 200px;
+    width: 400px;
     display: flex;
     justify-content: center;
+}
+.mg_top_bar_name{
+    color: white;
+    margin-right: 50px;
 }
 
 /* 상단 얇은 가로바 오른쪽 로그아웃 영역 */

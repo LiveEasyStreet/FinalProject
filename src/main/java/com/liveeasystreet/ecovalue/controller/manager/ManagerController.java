@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,12 @@ public class ManagerController {
     private final ManagerLoginService managerLoginService;
 
     @GetMapping("/home")
-    public String home() {
+    public String home(@SessionAttribute(name = SessionConst.MANAGER_LOGIN,required = true) ManagerSessionDto loginManager, Model model) {
+
+        log.info("[{}]",loginManager);
+        if (loginManager!=null){
+            model.addAttribute("manager",loginManager);
+        }
         return "manager/home/manager-home";
     }
 
