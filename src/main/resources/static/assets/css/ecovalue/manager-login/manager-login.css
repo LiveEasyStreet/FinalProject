@@ -64,6 +64,7 @@
     border: 1px solid #27ae60;
 }
 
+
 /* hr 태그의 css*/
 hr {
     margin: auto;
@@ -77,6 +78,10 @@ hr {
    클릭 시 다운톤 컬러가 보임으로써 육안으로 더 확연히 표현이 가능*/
 #manager-login-button:active {
     background-color: #1e8449;
+}
+.field-error {
+    margin-left: 10px;
+    color: red;
 }
 
 

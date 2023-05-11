@@ -1,5 +1,6 @@
 package com.liveeasystreet.ecovalue;
 
+import com.liveeasystreet.ecovalue.interceptor.ManagerLoginCheckInterceptor;
 import com.liveeasystreet.ecovalue.interceptor.MemberLoginCheckInterceptor;
 
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,15 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns(
                         "/", "/assets/**", "/login", "logout", "/forgot-**",
-                        "/add", "/upcycleInfo", "/favicon.ico", "/error"
+                        "/membership/add", "/upcycleInfo", "/favicon.ico", "/error", "/manager/**"
                 );
+        /**
+         * 관리자 페이지 인터셉터, 관리자 페이지에 대한 접근 시 로그인 요청
+         */
+        registry.addInterceptor(new ManagerLoginCheckInterceptor())
+                .order(2)
+                .addPathPatterns("/manager/**")
+                .excludePathPatterns("/manager/login");
     }
+
 }

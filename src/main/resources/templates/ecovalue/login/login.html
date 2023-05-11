@@ -9,8 +9,8 @@
     <title>Membership Login</title>
 
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/ecovalue/login/login.css"
-          th:href="@{/assets/css/ecovalue/login/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/ecovalue/login/login.css}" href="/assets/css/ecovalue/login/login.css">
+
     <script defer src=""></script>
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
 
@@ -32,17 +32,17 @@
                 </div>
                 <input type="text" placeholder="아이디를 입력해주세요." id="id-box" th:field="*{loginId}"
                       th:errorclass="field-error" class="membership-input-tag">
-                <div class="field-error" th:errors="*{loginId}"/>
-            </div>
 
+            </div>
+            <div class="field-error" th:errors="*{loginId}"/>
             <div class="membership-text-form-layout">
                 <div class="membership-input-box-title">
                     <label class="membership-label-layout" for="password-box">비밀번호</label>
                 </div>
                 <input type="password" placeholder="비밀번호를 입력해주세요. " id="password-box" th:field="*{memberPassword}"
                        th:errorclass="field-error" class="membership-input-tag">
-                <div class="field-error" th:errors="*{memberPassword}"/>
             </div>
+            <div class="field-error" th:errors="*{memberPassword}"/>
 
             <hr class="hr">
             <button type="submit" class="membership-login-button" id="login-button">로그인</button>
