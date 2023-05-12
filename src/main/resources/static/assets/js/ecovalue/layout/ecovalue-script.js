@@ -115,16 +115,16 @@ function isEmpty(data){
         return false;
     }
 }
-let member = document.querySelector(".member");
-function userMatching(member){
-    if(isEmpty(member)){
-        member.addEventListener("mouseenter", function () {
+function userMatching(){
+    if(document.querySelector(".member")!=null){
+
+        document.querySelector(".member").addEventListener("mouseenter", function () {
             subMenu.style.display = "none";
         });
-        member.addEventListener("mouseleave", function () {
+        document.querySelector(".member").addEventListener("mouseleave", function () {
             subMenu.style.display = "flex";
         });
     }
 }
-userMatching(member);
+userMatching();
 
