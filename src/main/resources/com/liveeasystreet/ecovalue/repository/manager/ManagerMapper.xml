@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liveeasystreet.ecovalue.repository.manager.ManagerMapper">
+    <select id="findByLoginId" resultType="Manager">
+        select manager_id, manager_login_id, manager_password, second_manager_password , manager_name
+        from manager
+        where MANAGER_LOGIN_ID = #{managerLoginId}
+    </select>
+</mapper>
