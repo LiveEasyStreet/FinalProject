@@ -1,0 +1,119 @@
+.upcycle_gallery_container{
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 500;
+    width: 1280px;
+    height: 800px;
+    border: 1px solid #d9d9d9;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.search-box{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px 15px 15px 15px;
+    width: 375px;
+    height: 35px;
+    background-color: var(--point-color);
+}
+.upGallery_search_target{
+    width: 120px;
+    height: 30px;
+
+
+    outline: none;
+    border: none;
+    appearance: none;
+    /*background: url("/assets/img/upcycle/upcycle_gallery/triangle.png") no-repeat 97% 50%/15px auto;*/
+
+    border-radius: 15px 0 0 15px;
+    color: var(--background-color-main);
+    background-color: var(--point-color);
+    text-align: center;
+}
+.search_input_area{
+    text-align:left;
+    border: 1px solid #d9d9d9;
+    border-radius: 15px 15px 15px 15px;
+    width: 250px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 10px;
+    text-align: center;
+}
+.gallery_sector{
+    width: 1000px;
+    height: 600px;
+    background: white;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3,1fr);
+
+
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+
+}
+.gallery_sector .k{
+    border: 1px solid #d9d9d9;
+    background: var(--background-color-main);
+    border-radius: 15px 15px 15px 15px;
+    width: 240px;
+    height: 180px;
+
+
+    text-align: center;
+}
+.gallery-paging-section{
+    display: flex;
+    width: 500px;
+    height: 50px;
+    background-color: var(--background-color-sub);
+    border-radius: 25px;
+
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.paging-button{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    color: var(--font-color-main);
+    /*background-color: var(--point-color);*/
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
+}
+.paging-button:hover{
+    background-color: var(--font-color-sub2);
+    color: white;
+    font-weight: 900;
+}
+.paging-button.selected{
+    background-color: var(--font-color-sub2);
+    color: white;
+    font-weight: 900;
+
+    /*현재 페이지는 눌러도 새로고침 등이 발생하지 않게 하는 것*/
+    pointer-events: none;
+    cursor: default;
+}
+.paging-previous{
+    padding-top: 12px;
+    font-size: 15px;
+}
+.paging-next{
+    padding-top: 12px;
+    font-size: 15px;
+}
