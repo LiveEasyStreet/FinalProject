@@ -1,0 +1,92 @@
+
+.recycle-main {
+    background-color: #d2d1d1;
+}
+
+.sticky {
+    background-color: #d2d1d1;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+button {
+    margin: 20px 10px 20px 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    background-color: white;
+    border: white;
+}
+
+ul {
+    list-style: none;
+}
+
+i {
+    color: #27ae60;
+}
+
+img {
+    margin-top: 70px;
+    background-color: white;
+    color: #27ae60;
+}
+
+button:active {
+    background-color: #d9d9d9;
+}
+
+.recycle-img {
+    margin-top: 50px;
+    margin-right: 100px;
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    background-color: white;
+    border-radius: 0 20px 20px 0;
+}
+
+.text-box {
+    width: 600px;
+}
+
+.part1 {
+    padding-top: 150px;
+    display: flex;
+}
+
+.part2 {
+    padding-top: 150px;
+    display: flex;
+}
+
+.part3 {
+    padding-top: 150px;
+    display: flex;
+}
+
+.part4 {
+    padding-top: 150px;
+    display: flex;
+}
+
+.part5 {
+    padding-top: 150px;
+    display: flex;
+}
+
+.part6 {
+    padding-top: 150px;
+    display: flex;
+}
+
+.part7 {
+    padding-top: 150px;
+    display: flex;
+}
+
+.part8 {
+    padding-top: 150px;
+    display: flex;
+}
