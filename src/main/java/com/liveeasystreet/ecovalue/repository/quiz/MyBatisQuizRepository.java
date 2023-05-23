@@ -3,6 +3,7 @@ package com.liveeasystreet.ecovalue.repository.quiz;
 import com.liveeasystreet.ecovalue.domain.Quiz;
 import com.liveeasystreet.ecovalue.dto.QuizDto;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ import java.util.Optional;
 @Slf4j
 @Primary
 @Repository
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MyBatisQuizRepository implements QuizRepository{
 
     private final QuizMapper quizMapper;

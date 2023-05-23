@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>재활용 방법</title>
     <link rel="stylesheet" type="text/css" href="/static/assets/css/ecovalue/recycle/recycle-info.css"
-          th:href="@{/static/assets/css/ecovalue/recycle/recycle-info.css}">
-    <script defer src="/static/assets/js/ecovalue/recycle/recycle-info.js"></script>
+          th:href="@{/assets/css/ecovalue/recycle/recycle-info.css}">
+<!--    <script defer src="/static/assets/js/ecovalue/recycle/recycle-info.js"></script>-->
+    <script defer th:src="@{/assets/js/ecovalue/recycle/recycle-info.js}" src="/static/assets/js/ecovalue/recycle/recycle-info.js"></script>
+
     <script src="https://kit.fontawesome.com/3c96f3264c.js" crossorigin="anonymous"></script>
 
 </head>
@@ -13,37 +15,39 @@
 <section>
     <div class="recycle-main">
         <div class="sticky">
-            <button type="button" id="part1">
+            <button class="recycle_part" type="button" id="part1">
                 <i class="fa-regular fa-newspaper fa-3x"></i>
             </button>
-            <button type="button" id="part2">
+            <button class="recycle_part" type="button" id="part2">
                 <i class="fa-solid fa-spray-can fa-3x"></i>
             </button>
-            <button type="button" id="part3">
+            <button class="recycle_part" type="button" id="part3">
                 <i class="fa-solid fa-wine-bottle fa-3x"></i>
             </button>
-            <button type="button" id="part4">
+            <button class="recycle_part" type="button" id="part4">
                 <i class="fa-solid fa-bottle-water fa-3x"></i>
             </button>
-            <button type="button" id="part5">
+            <button class="recycle_part" type="button" id="part5">
                 <i class="fa-solid fa-bag-shopping fa-3x"></i>
             </button>
-            <button type="button" id="part6">
+            <button class="recycle_part" type="button" id="part6">
                 <i class="fa-regular fa-square fa-3x"></i>
             </button>
-            <button type="button" id="part7">
+            <button class="recycle_part" type="button" id="part7">
                 <i class="fa-solid fa-carrot fa-3x"></i>
             </button>
-            <button type="button" id="part8">
+            <button class="recycle_part" type="button" id="part8">
+
                 <i class="fa-solid fa-shapes fa-3x"></i>
             </button>
         </div>
 
         <div class="recycle-wrap">
-            <div class="part1">
+            <div class="part" id="parts1">
                 <div class="icon-box">
                     <div class="recycle-img">
-                        <img src="/static/assets/img/recycle/paper.png">
+                        <img th:src="@{/assets/img/recycle/paper.png}" src="/static/assets/img/recycle/paper.png">
+
                     </div>
                 </div>
                 <div class="text-box">
@@ -86,10 +90,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="part2">
+            <div class="part" id="parts2">
                 <div class="icon-box">
                     <div class="recycle-img">
-                        <img src="/static/assets/img/recycle/can.png">
+                        <img th:src="@{/assets/img/recycle/can.png}" src="/static/assets/img/recycle/can.png">
+
                     </div>
                 </div>
                 <div class="text-box">
@@ -119,10 +124,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="part3">
+
+            <div class="part" id="parts3">
                 <div class="icon-box">
                     <div class="recycle-img">
-                        <img src="/static/assets/img/recycle/glass.png">
+                        <img th:src="@{/assets/img/recycle/glass.png}" src="/static/assets/img/recycle/glass.png">
                     </div>
                 </div>
                 <div class="text-box">
@@ -166,10 +172,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="part4">
+            <div class="part" id="parts4">
                 <div class="icon-box">
                     <div  class="recycle-img">
-                        <img src="/static/assets/img/recycle/plastic.png">
+                        <img th:src="@{/assets/img/recycle/plastic.png}" src="/static/assets/img/recycle/plastic.png">
                     </div>
                 </div>
                 <div class="text-box">
@@ -202,10 +208,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="part5">
+
+            <div class="part" id="parts5">
                 <div class="icon-box">
                     <div class="recycle-img">
-                        <img src="/static/assets/img/recycle/vinyl.png">
+                        <img th:src="@{/assets/img/recycle/vinyl.png}" src="/static/assets/img/recycle/vinyl.png">
                     </div>
                 </div>
                 <div class="text-box">
@@ -225,10 +232,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="part6">
+
+            <div class="part" id="parts6">
                 <div class="icon-box">
                     <div class="recycle-img">
-                        <img src="/static/assets/img/recycle/styrofoam.png">
+                        <img th:src="@{/assets/img/recycle/styrofoam.png}" src="/static/assets/img/recycle/styrofoam.png">
+
                     </div>
                 </div>
                 <div class="text-box">
@@ -255,10 +264,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="part7">
+
+            <div class="part" id="parts7">
                 <div class="icon-box">
                     <div class="recycle-img">
-                        <img src="/static/assets/img/recycle/food-waste.png">
+                        <img th:src="@{/assets/img/recycle/food-waste.png}" src="/static/assets/img/recycle/food-waste.png">
                     </div>
                 </div>
                 <div class="text-box">
@@ -295,10 +305,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="part8">
+            <div class="part" id="parts8">
                 <div class="icon-box">
                     <div class="recycle-img">
-                        <img src="/static/assets/img/recycle/etc.png">
+                        <img th:src="@{/assets/img/recycle/etc.png}" src="/static/assets/img/recycle/etc.png">
                     </div>
                 </div>
                 <div class="text-box">

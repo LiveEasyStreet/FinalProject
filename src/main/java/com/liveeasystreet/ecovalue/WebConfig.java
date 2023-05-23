@@ -23,8 +23,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns(
                         "/", "/assets/**", "/login", "logout", "/forgot-**",
-                        "/membership/add", "/upcycleInfo", "/favicon.ico", "/error", "/manager/**",
-                        "/zerowaste/introduce"
+                        "/membership/add", "/upcycleInfo", "/favicon.ico", "/error", "/manager/**"
+                        ,"/upGallery" , "/upGallery/**", "/recycle/info", "/zerowaste/introduce"
                 );
         /**
          * 관리자 페이지 인터셉터, 관리자 페이지에 대한 접근 시 로그인 요청

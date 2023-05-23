@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liveeasystreet.ecovalue.repository.thumbsup.BoardThumbsUpMapper">
+
+    <insert id="thumbsUp">
+        INSERT INTO thumbup (member_id, board_id, datetime, isdeleted)
+        SELECT #{memberId}, #{boardId}, now(), false
+            WHERE NOT EXISTS (SELECT * FROM thumbup WHERE member_id = #{memberId} AND board_id = #{boardId});
+    </insert>
+
+    <select id="isThumbUpBefore" resultType="ThumbsUp">
+        SELECT board_id, member_id, datetime, isdeleted
+        FROM thumbup
+        WHERE board_id = #{boardId} AND member_id = #{memberId};
+    </select>
+
+    <select id="isThumbUp" resultType="ThumbsUp">
+        SELECT board_id, member_id, datetime, isdeleted
+        FROM thumbup
+        WHERE board_id = #{boardId} AND member_id = #{memberId} AND isdeleted = false;
+    </select>
+
+    <select id="thumbCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS recordCount
+        FROM thumbup
+        WHERE board_id = #{boardId} AND isdeleted = false
+    </select>
+
+    <update id="thumbsUpFetch">
+        UPDATE thumbup
+        SET datetime = CURRENT_TIMESTAMP, isdeleted = false
+        WHERE board_id = #{boardId} AND member_id = #{memberId} AND isdeleted = true
+    </update>
+
+    <update id="deleteThumbsUp">
+        UPDATE thumbup
+        SET isdeleted = true
+        WHERE board_id = #{boardId} AND member_id = #{memberId}
+    </update>
+</mapper>

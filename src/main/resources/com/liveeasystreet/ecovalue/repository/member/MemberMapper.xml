@@ -70,6 +70,4 @@
         where MEMBER_ID=#{id}
     </delete>
 
-
-
 </mapper>

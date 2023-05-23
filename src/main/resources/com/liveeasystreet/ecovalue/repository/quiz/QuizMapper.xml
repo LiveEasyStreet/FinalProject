@@ -21,7 +21,7 @@
                 and quiz_detail like concat('%',#{detail},'%')
             </if>
             <if test="quizId != null">
-                and quiz_id == #{quiz_id}
+                and quiz_id = #{quizId}
             </if>
         </where>
     </select>

@@ -123,9 +123,32 @@ public class quizTest {
 
     }
 
+    @Test
+    @DisplayName("id 검색")
+    public void testId(){
+        Quiz quiz1 = new Quiz("캔","캔 분리수거에 대한 OX 퀴즈","알루미늄캔은 재활용이 가능한 것일까요?","알루미늄캔은 재활용이 가능합니다. 알루미늄은 자원의 낭비를 줄이고 환경 보호를 위해 재활용이 권장되는 재료 중 하나입니다. 따라서 알루미늄캔은 재활용이 가능하며, 분리수거 시 알루미늄캔만 따로 모아 처리해야 합니다.",true);
+        Quiz quiz2 = new Quiz("플라스틱","플라스틱 분리수거에 대한 OX 퀴즈","투명한 플라스틱병만 재활용이 가능한 것일까요?","플라스틱병은 종류에 따라 재활용이 가능하거나 불가능한 경우가 있습니다. 일반적으로 PET 플라스틱병은 재활용이 가능하지만, PVC, PP, PS 등의 플라스틱병은 재활용이 어렵거나 불가능합니다.",false);
+        Quiz quiz3 = new Quiz("플라스틱","플라스틱 분리수거에 대한 OX 퀴즈","플라스틱 물병은 분리수거가 가능한 것일까요?","플라스틱 물병은 재활용이 가능한 분리수거 대상입니다. 다만, 재활용을 위해서는 플라스틱 뚜껑과 라벨을 따로 분리해서 처리해야 하며, 물병 내부에 내용물이 남아 있으면 세척해주어야 합니다.",true);
+        quizRepository.save(quiz1);
+        quizRepository.save(quiz2);
+        quizRepository.save(quiz3);
+
+        test2(1L,null,null,null,quiz1);
+        test2(2L,null,null,null,quiz2);
+        test2(2L,"캔",null,null);
+    }
+
     //검색 테스트
     void test(String category, String title,String detail, Quiz... quizzes) {
         List<Quiz> result = quizRepository.findAll(new QuizSearchCond(category,title,detail));
+        assertThat(result).containsExactly(quizzes);
+    }
+
+    //검색 테스트2
+    void test2(Long quizId,String category, String title,String detail, Quiz... quizzes) {
+        List<Quiz> result = quizRepository.findAll(new QuizSearchCond(quizId,category,title,detail));
+        log.info("test2 result : {}",result);
+        log.info("test2 result2 : {}",quizRepository.findById(1L));
         assertThat(result).containsExactly(quizzes);
     }
 }
