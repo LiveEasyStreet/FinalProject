@@ -19,6 +19,7 @@
     max-width: 550px;
     padding-left: 25px;
     line-height: 25px;
+
 }
 
 .sticky {
@@ -26,11 +27,13 @@
     text-align: center;
     width: 1280px;
     height: 120px;
+
     position: sticky;
     top: 0;
 }
 
 .recycle_part  {
+
     margin: 20px 10px 20px 10px;
     width: 80px;
     height: 80px;
@@ -48,12 +51,14 @@
 }
 
 .recycle-img >img {
+
     margin-top: 70px;
     background-color: white;
     color: #27ae60;
 }
 
 .recycle_part:active {
+
     background-color: #d9d9d9;
 }
 
