@@ -43,4 +43,9 @@ public class MyBatisBoardRepository implements BoardRepository{
     public Long findLength() {
         return boardMapper.findLength();
     }
+
+    @Override
+    public Long viewCountUp(Long boardId) {
+        return boardMapper.viewCountUp(boardId);
+    }
 }

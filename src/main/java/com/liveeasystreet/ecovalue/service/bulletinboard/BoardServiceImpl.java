@@ -14,7 +14,8 @@ public class BoardServiceImpl implements iBoardService{
     private final BoardRepository boardRepository;
 
     @Override
-    public Board findBoardById(Long boardId) {
+    public Board BoardViewService(Long boardId) {
+        boardRepository.viewCountUp(boardId);
         return boardRepository.findById(boardId).orElse(null);
     }
 }

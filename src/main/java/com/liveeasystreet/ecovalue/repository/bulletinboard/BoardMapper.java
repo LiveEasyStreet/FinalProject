@@ -27,4 +27,6 @@ public interface BoardMapper {
     Optional<Board> findById(Long boardId);
 
     Long findLength();
+
+    Long viewCountUp(Long boardId);
 }

@@ -25,4 +25,6 @@ public interface BoardRepository {
     Optional<Board> findById(Long boardId);
 
     Long findLength();
+
+    Long viewCountUp(Long boardId);
 }

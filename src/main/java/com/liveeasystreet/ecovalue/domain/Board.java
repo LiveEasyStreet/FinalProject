@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
@@ -25,13 +26,13 @@ public class Board {
     private Long memberId;
 
     // 등록 날짜
-    private LocalDate uploadDate;
+    private LocalDateTime uploadDate;
 
     // 수정 날짜
-    private LocalDate editDate;
+    private LocalDateTime editDate;
 
     // 삭제 날짜
-    private LocalDate deleteDate;
+    private LocalDateTime deleteDate;
 
     // 조회수
     private int views;
@@ -44,7 +45,7 @@ public class Board {
         this.views=0;
     }
 
-    public Board(Long boardId, String title, Long boardCategory, String contents, Long memberId, LocalDate uploadDate, LocalDate editDate, LocalDate deleteDate, int views) {
+    public Board(Long boardId, String title, Long boardCategory, String contents, Long memberId, LocalDateTime uploadDate, LocalDateTime editDate, LocalDateTime deleteDate, int views) {
         this.boardId = boardId;
         this.title = title;
         this.boardCategory = boardCategory;

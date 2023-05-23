@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -24,10 +26,13 @@ public class BoardViewDto {
     private String nickName;
 
     // 최종 수정 날짜
-    private LocalDate uploadDate;
+    private String uploadDate;
 
     // 조회수
     private int views;
+
+    //날짜타입 변환
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 
     public BoardViewDto(Board board) {
@@ -35,10 +40,10 @@ public class BoardViewDto {
         this.boardCategory = BoardCategory.findByDataValue(board.getBoardCategory());
         this.contents = board.getContents();
         if(board.getEditDate() != null){
-            this.uploadDate=board.getEditDate();
+            this.uploadDate=board.getEditDate().format(formatter);
         }
         else{
-            this.uploadDate=board.getUploadDate();
+            this.uploadDate=board.getUploadDate().format(formatter);
         }
         this.views = board.getViews();
 

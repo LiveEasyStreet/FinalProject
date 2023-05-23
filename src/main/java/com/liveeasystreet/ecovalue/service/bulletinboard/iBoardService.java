@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface iBoardService {
 
-    public Board findBoardById(Long boardId);
+    public Board BoardViewService(Long boardId);
+
 }
