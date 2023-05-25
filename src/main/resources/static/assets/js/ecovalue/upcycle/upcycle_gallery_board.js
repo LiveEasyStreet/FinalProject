@@ -73,6 +73,36 @@ window.onload = function (){
     }
 }
 
+let init_my_comment_content = document.querySelector(".my_comment_content");
+function textarea_auto(obj) {
+
+    // 아직 미완성
+    if(obj.scrollHeight>obj.clientHeight){
+        obj.style.height = (15+obj.scrollHeight)+"px"
+    }
+}
+if (init_my_comment_content != null){
+    init_my_comment_content.textContent="";
+}
+
+function submitComment() {
+    let boardId = $('#boardId').val();
+    let commentContent = $('#comment_content').val();
+
+    commentContent = commentContent.replaceAll(/(\n|\r\n)/g, "<br>");
+
+    $.ajax({
+        url: '/upGallery/views/' + boardId,
+        type: 'POST',
+        data: { comment_content: commentContent },
+        success: function(response) {
+            console.log("성공 : ",response);
+        },
+        error: function(e) {
+            console.log("실패 : ",e);
+        }
+    });
+}
 
 // let thumbUp = function (){
 //     $.ajax({

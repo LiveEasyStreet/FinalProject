@@ -1,6 +1,7 @@
 package com.liveeasystreet.ecovalue.repository.comment;
 
 import com.liveeasystreet.ecovalue.domain.Comment;
+import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentUpdateDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public interface CommentMapper {
 
     // 댓글 저장
-    void save(Comment comment);
+    void insertComment(Comment comment);
 
     // 댓글 수정
     void edit(Long commentId, CommentUpdateDto commentUpdateDto);

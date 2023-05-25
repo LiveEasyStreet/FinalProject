@@ -13,6 +13,9 @@ import java.time.format.DateTimeFormatter;
 @Setter
 public class BoardViewDto {
 
+    // 보드 id
+    private Long boardId;
+
     // 제목
     private String title;
 
@@ -36,6 +39,7 @@ public class BoardViewDto {
 
 
     public BoardViewDto(Board board) {
+        this.boardId =board.getBoardId();
         this.title = board.getTitle();
         this.boardCategory = BoardCategory.findByDataValue(board.getBoardCategory());
         this.contents = board.getContents();

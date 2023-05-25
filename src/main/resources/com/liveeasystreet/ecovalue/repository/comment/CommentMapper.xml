@@ -4,5 +4,30 @@
 
 <mapper namespace="com.liveeasystreet.ecovalue.repository.comment.CommentMapper">
 
+    <select id="findByBoardId" resultType="Comment">
+        SELECT
+            c.comment_id AS comment_id,
+            c.board_id AS board_id,
+            m.nick_name AS nick_name,
+            c.head_comment AS headComment,
+            c.contents AS contents,
+            c.upload_date AS uploadDate,
+            c.edit_date AS editDate,
+            c.delete_date AS deleteDate
+        FROM
+            comment c
+                JOIN
+            member m ON m.member_id = c.MEMBER_ID
+        WHERE
+            c.BOARD_ID = #{boardId}
+    </select>
+
+
+    <insert id="insertComment" parameterType="Comment" keyProperty="commentId">
+        INSERT INTO comment ( BOARD_ID, MEMBER_ID, HEAD_COMMENT, CONTENTS, UPLOAD_DATE)
+        SELECT  #{boardId}, m.MEMBER_ID,#{headComment}, #{contents}, CURRENT_TIMESTAMP
+        FROM member m
+        WHERE m.NICK_NAME = #{nickName}
+    </insert>
 
 </mapper>

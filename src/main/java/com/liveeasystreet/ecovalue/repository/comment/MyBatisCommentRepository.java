@@ -1,6 +1,7 @@
 package com.liveeasystreet.ecovalue.repository.comment;
 
 import com.liveeasystreet.ecovalue.domain.Comment;
+import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -14,8 +15,8 @@ public class MyBatisCommentRepository implements CommentRepository{
 
     private final CommentMapper commentMapper;
     @Override
-    public void save(Comment comment) {
-        commentMapper.save(comment);
+    public void insertComment(Comment comment) {
+        commentMapper.insertComment(comment);
     }
 
     @Override

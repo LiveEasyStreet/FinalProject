@@ -23,6 +23,11 @@ public interface BoardMapper {
     // 게시물 전체 조회
     List<Board> findAll(BoardSearchCond boardSearchCond);
 
+    // 페이징 있는 findAll
+    List<Board> findAllWithPaging(int pageSize,int offset,BoardSearchCond boardSearchCond);
+
+    // 검색 결과에 따른 총 페이지 수
+    int pageCount(int pageSize, BoardSearchCond boardSearchCond);
     // 작성자 id로 조회
     Optional<Board> findById(Long boardId);
 

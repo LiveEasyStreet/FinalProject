@@ -1,6 +1,7 @@
 package com.liveeasystreet.ecovalue.repository.comment;
 
 import com.liveeasystreet.ecovalue.domain.Comment;
+import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentUpdateDto;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 public interface CommentRepository {
 
     // 댓글 저장
-    void save(Comment comment);
+    void insertComment(Comment comment);
 
     // 댓글 수정
     void edit(Long commentId, CommentUpdateDto commentUpdateDto);

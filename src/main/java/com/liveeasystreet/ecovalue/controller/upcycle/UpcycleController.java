@@ -1,9 +1,12 @@
 package com.liveeasystreet.ecovalue.controller.upcycle;
 
+import com.liveeasystreet.ecovalue.cond.board.BoardSearchCond;
 import com.liveeasystreet.ecovalue.controller.login.SessionConst;
 import com.liveeasystreet.ecovalue.domain.Board;
 import com.liveeasystreet.ecovalue.domain.BoardCategory;
+import com.liveeasystreet.ecovalue.domain.Comment;
 import com.liveeasystreet.ecovalue.dto.board.*;
+import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentResponseDto;
 import com.liveeasystreet.ecovalue.dto.member.MemberSessionDto;
 import com.liveeasystreet.ecovalue.service.bulletinboard.iBoardService;
@@ -47,9 +50,11 @@ public class UpcycleController {
     @GetMapping("/upGallery")
     public String upCycle_gallery(Model model,
                                  @RequestParam(defaultValue = "1") int page,
-                                 RedirectAttributes redirectAttributes){
+                                  @RequestParam(value = "search_keyword", required = false) String searchKeyword,
+                                  @RequestParam(value = "search_target", defaultValue = "title_content") String searchTarget,
+                                  RedirectAttributes redirectAttributes){
         model.addAttribute("page",page);
-        int lastPage = 55;
+        int lastPage = boardService.upGalleryBoardSearchPageCount(BoardConst.pageSize,BoardCategory.UP_CYCLE,searchTarget,searchKeyword)+1;
         if(lastPage<page){
             redirectAttributes.addAttribute("page", lastPage);
             return "redirect:/upGallery";
@@ -58,6 +63,21 @@ public class UpcycleController {
         if (page%10==0){
             startPage-=10;
         }
+        log.info("upGalleryBoardSearchPageCount : {}",boardService.upGalleryBoardSearchPageCount(BoardConst.pageSize,BoardCategory.UP_CYCLE,searchTarget,searchKeyword));
+        log.info("search : {}, {}",searchKeyword,searchTarget);
+
+        List<Board> boardLists = boardService.upGalleryBoardSearch(BoardConst.pageSize,BoardConst.pageSize*(page-1),BoardCategory.UP_CYCLE,searchTarget,searchKeyword);
+        List<Long> boardNum = boardService.boardPageNum(boardLists);
+
+        //현재 페이지에 이어줄 보드 번호
+        model.addAttribute("boardNum",boardNum);
+        log.info("boardNum : {}",boardNum);
+
+        // 검색어 페이징 이후 유지 위한 값
+        model.addAttribute("searchKeyword", searchKeyword);
+        model.addAttribute("searchTarget", searchTarget);
+
+        //페이징 위한 데이터
         model.addAttribute("page",page);
         model.addAttribute("startPage",startPage);
         model.addAttribute("lastPage", lastPage);
@@ -103,23 +123,49 @@ public class UpcycleController {
         model.addAttribute("thumbUpCount",thumbService.thumbCount(boardId));
         model.addAttribute("myThumb",isThumbMine);
 
-        // 테스트 정보
-        {
-            List<CommentResponseDto> commentResponseDto = new ArrayList<>();
-            LocalDateTime dateTime = LocalDateTime.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDateTime = dateTime.format(formatter);
-            commentResponseDto.add(new CommentResponseDto(1L,"테스트001","테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 ",formattedDateTime));
-            dateTime = LocalDateTime.now();
-            formattedDateTime = dateTime.format(formatter);
-            commentResponseDto.add(new CommentResponseDto(2L,"테스트최대길이열두글자용","테스트 내용 2",formattedDateTime));
-            model.addAttribute("commentList",commentResponseDto);
+//        // 테스트 정보
+//        {
+//            List<CommentResponseDto> commentResponseDto = new ArrayList<>();
+//            LocalDateTime dateTime = LocalDateTime.now();
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//            String formattedDateTime = dateTime.format(formatter);
+//            commentResponseDto.add(new CommentResponseDto(1L,"테스트001","테스트 내용<br> 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 ",formattedDateTime));
+//            dateTime = LocalDateTime.now();
+//            formattedDateTime = dateTime.format(formatter);
+//            commentResponseDto.add(new CommentResponseDto(2L,"테스트최대길이열두글자용","테스트 내용 2",formattedDateTime));
+//            model.addAttribute("commentList",commentResponseDto);
+//        }
+
+
+        List<Comment> Comments = boardService.findByBoardId(boardId);
+        List<CommentResponseDto> commentResponseDto = new ArrayList<>();
+        for(Comment comment : Comments){
+            commentResponseDto.add(new CommentResponseDto(comment));
         }
-
-
+        model.addAttribute("commentList",commentResponseDto);
 
 
         return "ecovalue/upcycle/upcycle_gallery_board";
+    }
+
+    @ResponseBody
+    @PostMapping("/upGallery/views/{boardId}")
+    public int commentWrite(Model model,
+                               @PathVariable Long boardId,
+                               @RequestParam String comment_content,
+                               @SessionAttribute(SessionConst.MEMBER_LOGIN) MemberSessionDto memberSessionDto){
+        log.info("comment : {}",comment_content);
+        Comment commentSample = new Comment();
+        commentSample.setBoardId(boardId);
+        commentSample.setContents(comment_content);
+        commentSample.setNickName(memberSessionDto.getNickName());
+        boardService.insertComment(commentSample);
+        List<Comment> commentList = boardService.findByBoardId(boardId);
+        for(Comment comment : commentList){
+            log.info("comment : {}",comment);
+        }
+
+        return 1;
     }
 
 

@@ -35,6 +35,16 @@ public class MyBatisBoardRepository implements BoardRepository{
     }
 
     @Override
+    public List<Board> findAllWithPaging(int pageSize, int offset,BoardSearchCond boardSearchCond) {
+        return boardMapper.findAllWithPaging(pageSize,offset, boardSearchCond);
+    }
+
+    @Override
+    public int pageCount(int pageSize, BoardSearchCond boardSearchCond) {
+        return boardMapper.pageCount(pageSize,boardSearchCond);
+    }
+
+    @Override
     public Optional<Board> findById(Long boardId) {
         return boardMapper.findById(boardId);
     }

@@ -31,3 +31,23 @@ VALUES (1, 2, 1,'테스트 대댓글 1', now());
 insert into comment
 (board_id, member_id, head_comment, contents, upload_date)
 VALUES (1, 1, 1,'본인 테스트 대댓글 1', now());
+
+insert into comment
+(board_id, member_id, head_comment, contents, upload_date)
+VALUES (47, 1, 0,'동일인물 테스트 댓글 1', now());
+
+insert into comment
+(board_id, member_id, head_comment, contents, upload_date)
+VALUES (47, 1, 0,'동일인물 테스트 댓글 2', now());
+
+insert into comment
+(board_id, member_id, head_comment, contents, upload_date)
+VALUES (47, 2, 0,'테스트 댓글 3', now());
+
+insert into comment
+(board_id, member_id, head_comment, contents, upload_date)
+VALUES (47, 2, 1,'테스트 대댓글 1', now());
+
+insert into comment
+(board_id, member_id, head_comment, contents, upload_date)
+VALUES (47, 1, 1,'본인 테스트 대댓글 1', now());
