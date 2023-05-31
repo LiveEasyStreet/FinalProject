@@ -5,9 +5,11 @@
 <mapper namespace="com.liveeasystreet.ecovalue.repository.bulletinboard.BoardMapper">
     <insert id="save" useGeneratedKeys="true" keyProperty="boardId">
         insert into board
-        (TITLE, BOARD_CATEGORY, CONTENTS, MEMBER_ID, UPLOAD_DATE, VIEWS)
+            (TITLE, BOARD_CATEGORY, TAG, CONTENTS, MEMBER_ID, UPLOAD_DATE, VIEWS)
         values
-            (#{title}, #{boardCategory},#{contents},#{memberId},#{uploadDate},#{views})
+            (#{title}, #{boardCategory}, #{tag}, #{contents},
+             (select member_id from member where login_id = #{loginId}),
+             #{uploadDate}, #{views})
     </insert>
 
 
@@ -52,7 +54,7 @@
                 AND m.nick_name LIKE CONCAT('%', #{boardSearchCond.nickName}, '%')
             </if>
         </where>
-        ORDER BY b.board_id ASC
+        ORDER BY b.board_id DESC
         LIMIT #{pageSize} OFFSET #{offset}
     </select>
 

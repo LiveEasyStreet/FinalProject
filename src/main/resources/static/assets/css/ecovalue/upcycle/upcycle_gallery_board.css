@@ -145,6 +145,11 @@
 
     align-items: center;
 }
+.each_comment.reply{
+    padding-left: 80px;
+    padding-right: 20px;
+    background-color: var(--background-color-main);
+}
 .each_comment>hr{
     margin-top: 5px;
     margin-bottom: 5px;

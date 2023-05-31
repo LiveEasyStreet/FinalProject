@@ -2,25 +2,38 @@ package com.liveeasystreet.ecovalue.controller.upcycle;
 
 import com.liveeasystreet.ecovalue.cond.board.BoardSearchCond;
 import com.liveeasystreet.ecovalue.controller.login.SessionConst;
-import com.liveeasystreet.ecovalue.domain.Board;
-import com.liveeasystreet.ecovalue.domain.BoardCategory;
-import com.liveeasystreet.ecovalue.domain.Comment;
+import com.liveeasystreet.ecovalue.domain.*;
 import com.liveeasystreet.ecovalue.dto.board.*;
 import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentResponseDto;
 import com.liveeasystreet.ecovalue.dto.member.MemberSessionDto;
+import com.liveeasystreet.ecovalue.file.FileStore;
 import com.liveeasystreet.ecovalue.service.bulletinboard.iBoardService;
+import com.liveeasystreet.ecovalue.service.image.ImageServiceInterface;
 import com.liveeasystreet.ecovalue.service.member.MemberDataAccessService;
 import com.liveeasystreet.ecovalue.service.thumbsup.ThumbServiceImpl;
+import com.liveeasystreet.ecovalue.service.thumbsup.iThumbService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cglib.core.Local;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +41,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 @Controller
@@ -38,16 +53,19 @@ public class UpcycleController {
 
     private final MemberDataAccessService memberDataAccessService;
 
-    private final ThumbServiceImpl thumbService;
+    private final iThumbService thumbService;
+
+    private final FileStore fileStore;
+
+    private final ImageServiceInterface imageServiceInterface;
 
 
-
-    @GetMapping("/upcycleInfo")
+    @GetMapping({"/upcycleInfo","/upcycleInfo/"})
     public String upcycle_info(){
         return"ecovalue/upcycle/upcycle_info";
     }
 
-    @GetMapping("/upGallery")
+    @GetMapping({"/upGallery/","/upGallery"})
     public String upCycle_gallery(Model model,
                                  @RequestParam(defaultValue = "1") int page,
                                   @RequestParam(value = "search_keyword", required = false) String searchKeyword,
@@ -85,6 +103,76 @@ public class UpcycleController {
 
         return "ecovalue/upcycle/upcycle_gallery";
     }
+    @GetMapping("/upGallery/write")
+    public String upCycle_board_write(Model model){
+        model.addAttribute("category",BoardCategory.UP_CYCLE.getDescription());
+        model.addAttribute("tags",UpCycleCategory.getNonEndCategories());
+        return "ecovalue/upcycle/upcycle_gallery_board_write";
+    }
+
+    @ResponseBody
+    @PostMapping("/upGallery/write")
+    public Long submit_board_write(@RequestBody BoardWriteDto board,
+                                           @SessionAttribute(SessionConst.MEMBER_LOGIN) MemberSessionDto memberSessionDto,
+                                           RedirectAttributes redirectAttributes){
+        // 날짜 설정
+        board.setUploadDate(LocalDateTime.now());
+        // 업사이클 갤러리 설정
+        board.setBoardCategory(2L);
+        board.setLoginId(memberSessionDto.getLoginId());
+        board.setViews(0);
+        boardService.save(board);
+        //
+        String decodeText = board.getContents();
+        decodeText = URLDecoder.decode(decodeText, StandardCharsets.UTF_8);
+
+
+        log.info("\nencode text : {}",board.getContents());
+        log.info("\nhtml text : {}",decodeText);
+        log.info("\nboardWriteDto : {}",board);
+
+
+        /**
+         * 나중에 서비스로 옮길 부분 img 태그안의 src 부분만 가져와서 사용
+         */
+        String patternString = "<img[^>]+src\\s*=\\s*['\"]([^'\"]+)['\"][^>]*>";
+        Pattern pattern = Pattern.compile(patternString);
+        Matcher matcher = pattern.matcher(decodeText);
+        List<String> imageURLs = new ArrayList<>();
+        /**
+         * /upGallery/write/image/e8c7953d-28e9-4b70-b133-8d12b4874657.png?date=2023-05-31T17:10:43.5427442
+         */
+
+        while (matcher.find()){
+            String imageUrl = matcher.group(1);
+            imageURLs.add(imageUrl);
+        }
+        imageServiceInterface.updateBoardIdByStoreFileName(imageURLs,board.getBoardId());
+
+        return board.getBoardId();
+    }
+    @ResponseBody
+    @PostMapping("/upGallery/write/image")
+    public BoardImage image_submit_test(@RequestParam("file") MultipartFile file) throws IOException {
+        log.info("file : {}",file);
+        LocalDateTime date = LocalDateTime.now();
+
+        UploadImageFile attachFile = fileStore.storeFile(file, date);
+
+        BoardImage boardImage = new BoardImage(attachFile,date);
+        imageServiceInterface.save(boardImage);
+
+        return boardImage;
+    }
+
+    @ResponseBody
+    @GetMapping("/upGallery/write/image/{filename}")
+    public UrlResource downloadImage(@PathVariable String filename,
+                                     @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateTime) throws MalformedURLException {
+
+        return new UrlResource("file:"+fileStore.getFullPath(filename,dateTime));
+    }
+
 
     @GetMapping("/upGallery/views/{boardId}")
     public String upCycle_board_view(Model model,
@@ -109,32 +197,9 @@ public class UpcycleController {
         boardViewDto.setNickName(memberDataAccessService.getMemberNickNameById(board.getMemberId()));
 
 
-//        boardViewDto.setTitle("테스트 제목 1");
-//        boardViewDto.setBoardCategory(BoardCategory.UP_CYCLE);
-//        String testContents = "이것은 테스트 데이터 입니다. \n텍스트 줄바꿈 테스트 입니다. \n줄바꿈이 제대로 되는지 보는 용도";
-//        testContents=testContents.replaceAll("\n","<br/>");
-//        boardViewDto.setContents(testContents);
-//        boardViewDto.setNickName("test테001");
-//        LocalDate localDate= LocalDate.now();
-//        boardViewDto.setUploadDate(localDate);
-//        boardViewDto.setViews(24);
-
         model.addAttribute(boardViewDto);
         model.addAttribute("thumbUpCount",thumbService.thumbCount(boardId));
         model.addAttribute("myThumb",isThumbMine);
-
-//        // 테스트 정보
-//        {
-//            List<CommentResponseDto> commentResponseDto = new ArrayList<>();
-//            LocalDateTime dateTime = LocalDateTime.now();
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//            String formattedDateTime = dateTime.format(formatter);
-//            commentResponseDto.add(new CommentResponseDto(1L,"테스트001","테스트 내용<br> 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 ",formattedDateTime));
-//            dateTime = LocalDateTime.now();
-//            formattedDateTime = dateTime.format(formatter);
-//            commentResponseDto.add(new CommentResponseDto(2L,"테스트최대길이열두글자용","테스트 내용 2",formattedDateTime));
-//            model.addAttribute("commentList",commentResponseDto);
-//        }
 
 
         List<Comment> Comments = boardService.findByBoardId(boardId);
@@ -150,7 +215,7 @@ public class UpcycleController {
 
     @ResponseBody
     @PostMapping("/upGallery/views/{boardId}")
-    public int commentWrite(Model model,
+    public CommentResponseDto commentWrite(Model model,
                                @PathVariable Long boardId,
                                @RequestParam String comment_content,
                                @SessionAttribute(SessionConst.MEMBER_LOGIN) MemberSessionDto memberSessionDto){
@@ -160,12 +225,15 @@ public class UpcycleController {
         commentSample.setContents(comment_content);
         commentSample.setNickName(memberSessionDto.getNickName());
         boardService.insertComment(commentSample);
+        log.info("input comment : {}",commentSample);
         List<Comment> commentList = boardService.findByBoardId(boardId);
         for(Comment comment : commentList){
             log.info("comment : {}",comment);
         }
 
-        return 1;
+        Comment newComment = boardService.findById(commentSample.getCommentId()).orElse(null);
+        CommentResponseDto commentResponseDto = new  CommentResponseDto(newComment);
+        return commentResponseDto;
     }
 
 

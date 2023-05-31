@@ -41,6 +41,7 @@ public class ThumbServiceImpl implements iThumbService{
 
     }
 
+    @Override
     public int thumbCount(Long boardId){
         return thumbUpRepository.thumbCount(boardId);
     }

@@ -48,7 +48,7 @@
         <hr class="hr green">
         <div class="commentArea">
             <th:block th:each="comment, commentStat : ${commentList}">
-                <div class="each_comment">
+                <div class="each_comment" th:class="'each_comment comment' + ${comment.getHeadComment()}" th:classappend="${comment.getCommentId() ne comment.getHeadComment()}?'reply'">
                     <p class="comment_id" th:text="${comment.commentId}">
                         댓글 아이디
                     </p>

@@ -5,6 +5,7 @@ import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentUpdateDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CommentRepository {
 
@@ -22,4 +23,6 @@ public interface CommentRepository {
 
     // 해당 회원의 모든 댓글 조회
     List<Comment> findByMemberId(Long memberId);
+
+    Optional<Comment> findById(Long commentId);
 }

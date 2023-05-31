@@ -19,6 +19,11 @@ public class Board {
     //카테고리
     private Long boardCategory;
 
+    /**
+     * 태그인데 아직 db 구현 덜함
+     */
+    private Long tag;
+
     // 내용
     private String contents;
 
@@ -43,6 +48,12 @@ public class Board {
         this.contents = contents;
         this.memberId = memberId;
         this.views=0;
+    }
+
+    public Board(String title, int tag, String contents) {
+        this.title = title;
+        this.tag = (long) tag;
+        this.contents = contents;
     }
 
     public Board(Long boardId, String title, Long boardCategory, String contents, Long memberId, LocalDateTime uploadDate, LocalDateTime editDate, LocalDateTime deleteDate, int views) {

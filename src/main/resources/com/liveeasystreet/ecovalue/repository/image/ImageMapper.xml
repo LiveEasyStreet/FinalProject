@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liveeasystreet.ecovalue.repository.image.ImageMapper">
+    <insert id="save" useGeneratedKeys="true" keyProperty="imageId">
+        insert into image
+            (board_id, image_id, upload_file_name, store_file_name, upload_date)
+        values
+            (#{boardId}, NEXTVAL('image_seq'),#{attachFile.uploadFileName},#{attachFile.storeFileName},#{uploadDate})
+    </insert>
+
+    <update id="updateBoardIdByStoreFileName">
+        UPDATE image SET board_id = #{boardId} WHERE store_file_name = #{storeFileName} AND board_id IS NULL
+    </update>
+
+</mapper>

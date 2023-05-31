@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -37,5 +38,10 @@ public class MyBatisCommentRepository implements CommentRepository{
     @Override
     public List<Comment> findByMemberId(Long memberId) {
         return commentMapper.findByMemberId(memberId);
+    }
+
+    @Override
+    public Optional<Comment> findById(Long commentId) {
+        return commentMapper.findById(commentId);
     }
 }

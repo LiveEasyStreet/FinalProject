@@ -4,6 +4,7 @@ import com.liveeasystreet.ecovalue.cond.board.BoardSearchCond;
 import com.liveeasystreet.ecovalue.domain.Board;
 import com.liveeasystreet.ecovalue.domain.BoardCategory;
 import com.liveeasystreet.ecovalue.domain.Comment;
+import com.liveeasystreet.ecovalue.dto.board.BoardWriteDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.repository.bulletinboard.BoardRepository;
 import com.liveeasystreet.ecovalue.repository.comment.CommentRepository;
@@ -21,6 +22,11 @@ public class BoardServiceImpl implements iBoardService{
     private final BoardRepository boardRepository;
 
     private final CommentRepository commentRepository;
+
+    @Override
+    public void save(BoardWriteDto board) {
+        boardRepository.save(board);
+    }
 
     @Override
     public Board BoardViewService(Long boardId) {
@@ -65,6 +71,11 @@ public class BoardServiceImpl implements iBoardService{
     @Override
     public void insertComment(Comment comment) {
         commentRepository.insertComment(comment);
+    }
+
+    @Override
+    public Optional<Comment> findById(Long commentId) {
+        return commentRepository.findById(commentId);
     }
 
     private static BoardSearchCond setBoardSearchCond(String search_target, String search_keyword, BoardCategory boardCategory) {
