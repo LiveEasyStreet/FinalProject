@@ -1,0 +1,241 @@
+/* container */
+.challenge_container {
+    width: 1280px;
+    height: 744px;
+    background-color: #f7f8f8;
+
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    flex-direction: column; /* 수직정렬 */
+}
+/* end container */
+
+/* navigation */
+.challenge_nav {
+    width: 500px;
+    height: 50px;
+    /*background-color: white;*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.challenge_nav > span {
+    width: 140px;
+    height: 35px;
+    border-radius: 25px;
+    background-color: #27ae60;
+
+    text-align: center; /* text 가로 중앙정렬 */
+    line-height: 35px; /* text 세로 중앙정렬 */
+
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.challenge_ing_btn {
+    color: white;
+}
+.challenge_ing_btn:hover {
+    color: white;
+}
+
+.challenge_end_btn {
+    color: #333333;
+}
+.challenge_end_btn:hover {
+    color: white;
+}
+/* end navigation */
+
+/* contents */
+.challenge_contents {
+    width: 1280px;
+    height: 650px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    position: relative;
+
+    width: 100%;
+
+    user-select: none;
+}
+
+.challenge_end_wrap {
+    position: absolute;
+
+    width: 1280px;
+
+    z-index: -1;
+}
+
+.slide_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    left: 0px;
+    gap: 30px;
+
+    width: 100%;
+    height: 650px;
+    flex-shrink: 0; /* 줄어들기 0 */
+
+    transition: left 0.5s;
+}
+
+.slide_button {
+    display: flex;
+    justify-content: center;
+    line-height: 28px; /* text 세로 중앙정렬 */
+
+    position: absolute;
+    top: calc(50% - 16px);
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 100px;
+    background-color: #cccc;
+    cursor: pointer;
+}
+
+.ing_slide_prev_button {
+    left: 10px;
+}
+
+.ing_slide_next_button {
+    right: 10px;
+}
+
+.end_slide_prev_button {
+    left: 10px;
+}
+
+.end_slide_next_button {
+    right: 10px;
+}
+
+ul, li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.slide_pagination {
+    display: flex;
+    gap: 5px;
+
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.slide_pagination > li {
+    color: #d9d9d9;
+    cursor: pointer;
+    font-size: 25px;
+}
+.slide_pagination > li.active {
+    color: #27ae60;
+}
+
+.item_box {
+    width: 1000px;
+    height: 550px;
+    border: 3px solid #d9d9d9;
+    border-radius: 15px;
+    background-color: white;
+
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    /*flex-direction: column;*/
+}
+
+.item_box > img {
+    width: 544px;
+    height: 544px;
+    border-right: 3px solid #d9d9d9;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+    background-color: #f7f8f8;
+}
+
+.challenge_details {
+    width: 456px;
+    height: 544px;
+    /*border-top: 3px solid #d9d9d9;*/
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    position: relative;
+
+    font-family: "NanumSquare", sans-serif;
+}
+
+.challenge_details > div {
+    width: 400px;
+
+    position: relative;
+    top: 25px;
+    left: 15px;
+}
+
+.challenge_details > .challenge_title {
+    height: 70px;
+    border-bottom: 3px solid #d9d9d9;
+
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.challenge_details > .challenge_content {
+    height: 310px;
+    border-bottom: 3px solid #d9d9d9;
+}
+
+.challenge_details > .join_btn {
+    width: 100px;
+    height: 30px;
+    border: 0;
+    border-radius: 10px;
+    color: #333333;
+    background-color: orange;
+
+    text-align: center;
+    line-height: 30px;
+
+    position: relative;
+    top: 10px;
+    left: 330px;
+
+    font-weight: 600;
+    font-size: 18px;
+}
+.challenge_details > .continue:hover {
+    transition: 0.5s;
+    color: white;
+}
+/* end contents */

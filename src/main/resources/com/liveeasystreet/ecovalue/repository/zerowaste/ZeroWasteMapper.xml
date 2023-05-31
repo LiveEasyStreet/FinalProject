@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liveeasystreet.ecovalue.repository.zerowaste.ZeroWasteMapper">
+    <insert id="save" useGeneratedKeys="true" keyProperty="challengeId">
+        insert into challenge
+            (title, board_category, contents, start_challenge, end_challenge, join_member)
+        values
+            (#{title}, #{boardCategory}, #{contents}, #{startChallenge}, #{endChallenge}, #{joinMember});
+    </insert>
+
+    <select id="findById" resultType="zeroWasteChallenge">
+        select
+            challenge_id, title, board_category, contents, start_challenge, end_challenge, join_member
+        from
+            challenge
+        where
+            challenge_id = #{challengeId};
+    </select>
+
+    <select id="findAll" resultType="zeroWasteChallenge">
+        select
+            challenge_id, title, board_category, contents, start_challenge, end_challenge, join_member
+        from
+            challenge
+        order by
+            start_challenge DESC;
+    </select>
+
+    <update id="joinMemberCount">
+        update challenge
+        set join_member = #{joinMember} + 1
+        where
+            challenge_id = #{challengeId};
+    </update>
+
+    <delete id="deleteById">
+        delete from
+            challenge
+        where
+            challenge_id = #{challengeId};
+    </delete>
+</mapper>
