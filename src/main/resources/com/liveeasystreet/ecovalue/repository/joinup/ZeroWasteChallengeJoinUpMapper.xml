@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liveeasystreet.ecovalue.repository.joinup.ZeroWasteChallengeJoinUpMapper">
+
+    <insert id="joinUp">
+        insert into joinup
+            (challenge_id, member_id, date_time, is_deleted)
+        select
+            #{challengeId}, #{member_id}, now(), false
+        where
+            not exists (select * from joinup where member_id = #{memberId} and challengeId = #{challengeId});
+    </insert>
+
+    <select id="isJoined" resultType="JoinUp">
+        select
+            challenge_id, member_id, date_time, is_deleted
+        from
+            joinup
+        where
+            challenge_id = #{challengeId} and member_id = #{memberId}, and is_deleted = false;
+    </select>
+
+    <update id="updateJoinUp">
+        update
+            joinUp
+        set
+            date_time = current_timestamp, is_deleted = false
+        where
+            challenge_id = #{challengeId} and member_id = #{memberId} and is_deleted = true;
+    </update>
+
+    <update id="deleteJoin">
+        update
+            joinup
+        set
+            is_deleted = true
+        where
+            challenge_id = #{challengeId} and member_id = #{memberId};
+    </update>
+</mapper>

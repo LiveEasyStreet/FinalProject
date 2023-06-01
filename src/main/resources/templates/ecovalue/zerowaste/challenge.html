@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{ecovalue/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<head>
+    <meta charset="UTF-8"/>
+    <title>챌린지</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/ecovalue/zerowaste/challenge.css"
+          th:href="@{/assets/css/ecovalue/zerowaste/challenge.css}">
+    <script defer src="/static/assets/js/ecovalue/zerowaste/challenge.js"
+                  th:src="@{/assets/js/ecovalue/zerowaste/challenge.js}"></script>
+</head>
+<body>
+    <!-- container -->
+    <section class="challenge_container">
+        <!-- navbar -->
+        <div class="challenge_nav">
+            <span class="challenge_ing_btn">진행중 챌린지</span>
+            <span class="challenge_end_btn">종료된 챌린지</span>
+        </div> <!-- navbar -->
+        <!-- contents -->
+        <div class="challenge_contents">
+            <!-- slide_wrap challenge_ing_wrap -->
+            <div class="slide slide_wrap challenge_ing_wrap">
+                <th:block th:each="continue, c : ${continueChallenges}">
+                    <!-- slide_item -->
+                    <div class="slide_item ing_slide_item" th:if="${c.index &lt;= c.size}">
+                        <div class="item_box">
+                            <img th:src="@{/assets/img/zerowaste/introduce/zerowaste5R.jpg}">
+                            <div class="challenge_details">
+                                <div class="challenge_title" th:text="${continue.title}">제로웨이스트 챌린지</div>
+                                <div class="challenge_content" th:text="${continue.contents}">컨텐츠 블라블라~</div>
+                                <div class="challenge_date"th:text="${continue.startChallenge + ' ~ ' + continue.endChallenge}">시작 날짜</div>
+                                <div class="join_count" th:text="${'참여자: ' + continue.joinMembers + ' 명'}">참여자 수 : 0</div>
+                                <button class="join_btn continue">참여하기</button>
+                            </div>
+                        </div>
+                    </div> <!-- slide_item -->
+                </th:block>
+                <div class="slide_button ing_slide_prev_button">◀</div>
+                <div class="slide_button ing_slide_next_button">▶</div>
+                <ul class="slide_pagination ing_slide_pagination"></ul>
+            </div> <!-- slide_wrap challenge_ing_wrap -->
+
+            <!-- slide_wrap challenge_end_wrap -->
+            <div class="slide slide_wrap challenge_end_wrap">
+                <th:block th:each="end, e : ${endChallenges}">
+                    <!-- slide_item -->
+                    <div class="slide_item end_slide_item" th:if="${e.index &lt;= e.size}">
+                        <div class="item_box">
+                            <img th:src="@{/assets/img/zerowaste/introduce/zerowaste5R.jpg}">
+                            <div class="challenge_details">
+                                <div class="challenge_title" th:text="${end.title}">제로웨이스트 챌린지</div>
+                                <div class="challenge_content" th:text="${end.contents}">컨텐츠 블라블라~</div>
+                                <div class="challenge_date"th:text="${end.startChallenge + ' ~ ' + end.endChallenge}">시작 날짜</div>
+                                <div class="join_count" th:text="${'참여자: ' + end.joinMembers + ' 명'}">참여자 수 : 0</div>
+                                <button class="join_btn end">종료됨</button>
+                            </div>
+                        </div>
+                    </div> <!-- slide_item -->
+                </th:block>
+                <div class="slide_button end_slide_prev_button">◀</div>
+                <div class="slide_button end_slide_next_button">▶</div>
+                <ul class="slide_pagination end_slide_pagination"></ul>
+            </div> <!-- slide_wrap challenge_end_wrap -->
+        </div> <!-- contents -->
+    </section> <!-- container -->
+</body>
+</html>
