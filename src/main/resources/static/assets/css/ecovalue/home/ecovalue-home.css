@@ -1,0 +1,723 @@
+section{
+    padding-top: 20px;
+    background: var(--background-color-main);
+    scroll-snap-type: y mandatory;
+}
+/*메인페이지 슬라이드*/
+.home-slide{
+    width: 1280px;
+    height: 600px;
+}
+.home-slide input[id*="slide"] {
+    display:none;
+}
+.home-slide .home-slide-wrap {
+    width: 1140px;
+    height: 600px;
+    margin:0 auto;
+}
+.home-slide .slide-list {
+    white-space:nowrap;
+    font-size:0;
+    overflow:hidden;
+    position:relative;
+}
+.home-slide .slide-list > li {
+    display:inline-block;
+    vertical-align:middle;
+    width: 1200px;
+    transition:all .5s;
+}
+.home-slide .slide-list > li > a {
+    display:block;
+    position:relative;
+}
+.home-slide .slide-list > li > a img {
+    width: 1140px;
+    height: 550px;
+    border-radius: 10px;
+}
+.home-slide .slide-list label {
+    position:absolute;
+    z-index:10;
+    top:50%;
+    transform:translateY(-50%);
+    padding:50px;
+    cursor:pointer;
+}
+.home-slide .slide-list .text-box {
+    position:absolute;
+    z-index:1;
+    top:50%;
+    left:48%;
+    width: 800px;
+    height: 200px;
+    padding: 30px 0px 30px;
+    transform:translate(-50%, -48%);
+    line-height:1.8;
+    text-align:center;
+    background: rgba(76, 76, 76, 0.4);
+}
+.home-slide .slide-list .text-box .text-main {
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #f1f2f3;
+    letter-spacing: 5px;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform:translateY(30px);
+    transition:all .5s;
+}
+.home-slide .slide-list .text-box .text {
+    font-family: "NanumSquare", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f1f2f3;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    opacity:0;
+    transform:translateY(30px);
+    transition:all .5s;
+}
+/* input에 체크되면 슬라이드 효과 */
+.home-slide input[id="slide01"]:checked ~ .home-slide-wrap .slide-list > li {transform:translateX(0%);}
+.home-slide input[id="slide02"]:checked ~ .home-slide-wrap .slide-list > li {transform:translateX(-100%);}
+
+/* input에 체크되면 텍스트 효과 */
+.home-slide input[id="slide01"]:checked ~ .home-slide-wrap li:nth-child(1) .text-box .text-main {
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:.2s;
+}
+.home-slide input[id="slide01"]:checked ~ .home-slide-wrap li:nth-child(1) .text-box .text {
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:.4s;
+}
+.home-slide input[id="slide02"]:checked ~ .home-slide-wrap li:nth-child(2) .text-box .text-main {
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:.2s;
+}
+.home-slide input[id="slide02"]:checked ~ .home-slide-wrap li:nth-child(2) .text-box .text {
+    opacity:1;
+    transform:translateY(0);
+    transition-delay:.4s;
+}
+/* 좌,우 슬라이드 버튼 */
+.slide-control > div {
+    display:none;
+    top: 30%;
+}
+.home-slide .left {
+    left:20px;
+    background:url("/assets/img/home/left-arrow.png") center center / 100% no-repeat;
+    opacity: 0.6;
+}
+.home-slide .right {
+    right:20px;
+    background:url("/assets/img/home/right-arrow.png") center center / 100% no-repeat;
+    opacity: 0.6;
+}
+.home-slide input[id="slide01"]:checked ~ .home-slide-wrap .slide-control > div:nth-child(1) {
+    display:block;
+}
+.home-slide input[id="slide02"]:checked ~ .home-slide-wrap .slide-control > div:nth-child(2) {
+    display:block;
+}
+/* 페이징 처리*/
+.slide-page-list {
+    text-align:center;
+    padding-top: 3px;
+}
+.slide-page-list > li {
+    display:inline-block;
+}
+.slide-page-list > li > label {
+    display:block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    margin:10px 10px;
+    cursor:pointer;
+}
+.home-slide input[id="slide01"]:checked ~ .home-slide-wrap .slide-page-list > li:nth-child(1) > label {
+    background: var(--point-color);
+}
+.home-slide input[id="slide02"]:checked ~ .home-slide-wrap .slide-page-list > li:nth-child(2) > label {
+    background: var(--point-color);
+}
+
+/*메인페이지 상단부*/
+
+/*메인페이지 상단부 제목*/
+.home-top-container .title {
+    display: flex;
+    width: 1280px;
+    height: 100px;
+    padding-top: 50px;
+    padding-left: 70px;
+
+}
+.home-top-container .title .main {
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 30px;
+    font-weight: bolder;
+    color: var(--point-color);
+}
+.home-top-container .title .sub {
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 30px;
+    font-weight: bolder;
+    color: var(--font-color-main);
+}
+/* 메인아이템 테이블 형식으로 구현*/
+.home-top {
+    display: table;
+    clear: both;
+    table-layout: fixed;
+    width: 1280px;
+    border-radius: 10px;
+    background: #F0FDF2;
+}
+/* 리사이클 */
+.table-mainitem-wrap {
+    display: table-cell;
+    vertical-align: middle;
+}
+.table-mainitem-wrap .recycle {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    margin: 20px 70px;
+    padding: 40px 40px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    line-height: 1.6;
+    background: #27ae60;
+}
+/* 리사이클 재활용방법 소개 바로가기 */
+.recycle .recycle-link-box {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin-left: 200px;
+    border-radius: 50%;
+    background: #f1f2f3;
+}
+.recycle .recycle-link-box .arrow-top {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 25%;
+    left: 25%;
+    color: #27ae60;
+    filter: invert(53%) sepia(40%) saturate(745%) hue-rotate(93deg) brightness(96%) contrast(91%);
+}
+.recycle .recycle-icon-box {
+    margin: 10px 0px 20px;
+    color: #f1f2f3;
+}
+.recycle .recycle-text-box .text-sub-title {
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f1f2f3;
+}
+.recycle .recycle-text-box .text-main-title {
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #f1f2f3;
+}
+/*리사이클 나만의 노하우 바로가기*/
+.recycle .shortcut-box {
+    position: absolute;
+    width: 220px;
+    height: 65px;
+    margin-top: 50px;
+    border-radius: 10px;
+    background: #f1f2f3;
+}
+.recycle .shortcut-box .shortcut-link {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -50%);
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #27ae60;
+}
+.recycle .shortcut-box .arrow-right {
+    position: absolute;
+    top: 50%;
+    margin-left: 10px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: #27ae60;
+    filter: invert(53%) sepia(40%) saturate(745%) hue-rotate(93deg) brightness(96%) contrast(91%);
+}
+/* 리사이클 호버시 그림자 효과*/
+.table-mainitem-wrap .recycle:hover {
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.16);
+}
+/* 리사이클 재활용방법 소개 바로가기 호버시 색상 변경 효과 */
+.recycle .recycle-link-box:hover {
+    background: #005253;
+}
+.recycle .recycle-link-box .arrow-top:hover {
+    color: #f1f2f3;
+    filter: invert(91%) sepia(6%) saturate(353%) hue-rotate(120deg) brightness(115%) contrast(90%);
+    transition: 0.01ms;
+}
+/* 리사이클 나만의 노하우 호버시 포인트 효과 */
+.recycle .shortcut-box .shortcut-link:hover{
+    cursor: pointer;
+}
+
+/* 나머지 주요 메뉴들 */
+.table-srcitem-wrap{
+    position: relative;
+    display: inline-block;
+    flex-wrap: wrap;
+    height: 450px;
+}
+/*나머지 주요 메뉴들 전체 스타일 설정*/
+.table-srcitem-wrap .srcitems{
+    float: left;
+    width: 330px;
+    height: 200px;
+    margin: 20px 80px 25px 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+/*기본 박스 스타일 설정*/
+.table-srcitem-wrap .srcitems .show{
+    display: flex;
+    position: absolute;
+    z-index: 60;
+    flex-direction: column;
+    width: 330px;
+    height: 200px;
+    padding: 30px 30px;
+    border-radius: 20px;
+    background: #f1f2f3;
+}
+.table-srcitem-wrap .srcitems .show .icon-box{
+    display: block;
+    height: 50px;
+    color: #27ae60;
+}
+.table-srcitem-wrap .srcitems .show .text-box{
+    position: relative;
+    height: 110px;
+}
+.table-srcitem-wrap .srcitems .show .text-box .text-sub-title{
+    height: 20px;
+    margin-top: 15px;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--font-color-sub);
+}
+.table-srcitem-wrap .srcitems .show .text-box .text-main-title{
+    margin-top: 15px;
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 30px;
+    font-weight: bolder;
+    color: var(--font-color-main);
+}
+
+/*호버 박스 스타일 설정*/
+.table-srcitem-wrap .srcitems .hover{
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    height: 200px;
+    padding: 30px 30px;
+    border-radius: 20px;
+}
+.table-srcitem-wrap .srcitems .hover .sub-menu-list{
+    display: block;
+    height: 60px;
+    line-height: 1.6;
+}
+.table-srcitem-wrap .srcitems .hover .sub-menu-list .sub-menu-title{
+    position: relative;
+    box-sizing: border-box;
+}
+.table-srcitem-wrap .srcitems .hover .sub-menu-list .sub-menu-link{
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f1f2f3;
+}
+.table-srcitem-wrap .srcitems .hover .hover-main-title{
+    margin-top: 40px;
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 30px;
+    font-weight: bolder;
+    color: #f1f2f3;
+}
+/*호버 이전에는 기본박스를 기본으로 설정*/
+.table-srcitem-wrap .srcitems:hover .show{
+    display: none;
+}
+/*호버 시 효과 설정*/
+.table-srcitem-wrap .srcitems:hover {
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.16);
+}
+/*호버 시 텍스트 효과 설정*/
+.table-srcitem-wrap .srcitems .hover .sub-menu-list .sub-menu-link:hover{
+    font-weight: bolder;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-decoration: underline;
+}
+/*.table-srcitem-wrap .srcitems .hover .sub-menu-list .sub-menu-link:focus{*/
+/*    font-weight: bolder;*/
+/*}*/
+/*업사이클 호버박스 배경색 설정*/
+.table-srcitem-wrap .srcitem-upcycle:hover{
+    background: #005253;
+}
+/*제로웨이스트 호버박스 배경색 설정*/
+.table-srcitem-wrap .srcitem-zerowaste:hover{
+    background: #5870A0;
+}
+/*상점 호버박스 배경색 설정*/
+.table-srcitem-wrap .srcitem-store:hover{
+    background: #2E688B;
+}
+/*이벤트 호버박스 배경색 설정*/
+.table-srcitem-wrap .srcitem-event:hover{
+    background: #0F7566;
+}
+/*메인페이지 중간부*/
+.home-middle{
+    display: inline-block;
+    width: 1280px;
+    transform: translateY(60px);
+    border-radius: 10px;
+    background: var(--background-color-sub);
+}
+/*메인페이지 중간부 제목*/
+.challenge-title{
+    position: relative;
+    display: flex;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1280px;
+    height: 40px;
+    margin-top: 100px;
+    justify-content: center;
+}
+.challenge-title .name{
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #27ae60;
+}
+.challenge-title .message{
+    font-family: NanumSquare, serif;
+    font-size: 20px;
+    font-weight: bolder;
+    color: var(--font-color-main);
+}
+/*현재 진행중인 챌린지*/
+.challenge-item-wrap{
+    position: relative;
+    width: 1280px;
+    height: 390px;
+    left: 70px;
+    margin-top: 30px;
+}
+.challenge-item-wrap .challenge-item{
+    float: left;
+    width: 330px;
+    height: 330px;
+    margin-right: 70px;
+    box-sizing: border-box;
+    border: 1px solid #d9d9d9;
+    border-radius: 20px;
+    background: var(--background-color-main);
+    transition-duration: 1s;
+    transition-property: transform;
+}
+.challenge-item .image-box{
+    display: block;
+    width: 330px;
+    height: 200px;
+}
+.challenge-item .image-box .challenge-image01{
+    width: 328px;
+    height: 199px;
+    background: url("/assets/img/home/challenge-bag.jpg") no-repeat;
+    background-size: cover;
+    border-radius: 20px 20px 0px 0px;
+    overflow: hidden;
+}
+.challenge-item .image-box .challenge-image02{
+    width: 328px;
+    height: 199px;
+    background: url("/assets/img/home/challenge-tumbler.jpg") no-repeat;
+    background-size: cover;
+    border-radius: 20px 20px 0px 0px;
+    overflow: hidden;
+}
+.challenge-item .image-box .challenge-image03{
+    width: 328px;
+    height: 199px;
+    background: url("/assets/img/home/challenge-handkerchief.jpg") no-repeat;
+    background-size: cover;
+    border-radius: 20px 20px 0px 0px;
+    overflow: hidden;
+}
+.challenge-item .icon-box{
+    display: block;
+    width: 60px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 15px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 20px;
+    background: #577391;
+}
+.challenge-item .icon-box .text{
+    letter-spacing: 3px;
+    font-family: "TheJamsil5Bold", serif;
+    font-size: 10px;
+    font-weight: normal;
+    color: #f7f8f8;
+}
+.challenge-item .text-box{
+    width: 326px;
+    height: 98px;
+    margin-top: 10px;
+    line-height: 1.6;
+    text-align: center;
+}
+.challenge-item .text-box .text-main-title{
+    font-family: NanumSquare, serif;
+    font-size: 23px;
+    font-weight: bolder;
+    color: var(--font-color-main);
+}
+.challenge-item .text-box .text-content{
+    font-family: "NanumSquare", serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: var(--font-color-sub);
+}
+/* 챌린지 호버 시 shrink 효과*/
+.challenge-item:hover {
+    transform: scale(0.9);
+}
+
+/*메인페이지 푸터 제외 하단부*/
+.home-bottom{
+    display: table;
+    clear: both;
+    table-layout: fixed;
+    width: 1280px;
+    background: var(--background-color-main);
+}
+/*메인페이지 공지사항*/
+.table-notice-wrap{
+    display: table-cell;
+    vertical-align: middle;
+}
+.table-notice-wrap .notice-board{
+    width: 450px;
+    height: 300px;
+    margin-top: 100px;
+    margin-left: 65px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: var(--point-color);
+}
+.notice-board .notice-title{
+    display: flex;
+    width: 450px;
+    height: 80px;
+    padding: 22px 20px;
+    box-sizing: border-box;
+}
+.notice-board .notice-title .title{
+    font-family: "NanumSquare", serif;
+    font-size: 23px;
+    font-weight: bolder;
+    color: #f7f8f8;
+}
+.notice-board .notice-title .link{
+    position: relative;
+    width: 23px;
+    height: 23px;
+    left: 74%;
+    margin-top: 5px;
+    border-radius: 50px;
+    background: #f1f2f3;
+}
+.notice-board .notice-title .right-arrow{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 25%;
+    left: 20%;
+    color: var(--point-color);
+    filter: invert(50%) sepia(77%) saturate(444%) hue-rotate(93deg) brightness(96%) contrast(85%);
+}
+.notice-board .notice-content{
+    width: 410px;
+    height: 220px;
+    padding: 20px 3px;
+    margin-left: 20px;
+    border-top: 2px solid #f7f8f8;
+}
+.notice-content .notice-list{
+    position: relative;
+    display: block;
+    width: 405px;
+    height: 30px;
+}
+.notice-content .notice-list > a{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "NanumSquare", serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #f7f8f8;
+}
+.notice-content .notice-list > span{
+    float: right;
+    margin-top: 10px;
+    font-family: "NanumSquare", serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #f7f8f8;
+}
+/* 메인페이지 최신글 */
+.table-latest-board-wrap{
+    display: table-cell;
+}
+.table-latest-board-wrap .latest-post-board{
+    width: 635px;
+    height: 300px;
+    margin-top: 100px;
+    margin-left: 25px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: #0F7566;
+}
+.latest-post-board .board-tab-wrap {
+    position: relative;
+    clear: both;
+    width: 620px;
+    height: 260px;
+    top: 20px;
+    left: 8px;
+    padding: 0px 15px;
+}
+/* 최신글 게시판 제목 */
+.latest-post-board .latest-post-title .title {
+    display: flex;
+    font-family: "NanumSquare", serif;
+    font-size: 23px;
+    font-weight: bolder;
+    color: #f7f8f8;
+}
+/* 최신글 게시판 탭 메뉴*/
+.latest-post-board .tab-item {
+    display: flex;
+    float: right;
+}
+/* 탭 메뉴 이름 스타일 */
+.latest-post-board .tab-label {
+    display: flex;
+    position: relative;
+    width: 120px;
+    height: 30px;
+    margin-left: 15px;
+    align-items: center;
+    letter-spacing: 1px;
+    border: 2px solid #97B1AA;
+    border-radius: 10px 10px 0px 0px;
+    background: #0F7566;
+    cursor: pointer;
+    font-family: "NanumSquare", serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #f7f8f8;
+}
+.label-01 { padding: 2px 5px 2px 11px;}
+.label-02 { padding: 2px 0px 2px 4px;}
+.label-03 { padding: 2px 18px 2px 20px;}
+.tab-item input[type="radio"]:checked ~ .tab-content {
+    z-index: 50;
+}
+/* 탭 메뉴별 글 목록 스타일 */
+.latest-post-board .tab-content {
+    position: absolute;
+    width: 590px;
+    height: 200px;
+    top: 60px;
+    left: 15px;
+    padding-top: 20px;
+    border-top: 2px solid #97B1AA;
+    background: #0F7566;
+}
+.latest-post-board .latest-post-list {
+    display: block;
+    height: 30px;
+    padding: 0px 3px;
+}
+.latest-post-board .latest-post-list > a {
+    font-family: "NanumSquare", serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #f7f8f8;
+}
+.latest-post-board .latest-post-list > span {
+    float: right;
+    margin-top: 10px;
+    font-family: "NanumSquare", serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #f7f8f8;
+}
+/*공지사항 호버시 텍스트 효과*/
+.notice-content .notice-list:hover {
+    border-radius: 10px;
+    background: #f7f8f8;
+}
+.notice-content .notice-list:hover a {
+    color: var(--point-color);
+}
+.notice-content .notice-list:hover span {
+    color: var(--point-color);
+}
+
+/*최신글 게시판 탭 메뉴 체크 효과*/
+.latest-post-board .tab-item input[type="radio"] {
+    display: none;
+}
+.latest-post-board .tab-item input[type="radio"]:checked ~ .tab-label {
+    border: 2px solid #D9EDE0;
+    background: #D9EDE0;
+    color: var(--font-color-main);
+    z-index: 55;
+}
+/* 최신글 게시판 각 글 목록 호버 시 텍스트 효과 */
+.latest-post-board .latest-post-list:hover {
+    border-radius: 10px;
+    background: #f7f8f8;
+}
+.latest-post-board .latest-post-list:hover a{
+    color: #0F7566;
+}
+.latest-post-board .latest-post-list:hover span{
+    color: #0F7566;
+}

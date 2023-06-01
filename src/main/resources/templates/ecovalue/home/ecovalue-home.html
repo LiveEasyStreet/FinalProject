@@ -1,17 +1,388 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{ecovalue/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{ecovalue/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
 
 <head>
     <meta charset="UTF-8">
     <title>파이널 프로젝트 가치</title>
-    <link rel="stylesheet" href="/assets/css/ecovalue/home/ecovalue-home.css" th:href="@{/assets/css/ecovalue/home/ecovalue-home.css}">
-    <script defer src="/assets/js/ecovalue/home/ecovalue-home.js" th:src="@{/assets/js/ecovalue/home/ecovalue-home.js}"></script>
+    <link rel="stylesheet" href="/assets/css/ecovalue/home/ecovalue-home.css"
+          th:href="@{/assets/css/ecovalue/home/ecovalue-home.css}">
+    <link href="/assets/css/color.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/color.css}"/>
+    <link href="/assets/css/font.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/font.css}"/>
+    <link href="/assets/css/reset.css" type="text/css" rel="stylesheet"
+          th:href="@{/assets/css/reset.css}"/>
+    <script src="https://kit.fontawesome.com/e7f299d932.js" crossorigin="anonymous"></script>
+    <script defer src="/assets/js/ecovalue/home/ecovalue-home.js"
+            th:src="@{/assets/js/ecovalue/home/ecovalue-home.js}"></script>
 </head>
-
 <body>
+<section class="main-home">
+    <!-- 크게 slide - top - middle - bottom 메인 페이지 구현 -->
+    <!-- 여기서부터 메인 페이지 슬라이드 -->
+    <div class="home-slide-container">
+        <div class="home-slide">
+            <input type="radio" name="slide" id="slide01" checked>
+            <input type="radio" name="slide" id="slide02">
 
-<section>
+            <div class="home-slide-wrap">
+                <ul class="slide-list">
+                    <!-- 슬라이드 영역 -->
+                    <li class="slide-item">
+                        <a>
+                            <div class="text-box">
+                                <div class="text-main">환경보호</div>
+                                <div class="text">무겁고 어려울 것 같은 환경보호 조금 더 쉽게 접근할수는 없을까?
+                                </div>
+                            </div>
+                            <img src="/assets/img/home/home-slide01.jpg">
+                        </a>
+                    </li>
+                    <li class="slide-item">
+                        <a>
+                            <div class="text-box">
+                                <div class="text-main">가치는</div>
+                                <div class="text">관심은 있지만 방법을 모르는 사람들을 위한 공간입니다.</div>
+                            </div>
+                            <img src="/assets/img/home/home-slide02.jpg">
+                        </a>
+                    </li>
+                    <!-- 좌,우 슬라이드 버튼 -->
+                    <div class="slide-control">
+                        <div>
+                            <label for="slide01" class="left"></label>
+                            <label for="slide02" class="right"></label>
+                        </div>
+                        <div>
+                            <label for="slide01" class="left"></label>
+                            <label for="slide01" class="right"></label>
+                        </div>
+                    </div>
+                </ul>
+                <!-- 슬라이드 페이징 처리  -->
+                <ul class="slide-page-list">
+                    <li><label for="slide01"></label></li>
+                    <li><label for="slide02"></label></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 여기서부터 메인 페이지 상단부 -->
+    <div class="home-top-container">
+        <!-- 메인 페이지 상단부 제목 -->
+        <div class="title">
+            <div class="main">"가치"</div>
+            <div class="sub">는</div>
+        </div>
+        <!-- 테이블 형식으로 구현 -->
+        <div class="home-top">
+            <!-- 리사이클 -->
+            <div class="table-mainitem-wrap" style="width: 450px">
+                <div class="recycle">
+                    <div class="recycle-link-box">
+                        <a href="#" title="재활용방법"><img class="arrow-top" src="/assets/img/home/arrow-top.png"></a>
+                    </div>
+                    <div class="recycle-icon-box">
+                        <i class="fa-solid fa-recycle fa-3x"></i>
+                    </div>
+                    <div class="recycle-text-box">
+                        <div class="text-sub-title">
+                            재활용하면 예비자원,<br>잘못하면 쓰레기
+                        </div>
+                        <div class="text-main-title">리사이클</div>
+                    </div>
+                    <div class="shortcut-box">
+                        <a class="shortcut-link" href="#">나만의 노하우<img class="arrow-right"
+                                                                      src="/assets/img/home/arrow-right.png"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- 나머지 주요 메뉴들 -->
+            <div class="table-srcitem-wrap" style="width: 830px">
+                <!-- 업사이클 -->
+                <div class="srcitems srcitem-upcycle">
+                    <!-- 메뉴 기본 상자 -->
+                    <div class="show">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-leaf fa-3x"></i>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-sub-title">재활용을 넘어선 재탄생</div>
+                            <div class="text-main-title">업사이클</div>
+                        </div>
+                    </div>
+                    <!-- 호버 상자 -->
+                    <div class="hover">
+                        <div class="sub-menu-list">
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">업사이클 소개</a></div>
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">업사이클 갤러리</a></div>
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">업사이클 게시물</a></div>
+                        </div>
+                        <div class="hover-main-title">업사이클</div>
+                    </div>
+                </div>
+                <!-- 제로웨이스트 -->
+                <div class="srcitems srcitem-zerowaste">
+                    <!-- 메뉴 기본 상자 -->
+                    <div class="show">
+                        <div class="icon-box">
+                            <i class="fa-brands fa-creative-commons-zero fa-3x"></i>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-sub-title">쓰레기를 줄이는 소비</div>
+                            <div class="text-main-title">제로웨이스트</div>
+                        </div>
+                    </div>
+                    <!-- 호버 상자 -->
+                    <div class="hover">
+                        <div class="sub-menu-list">
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">제로웨이스트 소개</a></div>
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">챌린지 목록</a></div>
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">DIY 만들기</a></div>
+                        </div>
+                        <div class="hover-main-title">제로웨이스트</div>
+                    </div>
+                </div>
+                <!-- 상점 -->
+                <div class="srcitems srcitem-store">
+                    <!-- 메뉴 기본 상자 -->
+                    <div class="show">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-store fa-3x"></i>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-sub-title">제로웨이스트를 실천하는 매장</div>
+                            <div class="text-main-title">상점</div>
+                        </div>
+                    </div>
+                    <!-- 호버 상자 -->
+                    <div class="hover">
+                        <div class="sub-menu-list">
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">온라인 상점</a></div>
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">오프라인 상점</a></div>
+                        </div>
+                        <div class="hover-main-title">상점</div>
+                    </div>
+                </div>
+                <!-- 이벤트 -->
+                <div class="srcitems srcitem-event">
+                    <!-- 메뉴 기본 상자 -->
+                    <div class="show">
+                        <div class="icon-box">
+                            <i class="fa-regular fa-calendar-check fa-3x"></i>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-sub-title">함께 참여해요</div>
+                            <div class="text-main-title">이벤트</div>
+                        </div>
+                    </div>
+                    <!-- 호버 상자 -->
+                    <div class="hover">
+                        <div class="sub-menu-list">
+                            <div class="sub-menu-title"><a class="sub-menu-link" href="#">이벤트 목록</a></div>
+                        </div>
+                        <div class="hover-main-title">이벤트</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 여기서부터 메인페이지 중간부 -->
+    <div class="home-middle-container">
+        <div class="home-middle">
+            <!-- 메인페이지 중간부 제목 -->
+            <div class="challenge-title">
+                <div class="name">가치</div>
+                <div class="message">와 함께하는 일상 속 작은 실천</div>
+            </div>
+            <!-- 현재 진행중인 챌린지 -->
+            <ul class="challenge-item-wrap">
+                <li class="challenge-item">
+                    <a class="challenge-link" href="#" title="챌린지 참여하러 가기">
+                        <div class="image-box">
+                            <div class="challenge-image01"></div>
+                        </div>
+                        <div class="icon-box">
+                            <div class="text">챌린지</div>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-main-title">비닐 대신 장바구니 사용하기</div>
+                            <div class="text-content">23.06.01 - 23.06.30</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="challenge-item">
+                    <a class="challenge-link" href="#" title="챌린지 참여하러 가기">
+                        <div class="image-box">
+                            <img class="challenge-image02">
+                        </div>
+                        <div class="icon-box">
+                            <div class="text">챌린지</div>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-main-title">개인컵, 다회용컵 사용하기</div>
+                            <div class="text-content">23.06.01 - 23.06.30</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="challenge-item">
+                    <a class="challenge-link" href="#" title="챌린지 참여하러 가기">
+                        <div class="image-box">
+                            <div class="challenge-image03"></div>
+                        </div>
+                        <div class="icon-box">
+                            <div class="text">챌린지</div>
+                        </div>
+                        <div class="text-box">
+                            <div class="text-main-title">종이타월 대신 손수건 사용하기</div>
+                            <div class="text-content">23.06.01 - 23.06.30</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 여기서부터 메인페이지 footer 제외 하단부 -->
+    <div class="home-bottom-container">
+        <div class="home-bottom">
+            <!-- 공지사항 -->
+            <div class="table-notice-wrap" style="width: 540px">
+                <div class="notice-board">
+                    <!-- 공지사항 게시판 제목 -->
+                    <div class="notice-title">
+                        <div class="title">공지사항</div>
+                        <div class="link">
+                            <a href="#" title="공지사항 더보기"><img class="right-arrow"
+                                                              src="/assets/img/home/right-arrow.png"></a>
+                        </div>
+                    </div>
+                    <!-- 공지사항 게시판 글 목록 -->
+                    <div class="notice-content">
+                        <ul>
+                            <li class="notice-list">
+                                <a href="#">[재활용] 공지사항1 입니다.</a><span>2023-06-01</span>
+                            </li>
+                            <li class="notice-list">
+                                <a href="#">[나만의 갤러리] 한번 길게 써보고 있습니다.</a><span>2023-06-01</span>
+                            </li>
+                            <li class="notice-list">
+                                <a href="#">[재활용] 집에 가고 싶어요.</a><span>2023-06-01</span>
+                            </li>
+                            <li class="notice-list">
+                                <a href="#">[재활용] 집에 가고 싶어요.</a><span>2023-06-01</span>
+                            </li>
+                            <li class="notice-list">
+                                <a href="#">[재활용] 집에 가고 싶어요.</a><span>2023-06-01</span>
+                            </li>
+                            <li class="notice-list">
+                                <a href="#">[재활용] 집에 가고 싶어요.</a><span>2023-06-01</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 최신 글 -->
+            <div class="table-latest-board-wrap" style="width: 740px;">
+                <div class="latest-post-board">
+
+                    <div class="board-tab-wrap">
+                        <!-- 최신글 게시판 제목 -->
+                        <div class="latest-post-title">
+                            <div class="title">최신글</div>
+                        </div>
+
+                        <!-- 나만의 노하우 -->
+                        <div class="tab-item">
+                            <input type="radio" id="tab1" name="tab-list">
+                            <label class="tab-label label-01" for="tab1">나만의 노하우</label>
+
+                            <div class="tab-content">
+                                <ul>
+                                    <li class="latest-post-list">
+                                        <a href="#">[재활용] 새로운 게시물1 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[재활용] 새로운 게시물2 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[재활용] 새로운 게시물3 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[재활용] 새로운 게시물4라고 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[재활용] 일단 새로운 게시물5 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[재활용] 새로운 게시물6 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 업사이클 갤러리 -->
+                        <div class="tab-item">
+                            <input type="radio" id="tab2" name="tab-list">
+                            <label class="tab-label label-02" for="tab2">업사이클 갤러리</label>
+
+                            <div class="tab-content">
+                                <ul>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물1 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물2 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물3 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물4라고 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 일단 새로운 게시물5 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물6 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- DIY 만들기 -->
+                        <div class="tab-item">
+                            <input type="radio" id="tab3" name="tab-list">
+                            <label class="tab-label label-03" for="tab3">DIY 만들기</label>
+
+                            <div class="tab-content">
+                                <ul>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물4 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물5 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물6 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물7 이라고 합니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 일단 새로운 게시물8 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                    <li class="latest-post-list">
+                                        <a href="#">[리폼] 새로운 게시물9 입니다.</a><span>2023-06-01</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-
 </body>
 </html>
