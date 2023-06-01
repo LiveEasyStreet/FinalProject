@@ -9,4 +9,6 @@ public interface iThumbService {
      * 리턴값으로 추천을 했다면 true
      */
     boolean thumbActing(ThumbsUpDto thumbsUpDto);
+
+    public int thumbCount(Long boardId);
 }

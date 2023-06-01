@@ -22,18 +22,20 @@ public class BoardSearchCond {
     private Long boardCategory;
 
     // 작성자
-    private Long memberId;
+    private String  nickName;
 
     // 전체 검색
     public BoardSearchCond(BoardCategory boardCategory) {
         this.title = null;
         this.contents = null;
         this.boardCategory = boardCategory.getDataValue();
-        this.memberId = null;
+        this.nickName = null;
     }
 
+
+
     // 조건 검색
-    public BoardSearchCond(String title, BoardCategory boardCategory, String contents, Long memberId) {
+    public BoardSearchCond(String title, BoardCategory boardCategory, String contents, String nickName) {
         this.title = title;
         if (boardCategory!=null){
             this.boardCategory = boardCategory.getDataValue();
@@ -42,13 +44,8 @@ public class BoardSearchCond {
             this.boardCategory = null;
         }
         this.contents = contents;
-        this.memberId = memberId;
+        this.nickName = nickName;
     }
 
-    public BoardSearchCond(Board board){
-        this.title = board.getTitle();
-        this.contents = board.getContents();
-        this.boardCategory = board.getBoardCategory();
-        this.memberId = board.getMemberId();
-    }
+
 }

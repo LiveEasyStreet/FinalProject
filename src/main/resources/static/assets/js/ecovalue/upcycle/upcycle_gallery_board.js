@@ -73,11 +73,139 @@ window.onload = function (){
     }
 }
 
+let init_my_comment_content = document.querySelector(".my_comment_content");
+function textarea_auto(obj) {
 
-// let thumbUp = function (){
-//     $.ajax({
-//         url : "",
-//         type : "POST",
-//         data : JSON.stringify()
-//     })
+    // 아직 미완성
+    if(obj.scrollHeight>obj.clientHeight){
+        obj.style.height = (15+obj.scrollHeight)+"px"
+    }
+}
+if (init_my_comment_content != null){
+    init_my_comment_content.textContent="";
+}
+
+function submitComment() {
+    let boardId = $('#boardId').val();
+    let commentContent = $('#comment_content').val();
+
+    commentContent = commentContent.replaceAll(/(\n|\r\n)/g, "<br>");
+
+    $.ajax({
+        url: '/upGallery/views/' + boardId,
+        type: 'POST',
+        data: { comment_content: commentContent },
+        success: function(response) {
+            console.log("성공 : ",response);
+            let newComment = createCommentElement(response);
+            console.log("new Comment : ",newComment);
+
+            let hrElement = document.createElement("hr");
+            hrElement.classList.add("hr");
+
+            if(document.querySelector('.each_comment')===null){
+                $(".commentArea hr:first").before(newComment);
+            }
+            else {
+                $(".each_comment:last").after(newComment);
+                $(".each_comment:last").before(hrElement);
+            }
+
+            $("#comment_content").val("");
+        },
+        error: function(e) {
+            console.log("실패 : ",e);
+        }
+    });
+}
+
+// 댓글 요소를 생성하는 함수
+function createCommentElement(comment) {
+    let commentElement = document.createElement("div");
+    commentElement.classList.add("each_comment");
+    commentElement.classList.add("comment" + comment.commentId);
+
+    // 댓글 아이디 요소 생성
+    let commentIdElement = document.createElement("p");
+    commentIdElement.classList.add("comment_id");
+    commentIdElement.innerText = comment.commentId;
+    commentElement.appendChild(commentIdElement);
+
+    // 댓글 작성자 요소 생성
+    let commentWriterElement = document.createElement("p");
+    commentWriterElement.classList.add("comment_writer");
+    commentWriterElement.innerText = comment.nickName;
+    commentElement.appendChild(commentWriterElement);
+
+    // 댓글 내용 요소 생성
+    let commentContentElement = document.createElement("p");
+    commentContentElement.classList.add("comment_content");
+    commentContentElement.innerText = comment.contents;
+    commentElement.appendChild(commentContentElement);
+
+    // 작성 시간 요소 생성
+    let commentDateElement = document.createElement("p");
+    commentDateElement.classList.add("comment_date");
+    commentDateElement.innerText = comment.date;
+    commentElement.appendChild(commentDateElement);
+
+
+
+    return commentElement;
+}
+
+/**
+ * 대댓글 아직 미완성
+ */
+// function createCommentDiv() {
+//     // 메인 div 요소 생성
+//     let commentDiv = document.createElement("div");
+//     commentDiv.classList.add("add_comment");
+//
+//     // boardId를 위한 숨은 input 요소 생성
+//     let boardIdInput = document.createElement("input");
+//     boardIdInput.type = "hidden";
+//     boardIdInput.id = "boardId";
+//     boardIdInput.value = /* 여기에 boardId 값을 설정하세요 */;
+//     commentDiv.appendChild(boardIdInput);
+//
+//     // 댓글 작성자 닉네임을 위한 p 요소 생성
+//     let nickNameParagraph = document.createElement("p");
+//     nickNameParagraph.classList.add("comment_nick_name");
+//     nickNameParagraph.innerText = /* 여기에 댓글 작성자 닉네임을 설정하세요 */;
+//     commentDiv.appendChild(nickNameParagraph);
+//
+//     // 댓글 내용을 입력하는 textarea 요소 생성
+//     let commentTextarea = document.createElement("textarea");
+//     commentTextarea.id = "comment_content";
+//     commentTextarea.spellcheck = false;
+//     commentTextarea.classList.add("my_comment_content");
+//     commentTextarea.placeholder = "댓글을 입력하세요";
+//     commentTextarea.onkeydown = function() {
+//         textarea_auto(this);
+//     };
+//     commentTextarea.onkeyup = function() {
+//         textarea_auto(this);
+//     };
+//     commentTextarea.onfocus = function() {
+//         this.placeholder = '';
+//     };
+//     commentTextarea.onblur = function() {
+//         this.placeholder = '댓글을 입력하세요';
+//     };
+//     commentDiv.appendChild(commentTextarea);
+//
+//     // 댓글 등록 버튼을 위한 button 요소 생성
+//     let submitButton = document.createElement("button");
+//     submitButton.classList.add("comment_submit");
+//     submitButton.type = "submit";
+//     submitButton.onclick = function() {
+//         submitComment();
+//     };
+//     submitButton.innerText = "등록";
+//     commentDiv.appendChild(submitButton);
+//
+//     // commentDiv를 원하는 요소 (예: parentDiv)에 추가
+//     let parentDiv = document.querySelector("#parentDiv");
+//     parentDiv.appendChild(commentDiv);
 // }

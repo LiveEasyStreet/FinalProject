@@ -128,3 +128,10 @@ function userMatching(){
 }
 userMatching();
 
+
+let currentPageUrl = location.href;
+let returnUrl = currentPageUrl.substring(currentPageUrl.indexOf("/", 8));
+let loginButton = document.getElementById("login_button");
+if(loginButton != null){
+    loginButton.href = "/login?redirectURL=" + encodeURIComponent(returnUrl);
+}

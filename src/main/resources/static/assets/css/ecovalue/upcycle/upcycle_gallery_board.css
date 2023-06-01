@@ -145,12 +145,17 @@
 
     align-items: center;
 }
+.each_comment.reply{
+    padding-left: 80px;
+    padding-right: 20px;
+    background-color: var(--background-color-main);
+}
 .each_comment>hr{
     margin-top: 5px;
     margin-bottom: 5px;
 }
 .each_comment > p{
-    font-weight : 600;
+    font-weight: 400;
     font-size:15px;
     line-height:1;
     margin-right: 10px;
@@ -161,7 +166,6 @@
 }
 .comment_writer{
     width: 180px;
-    font-size: 20px;
 }
 .comment_content{
     width: 600px;
@@ -171,8 +175,42 @@
     width: 170px;
     margin-left: auto;
 }
+.add_comment{
+    width: 1100px;
+    min-height: 40px;
+    padding: 10px 50px 10px 50px;
 
+    display: flex;
+    flex-direction: row;
 
+    align-items: center;
+}
+.add_comment >.comment_nick_name{
+    width: 180px;
+    font-weight: 400;
+    font-size:15px;
+    line-height:1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.add_comment >textarea{
+    text-align: start;
+    width: 600px;
+    min-height: 60px;
+    outline: none;
+    padding: 10px 10px 10px 10px;
+}
+.add_comment >.comment_submit{
+    margin: auto;
+    background-color: var(--point-color);
+    color: white;
+    border: 1px solid var(--font-color-main);
+
+    width: 100px;
+    height:30px;
+
+    border-radius: 15px;
+}
 
 /*작성자, 조회수 같은 텍스트 부분 영역*/
 .template{

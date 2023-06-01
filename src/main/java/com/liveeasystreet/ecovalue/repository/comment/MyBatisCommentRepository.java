@@ -1,11 +1,13 @@
 package com.liveeasystreet.ecovalue.repository.comment;
 
 import com.liveeasystreet.ecovalue.domain.Comment;
+import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -14,8 +16,8 @@ public class MyBatisCommentRepository implements CommentRepository{
 
     private final CommentMapper commentMapper;
     @Override
-    public void save(Comment comment) {
-        commentMapper.save(comment);
+    public void insertComment(Comment comment) {
+        commentMapper.insertComment(comment);
     }
 
     @Override
@@ -36,5 +38,10 @@ public class MyBatisCommentRepository implements CommentRepository{
     @Override
     public List<Comment> findByMemberId(Long memberId) {
         return commentMapper.findByMemberId(memberId);
+    }
+
+    @Override
+    public Optional<Comment> findById(Long commentId) {
+        return commentMapper.findById(commentId);
     }
 }

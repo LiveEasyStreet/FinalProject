@@ -3,6 +3,7 @@ package com.liveeasystreet.ecovalue.repository.bulletinboard;
 import com.liveeasystreet.ecovalue.cond.board.BoardSearchCond;
 import com.liveeasystreet.ecovalue.domain.Board;
 import com.liveeasystreet.ecovalue.dto.board.BoardUpdateDto;
+import com.liveeasystreet.ecovalue.dto.board.BoardWriteDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,7 @@ public class MyBatisBoardRepository implements BoardRepository{
 
     private final BoardMapper boardMapper;
     @Override
-    public void save(Board board) {
+    public void save(BoardWriteDto board) {
         boardMapper.save(board);
     }
 
@@ -32,6 +33,16 @@ public class MyBatisBoardRepository implements BoardRepository{
     @Override
     public List<Board> findAll(BoardSearchCond boardSearchCond) {
         return boardMapper.findAll(boardSearchCond);
+    }
+
+    @Override
+    public List<Board> findAllWithPaging(int pageSize, int offset,BoardSearchCond boardSearchCond) {
+        return boardMapper.findAllWithPaging(pageSize,offset, boardSearchCond);
+    }
+
+    @Override
+    public int pageCount(int pageSize, BoardSearchCond boardSearchCond) {
+        return boardMapper.pageCount(pageSize,boardSearchCond);
     }
 
     @Override

@@ -87,7 +87,7 @@
                             <li><a href="/logout">로그아웃</a></li>
                         </ul>
                     </li>
-                    <li th:unless="${session.loginMember}"><a href="/login">로그인</a></li>
+                    <li th:unless="${session.loginMember}"><a th:id="login_button" href="/login">로그인</a></li>
                     <i th:if="${session.loginMember}" id="seedling" class="fa-solid fa-seedling">
                         <span th:text="|${session.loginMember.memberPoint}p|"></span>
                     </i>

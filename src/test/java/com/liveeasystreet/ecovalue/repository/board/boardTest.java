@@ -40,13 +40,33 @@ public class boardTest {
     @Test
     @DisplayName("저장 테스트")
     public void save(){
+        Member member = new Member();
+        member.setLoginId("test11");
+        member.setMemberPassword("test11");
+        member.setNickName("테스트1");
+        member.setMemberName("테스트");
+        member.setEmail("test@naver.com");
+
+        // member 객체 db 에 저장
+        memberRepository.save(member);
+        member.setLoginId("test12");
+        member.setMemberPassword("test12");
+        member.setNickName("테스트2");
+        member.setEmail("test1@naver.com");
+        memberRepository.save(member);
+
         Board board1 = new Board("테스트 제목 1", BoardCategory.UP_CYCLE,"테스트 데이터1",1L);
         Board board2 = new Board("테스트 제목 2", BoardCategory.UP_CYCLE,"테스트 데이터2",2L);
         boardRepository.save(board1);
         boardRepository.save(board2);
         log.info("{}",board1);
 
-        test("테스트 제목 1",null,null,1L,board1);
+        test("테스트 제목 1",null,null,"1",board1);
+        test("테스트 제목",null,null,"1",board1);
+        test("테스트 제목",null,null,null,board1,board2);
+        test(null,null,null,null,board1,board2);
+        test(null,null,null,"테스트",board1,board2);
+        test(null,null,null,"테스트2",board2);
 
     }
 
@@ -113,11 +133,12 @@ public class boardTest {
     }
 
     //검색 테스트
-    void test(String title, BoardCategory category,String contents, Long memberId, Board... boards) {
-        log.info("title : {}, category :  {}, contents : {}, memberId : {}",title,category,contents,memberId);
+    void test(String title, BoardCategory category,String contents, String nickName, Board... boards) {
+        log.info("title : {}, category :  {}, contents : {}, memberId : {}",title,category,contents,nickName);
         log.info("{}", boardRepository.findLength());
 
-        List<Board> result = boardRepository.findAll(new BoardSearchCond(title,category,contents,memberId));
+        // boardSearchCond 의 변경으로 인한 변경 필요 memberId 대신 loginId로 검색
+        List<Board> result = boardRepository.findAll(new BoardSearchCond(title,category,contents,nickName));
         log.info("result : {}",result);
         assertThat(result).containsExactly(boards);
     }

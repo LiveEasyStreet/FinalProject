@@ -6,7 +6,6 @@ import com.liveeasystreet.ecovalue.interceptor.MemberLoginCheckInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
@@ -22,9 +21,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/**")
                 .excludePathPatterns(
-                        "/", "/assets/**", "/login", "logout", "/forgot-**",
+                        "/", "/assets/**", "/login", "/logout", "/forgot-**",
                         "/membership/add", "/upcycleInfo", "/favicon.ico", "/error", "/manager/**"
-                        ,"/upGallery" , "/upGallery/**", "/recycle/info", "/zerowaste/introduce"
+                        ,"/upGallery" , "/upGallery/views/**", "/recycle/info", "/zerowaste/introduce"
                 );
         /**
          * 관리자 페이지 인터셉터, 관리자 페이지에 대한 접근 시 로그인 요청
@@ -34,5 +33,6 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/manager/**")
                 .excludePathPatterns("/manager/login");
     }
+
 
 }

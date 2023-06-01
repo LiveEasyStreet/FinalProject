@@ -48,14 +48,14 @@
         <hr class="hr green">
         <div class="commentArea">
             <th:block th:each="comment, commentStat : ${commentList}">
-                <div class="each_comment">
+                <div class="each_comment" th:class="'each_comment comment' + ${comment.getHeadComment()}" th:classappend="${comment.getCommentId() ne comment.getHeadComment()}?'reply'">
                     <p class="comment_id" th:text="${comment.commentId}">
                         댓글 아이디
                     </p>
                     <p class="comment_writer" th:text="${comment.nickName}">
                         댓글 작성자
                     </p>
-                    <p class="comment_content" th:text="${comment.content}">
+                    <p class="comment_content" th:utext="${comment.contents}">
                         댓글 내용
                     </p>
                     <p class="comment_date" th:text="${comment.date}">
@@ -64,6 +64,13 @@
                 </div>
                 <hr class="hr" th:unless="${commentStat.last}">
             </th:block>
+            <hr class="hr" th:if="${session.loginMember} ne null">
+            <input type="hidden" id="boardId" th:value="${boardViewDto.getBoardId()}">
+            <div class="add_comment" th:if="${session.loginMember} ne null">
+                <p class="comment_nick_name" th:text="${session.loginMember.getNickName()}"></p>
+                <textarea id="comment_content" spellcheck="false" class="my_comment_content" placeholder="댓글을 입력하세요" onkeydown="textarea_auto(this)" onkeyup="textarea_auto(this)" onfocus="this.placeholder = ''" onblur="this.placeholder = '댓글을 입력하세요'"></textarea>
+                <button class="comment_submit" type="submit" th:onclick="submitComment()">등록</button>
+            </div>
         </div>
         <hr class="hr green">
     </div>

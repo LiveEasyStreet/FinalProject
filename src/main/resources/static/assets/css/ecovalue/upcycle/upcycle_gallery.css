@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 15px 15px 15px 15px;
-    width: 375px;
+    width: 450px;
     height: 35px;
     background-color: var(--point-color);
 }
@@ -48,6 +48,16 @@
     padding-left: 10px;
     text-align: center;
 }
+.upGallery_submit{
+    width: 60px;
+    height: 30px;
+    color: var(--background-color-main);
+    background-color: var(--point-color);
+
+    outline: none;
+    border: none;
+    appearance: none;
+}
 .gallery_sector{
     width: 1000px;
     height: 600px;
@@ -73,6 +83,9 @@
 
 
     text-align: center;
+}
+.gallery_sector .k:hover{
+    cursor: pointer;
 }
 .gallery-paging-section{
     display: flex;

@@ -1,6 +1,8 @@
 package com.liveeasystreet.ecovalue.domain;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -14,13 +16,13 @@ public class Comment {
     private Long boardId;
 
     //회원번호
-    private Long memberId;
+    private String nickName;
 
     // 원댓글 id
     private Long headComment;
 
     // 작성 내용
-    private String content;
+    private String contents;
 
     // 업로드 날짜
     private LocalDateTime uploadDate;
