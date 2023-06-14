@@ -12,7 +12,7 @@
              #{uploadDate}, #{views})
     </insert>
 
-
+<!--이미지 태그 안에 부분도 검색되는 거 바꿔야됨 -->
     <select id="findAllWithPaging" resultType="Board">
         SELECT b.board_id as board_id,
                b.title as title,

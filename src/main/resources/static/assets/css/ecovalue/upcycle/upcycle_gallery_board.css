@@ -91,6 +91,10 @@
     padding: 10px 50px 10px 50px;
 
 }
+.ql-video{
+    width: 600px;
+    height: 350px;
+}
 .boardAction{
     width: 1100px;
     height: 40px;

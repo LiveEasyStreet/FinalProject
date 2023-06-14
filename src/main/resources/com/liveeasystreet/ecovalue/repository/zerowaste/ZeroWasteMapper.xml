@@ -25,7 +25,8 @@
         from
             challenge
         order by
-            start_challenge DESC;
+            start_challenge DESC,
+            end_challenge ASC;
     </select>
 
     <update id="joinMemberCount">

@@ -12,6 +12,8 @@
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
     <link rel="stylesheet" type="text/css" href="/assets/css/ecovalue/membership/membership.css"
     th:href="@{/assets/css/ecovalue/membership/membership.css}">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     <script defer src=""></script>
     <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
 
@@ -21,10 +23,11 @@
 <section>
     <div class="membership-main">
         <div class="membership">
-            <form action="#" th:action th:object="${membershipDto}" method="post" class="membership-text-form">
+            <form action="#" th:action th:object="${membershipDto}" method="post" onsubmit="return validateForm()" class="membership-text-form">
                 <div id="text-title">
                     <span>회원가입</span>
                 </div>
+
 
                 <div class="membership-text-form-layout">
                     <div class="input-box-title">
@@ -79,6 +82,22 @@
                 </div>
                 <div class="field-error" th:errors="*{email}">이메일 오류</div>
 
+                <div th:id="recaptcha_container">
+                    <div class="g-recaptcha col-sm-5" th:attr="data-sitekey=${@recaptchaConfig.getSite()}"></div>
+                    <div class="field-error" th:errors="*{recaptcha}">이메일 오류</div>
+                </div>
+                <script type="text/javascript">
+                    function validateForm(){
+                                if (grecaptcha.getResponse()){
+                                    return true;
+                                }
+                                else{
+                                    alert("로봇이 아닙니다를 체크하세요")
+                                    return false;
+                                }
+                            }
+                </script>
+
                 <div id="membership-button-layout">
                     <button type="button" onclick=""
                             th:onclick="|location.href='@{/}'|"
@@ -88,8 +107,6 @@
                 </div>
             </form>
         </div>
-
-
     </div>
 
 </section>

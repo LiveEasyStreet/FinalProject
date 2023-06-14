@@ -3,7 +3,7 @@
     border: 1px solid #d9d9d9;
     border-radius: 20px;
     width: 1280px;
-    height: 750px;
+    min-height: 750px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,6 +21,7 @@
 
 /* 제목의 정렬을 위해 만들어 놓은 css */
 #text-title {
+    margin-top: 20px;
     display: flex;
     height: 100px;
     flex-direction: column;
@@ -73,6 +74,14 @@
     display: flex;
     margin-bottom: 10px;
 }
+#recaptcha_container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 /* 취소버튼에 직접적으로 css를 먹일 수 있는 css id  */
 #membership-cancel {
@@ -103,6 +112,8 @@
 #membership-button-layout {
     display: flex;
     justify-content: right;
+
+    margin-bottom: 30px;
 
 }
 

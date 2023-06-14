@@ -14,10 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
@@ -27,10 +24,11 @@ public class LoginController {
     private final MemberLoginService memberLoginService;
 
     @GetMapping("/login")
-    public String join(@ModelAttribute("memberLoginDto") MemberLoginDto memberLoginDto,HttpServletRequest request) {
+    public String join(@ModelAttribute("memberLoginDto") MemberLoginDto memberLoginDto,HttpServletRequest request,
+                       @SessionAttribute(value = SessionConst.MEMBER_LOGIN, required = false) MemberSessionDto memberSessionDto) {
         HttpSession session = request.getSession(false);
 
-        if (session != null) {
+        if (memberSessionDto != null) {
             return "redirect:/";
         }
 

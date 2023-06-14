@@ -104,7 +104,7 @@ function write_submit(){
             success: function(response) {
                 console.log("성공 : ",response);
 
-                location.href = "/upGallery/views/"+response;
+                location.replace( "/upGallery/views/"+response);
 
             },
             error: function(e) {

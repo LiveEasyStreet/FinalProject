@@ -30,7 +30,7 @@ window.onload = function (){
             // 여기에 로그인 필요 없는 경우 처리 로직을 추가하세요.
             let thumbsUpData = {
                 boardId: boardNum,
-                loginId: memberName
+                nickName: memberName
             };
 
             let thumbsUpResponseDto = {

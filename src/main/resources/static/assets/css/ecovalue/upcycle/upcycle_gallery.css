@@ -98,6 +98,34 @@
     justify-content: center;
     align-items: center;
 }
+.button_sector{
+    width: 1000px;
+    height: 50px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+
+    align-content: center;
+    justify-content: right;
+    align-items: center;
+
+}
+.write_button{
+    margin: 10px 5px 0 5px;
+    width: 130px;
+    height: 40px;
+    border: 1px solid var(--font-color-main);
+    border-radius: 15px;
+    background-color: #ffa500;
+    color: white;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+.gallery-paging-section{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 .paging-button{
     height: 40px;
     width: 40px;

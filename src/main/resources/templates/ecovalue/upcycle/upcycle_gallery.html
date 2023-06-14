@@ -34,9 +34,16 @@
             </div>
         </form>
         <div class="gallery_sector">
-            <th:block th:each="eachBoardNum : ${boardNum}">
-                <div class="k" th:onclick="|location.href='/upGallery/views/' + ${eachBoardNum}|" th:text="'게시판 id : ' +${eachBoardNum}+ ' 으로 이동'">테스트1</div>
-            </th:block>
+<!--            원래는 이부분인데 임시용으로 여기는 가려놓음-->
+<!--            <th:block th:each="eachBoardNum : ${boardNum}">-->
+<!--                <div class="k" th:onclick="|location.href='/upGallery/views/' + ${eachBoardNum}|" th:text="'게시판 id : ' +${eachBoardNum}+ ' 으로 이동'">테스트1</div>-->
+<!--            </th:block>-->
+                <th:block th:each="boardList : ${boardLists}">
+                    <div class="k" th:onclick="|location.href='/upGallery/views/' + ${boardList.getBoardId()}|" th:text="${boardList.getTitle()}">테스트1</div>
+                </th:block>
+        </div>
+        <div class="button_sector">
+            <button th:class="write_button" type="button" onclick="location.href='/upGallery/write'">글쓰기</button>
         </div>
         <div class="gallery-paging-section">
             <a th:if="${startPage gt 10}" class="paging-previous paging-button" th:href="@{/upGallery(page=${startPage -1}, search_keyword=${param.search_keyword}, search_target=${param.search_target})}" href="#">이전</a>

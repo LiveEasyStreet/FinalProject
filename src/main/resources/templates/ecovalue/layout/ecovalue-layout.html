@@ -77,7 +77,7 @@
 
                 <ul class="login-wrap">
                     <li class="member" th:if="${session.loginMember}">
-                        <a class="memberName" th:text="${session.loginMember.memberName}" href="#">회원 id</a>
+                        <a class="memberName" th:text="${session.loginMember.nickName}" href="#">회원 id</a>
                         <ul class="member-menu">
                             <li><a href="#">내정보</a></li>
                             <li><a href="#">알림</a></li>

@@ -1,24 +1,18 @@
 package com.liveeasystreet.ecovalue.controller.upcycle;
 
-import com.liveeasystreet.ecovalue.cond.board.BoardSearchCond;
 import com.liveeasystreet.ecovalue.controller.login.SessionConst;
 import com.liveeasystreet.ecovalue.domain.*;
 import com.liveeasystreet.ecovalue.dto.board.*;
-import com.liveeasystreet.ecovalue.dto.comment.CommentGetDto;
 import com.liveeasystreet.ecovalue.dto.comment.CommentResponseDto;
 import com.liveeasystreet.ecovalue.dto.member.MemberSessionDto;
 import com.liveeasystreet.ecovalue.file.FileStore;
 import com.liveeasystreet.ecovalue.service.bulletinboard.iBoardService;
 import com.liveeasystreet.ecovalue.service.image.ImageServiceInterface;
 import com.liveeasystreet.ecovalue.service.member.MemberDataAccessService;
-import com.liveeasystreet.ecovalue.service.thumbsup.ThumbServiceImpl;
 import com.liveeasystreet.ecovalue.service.thumbsup.iThumbService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cglib.core.Local;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -27,20 +21,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,18 +47,31 @@ public class UpcycleController {
     private final ImageServiceInterface imageServiceInterface;
 
 
+    /**
+     * 업사이클링 홈 화면
+     */
     @GetMapping({"/upcycleInfo","/upcycleInfo/"})
     public String upcycle_info(){
         return"ecovalue/upcycle/upcycle_info";
     }
 
+    /**
+     * 업사이클 게시판 화면
+     */
     @GetMapping({"/upGallery/","/upGallery"})
     public String upCycle_gallery(Model model,
                                  @RequestParam(defaultValue = "1") int page,
                                   @RequestParam(value = "search_keyword", required = false) String searchKeyword,
                                   @RequestParam(value = "search_target", defaultValue = "title_content") String searchTarget,
                                   RedirectAttributes redirectAttributes){
+        /**
+         * 페이지 정보에 대한 부분 시작
+         * 페이지 정보의 경우 나중에 합쳐서 보내거나 할 필요 있음
+         */
+        //현재 페이지
         model.addAttribute("page",page);
+
+        //마지막 페이지와 시작 페이지에 대한 정보
         int lastPage = boardService.upGalleryBoardSearchPageCount(BoardConst.pageSize,BoardCategory.UP_CYCLE,searchTarget,searchKeyword)+1;
         if(lastPage<page){
             redirectAttributes.addAttribute("page", lastPage);
@@ -81,11 +81,25 @@ public class UpcycleController {
         if (page%10==0){
             startPage-=10;
         }
+        /**
+         * 페이지 정보 부분 종료
+         */
+
         log.info("upGalleryBoardSearchPageCount : {}",boardService.upGalleryBoardSearchPageCount(BoardConst.pageSize,BoardCategory.UP_CYCLE,searchTarget,searchKeyword));
         log.info("search : {}, {}",searchKeyword,searchTarget);
 
+        // 해당 페이지에서 나올 데이터(게시판)을 포함하는것
         List<Board> boardLists = boardService.upGalleryBoardSearch(BoardConst.pageSize,BoardConst.pageSize*(page-1),BoardCategory.UP_CYCLE,searchTarget,searchKeyword);
         List<Long> boardNum = boardService.boardPageNum(boardLists);
+        /**
+         * 이 아래 부분은 임시 부분으로 원래는 게시판 중 사진이 있는 애들을 대상으로 출력해야되지만 다 완성되지 않아서 List 전체 보냄
+         */
+
+        model.addAttribute("boardLists",boardLists);
+
+        /**
+         * 임시 끝
+         */
 
         //현재 페이지에 이어줄 보드 번호
         model.addAttribute("boardNum",boardNum);
@@ -103,6 +117,10 @@ public class UpcycleController {
 
         return "ecovalue/upcycle/upcycle_gallery";
     }
+
+    /**
+     * 게시판 작성 페이지
+     */
     @GetMapping("/upGallery/write")
     public String upCycle_board_write(Model model){
         model.addAttribute("category",BoardCategory.UP_CYCLE.getDescription());
@@ -110,6 +128,11 @@ public class UpcycleController {
         return "ecovalue/upcycle/upcycle_gallery_board_write";
     }
 
+    /**
+     * 게시판 작성 완료후 처리 부분 ->
+     * 게시판을 작성해서 올릴 경우 페이지가 저장된 후 부여된 페이지 번호를 리턴
+     * 이번호가 정상일 경우 그 페이지로 이동할 수 있게 함
+     */
     @ResponseBody
     @PostMapping("/upGallery/write")
     public Long submit_board_write(@RequestBody BoardWriteDto board,
@@ -151,6 +174,12 @@ public class UpcycleController {
 
         return board.getBoardId();
     }
+
+    /**
+     * 이미지를 올리는 부분
+     * 이미지가 추가된후 이미지에 대한 데이터가 서버에 전달,
+     * 해당 이미지를 저장 후 이미지 경로를 화면에 보냄
+     */
     @ResponseBody
     @PostMapping("/upGallery/write/image")
     public BoardImage image_submit_test(@RequestParam("file") MultipartFile file) throws IOException {
@@ -165,6 +194,10 @@ public class UpcycleController {
         return boardImage;
     }
 
+    /**
+     * 이미지 가져오는 부분
+     * 이미지 태그내에서 해당 이미지에 접근해서 이미지를 가져가는 부분
+     */
     @ResponseBody
     @GetMapping("/upGallery/write/image/{filename}")
     public UrlResource downloadImage(@PathVariable String filename,
@@ -174,21 +207,24 @@ public class UpcycleController {
     }
 
 
+    /**
+     * 게시판 조회 화면
+     * 게시판 번호로 들어오면 해당 게시물 보여주는 부분
+     */
     @GetMapping("/upGallery/views/{boardId}")
     public String upCycle_board_view(Model model,
                                      @PathVariable Long boardId,
-                                     HttpServletRequest request){
+                                     HttpServletRequest request,
+                                     @SessionAttribute(value = SessionConst.MEMBER_LOGIN, required = false) MemberSessionDto memberSessionDto){
 
 
         Board board=boardService.BoardViewService(boardId);
 
-        HttpSession session = request.getSession(false);
         /**
          * 로그인 되어있으면 좋아요를 누를 수 있게 하기 위해
          */
         boolean isThumbMine = false;
-        if (session !=null){
-            MemberSessionDto memberSessionDto = (MemberSessionDto) session.getAttribute(SessionConst.MEMBER_LOGIN);
+        if (memberSessionDto !=null){
             log.info("갤러리 memberSession : {}",memberSessionDto);
             isThumbMine =memberDataAccessService.isBoardThumbsUp(boardId,memberSessionDto.getLoginId());
         }
@@ -213,6 +249,9 @@ public class UpcycleController {
         return "ecovalue/upcycle/upcycle_gallery_board";
     }
 
+    /**
+     * 게시판에서 댓글 작성할때 post 되는 부분
+     */
     @ResponseBody
     @PostMapping("/upGallery/views/{boardId}")
     public CommentResponseDto commentWrite(Model model,
@@ -237,6 +276,9 @@ public class UpcycleController {
     }
 
 
+    /**
+     * 게시판 좋아요 누르는 부분
+     */
     @ResponseBody
     @PostMapping("/upGallery/boardUp")
     public ThumbsUpResponseDto boardUpPage(@RequestBody ThumbsUpRequestDto thumbsUpRequestDto,
@@ -244,16 +286,15 @@ public class UpcycleController {
         log.info("thumpsUpDto : {} ",thumbsUpRequestDto);
 
         ThumbsUpResponseDto thumbsUpResponseDto = new ThumbsUpResponseDto();
-        boolean thumbAct = false;
         if (memberSessionDto !=null){
             /**
              * Spring _CSRF 에 대해 찾아보기
              */
             //로그인 아이디가 다르다면 문제 발생 가능성 있으므로 반영 x
-            if (!thumbsUpRequestDto.getLoginId().equals(memberSessionDto.getLoginId())){
+            if (!thumbsUpRequestDto.getNickName().equals(memberSessionDto.getNickName())){
                 log.info("memberSession 과 화면 id 다름");
                 log.info("memberSession LoginId = {} 타입 = {} 길이 = {}",memberSessionDto.getLoginId(),memberSessionDto.getLoginId().getClass(),memberSessionDto.getLoginId().length());
-                log.info("thumbsUpRequestDto LoginId = {} 타입 = {} 길이 = {}",thumbsUpRequestDto.getLoginId(), thumbsUpRequestDto.getLoginId().getClass(), thumbsUpRequestDto.getLoginId().length());
+                log.info("thumbsUpRequestDto LoginId = {} 타입 = {} 길이 = {}",thumbsUpRequestDto.getNickName(), thumbsUpRequestDto.getNickName().getClass(), thumbsUpRequestDto.getNickName().length());
             }
             else {
                 Long memberId=memberDataAccessService.getMemberIdByLoginId(memberSessionDto.getLoginId());

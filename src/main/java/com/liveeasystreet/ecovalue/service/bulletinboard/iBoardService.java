@@ -28,4 +28,6 @@ public interface iBoardService {
     void insertComment(Comment comment);
 
     Optional<Comment> findById(Long commentId);
+
+
 }

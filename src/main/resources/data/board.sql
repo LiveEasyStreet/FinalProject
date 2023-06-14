@@ -230,5 +230,5 @@ insert into board
 VALUES ('테스트 제목 13', 2, 0, '이것은 테스트 데이터 입니다.13', 1,now(), 0);
 
 insert into board
-(title, board_category, tag, contents, member_id, upload_date, views)
+    (title, board_category, tag, contents, member_id, upload_date, views)
 VALUES ('테스트 제목 14', 2, 0, '이것은 테스트 데이터 입니다.14', 2,now(), 0);

@@ -13,10 +13,10 @@ public class ThumbsUpRequestDto {
     private Long boardId;
 
     // 추천 누른 멤버
-    private String  loginId;
+    private String nickName;
 
-    public ThumbsUpRequestDto(Long boardId, String loginId) {
+    public ThumbsUpRequestDto(Long boardId, String nickName) {
         this.boardId = boardId;
-        this.loginId = loginId;
+        this.nickName = nickName;
     }
 }

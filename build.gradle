@@ -53,8 +53,19 @@ dependencies {
 	//MyBatis 스프링 부트 3.0 추가
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
 
+	// configuration-processor 사용
+	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+//	//	리캡차
+//	implementation 'net.tanesha.recaptcha4j:recaptcha4j:0.0.7'
+//
+////	리캡차 사용을 위한 json
+//	implementation 'javax.json:javax.json-api:1.1.2'
+//	implementation 'org.glassfish:javax.json:1.1'
+
 	//오라클 jdbc
 //	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+
+
 }
 
 tasks.named('test') {
