@@ -40,11 +40,39 @@
     text-align: left;
     border: 1px solid #d9d9d9;
     height: 50px;
+    width: 600px;
+    border-radius: 0 4px 4px 0;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+    padding-left: 10px;
+}
+.postcode-input-box-layout{
+    text-align: left;
+    border: 1px solid #d9d9d9;
+    height: 50px;
     width: 500px;
     border-radius: 0 4px 4px 0;
     font-family: "NanumSquare", sans-serif;
     font-size: 18px;
     padding-left: 10px;
+
+    outline: none;
+    appearance: none;
+}
+#address-box{
+    outline: none;
+    appearance: none;
+}
+.postcode-find-box-layout{
+    text-align: center;
+    border: 1px solid #d9d9d9;
+    height: 50px;
+    width: 100px;
+    border-radius: 0 4px 4px 0;
+    font-family: "NanumSquare", sans-serif;
+    font-size: 18px;
+    padding-left: 10px;
+    cursor: pointer;
 }
 
 /* 라벨태그의 정렬을 위해 라벨 자체를 div태그로 한번 감싸놓았다.*/
@@ -72,7 +100,6 @@
     */
 .membership-text-form-layout {
     display: flex;
-    margin-bottom: 10px;
 }
 #recaptcha_container{
     margin-top: 20px;
@@ -94,6 +121,7 @@
     font-family: "NanumSquare", sans-serif;
     border: none;
     margin: 10px 0 0 10px;
+    cursor: pointer;
 }
 
 /* 가입버튼에 직접적으로 접근 할 수 있는 id */
@@ -107,6 +135,7 @@
     font-family: "NanumSquare", sans-serif;
     border: none;
     margin: 10px 0 0 10px;
+    cursor: pointer;
 }
 
 #membership-button-layout {
@@ -130,4 +159,13 @@
 /* 검증 오류 */
 .field-error {
     color: red;
+    font-size: 15px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+}
+.error-message-container{
+    color:red;
+    height: 60px;
 }

@@ -27,5 +27,13 @@ public class MembershipDto {
     @Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$")
     private String email;
 
+    @NotBlank
+    private String postCode;
+
+    @NotBlank
+    private String address;
+
+    private String addressDetail;
+
     private String recaptcha;
 }

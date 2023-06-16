@@ -2,10 +2,12 @@ package com.liveeasystreet.ecovalue.domain;
 
 import com.liveeasystreet.ecovalue.dto.member.MembershipDto;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Data
+@ToString
 public class Member {
 
     // 내부 관리용 아이디
@@ -28,6 +30,13 @@ public class Member {
     // 포인트
     private int memberPoint;
 
+    // 우편번호
+    private String postCode;
+    // 주소
+    private String address;
+    // 상세 주소
+    private String addressDetail;
+
     // 기본 생성자
     public Member() {
         this.blackList = "N";
@@ -42,6 +51,9 @@ public class Member {
         this.nickName = membershipDto.getNickName();
         this.memberName = membershipDto.getMemberName();
         this.email = membershipDto.getEmail();
+        this.postCode = membershipDto.getPostCode();
+        this.address = membershipDto.getAddress();
+        this.addressDetail = membershipDto.getAddressDetail();
     }
 
 }

@@ -65,7 +65,7 @@ public class MembershipController {
     public String membershipHome(@ModelAttribute("membershipDto") MembershipDto membershipDto,
                                  @SessionAttribute(value = SessionConst.MEMBER_LOGIN, required = false) MemberSessionDto memberSessionDto){
 
-        if (membershipDto!=null){
+        if (memberSessionDto!=null){
             return "redirect:/";
         }
         return "ecovalue/membership/membership";
@@ -91,6 +91,7 @@ public class MembershipController {
 
         //성공 로직
         Member member = new Member(membershipDto);
+        log.info("New member : {}",member);
         membershipService.addMember(member);
 
         return "redirect:/";
