@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{ecovalue/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<head>
+    <meta charset="UTF-8"/>
+
+    <!-- 각 페이지 타이틀 꼭 변경하기 -->
+    <title>나만의 노하우</title>
+
+
+    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
+    <link rel="stylesheet" th:href="@{/assets/css/ecovalue/recycle/recycle-knowHow.css}">
+    <script defer th:src="@{/assets/js/ecovalue/upcycle/upcycle_gallery.js}"></script>
+    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
+
+</head>
+<body>
+
+<section>
+    <div class="knowHow_container">
+        <div class="gallery_sector">
+            <th:block th:each="boardList : ${boardLists}">
+                <div class="k" th:onclick="|location.href='/recycle/views/' + ${boardList.getBoardId()}|" th:text="${boardList.getTitle()}">테스트1</div>
+            </th:block>
+        </div>
+        <div class="button_sector">
+            <button th:class="write_button" type="button" onclick="location.href='/recycle/knowHow/write'">글쓰기</button>
+        </div>
+        <form action="/recycle" method="get">
+            <div class="search-box">
+                <select name="search_target" class="knowHow_search_target">
+                    <option value="title_content" th:selected="${searchTarget == 'title_content'}">제목+내용</option>
+                    <option value="title" th:selected="${searchTarget == 'title'}">제목</option>
+                    <option value="content" th:selected="${searchTarget == 'content'}">내용</option>
+                    <option value="comment" th:selected="${searchTarget == 'comment'}">댓글</option>
+                    <option value="nick_name" th:selected="${searchTarget == 'nick_name'}">닉네임</option>
+                </select>
+                <div class="knowHow_search_input_area">
+                    <input type="text" name="search_keyword" class="search_input_area" autocomplete="off" placeholder="검색어를 입력하세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '검색어를 입력하세요'" th:value="${searchKeyword}">
+                </div>
+                <button class="knowHow_submit" type="submit">검색</button>
+            </div>
+        </form>
+        <div class="gallery-paging-section">
+            <a th:if="${startPage gt 10}" class="paging-previous paging-button" th:href="@{/upGallery(page=${startPage -1}, search_keyword=${param.search_keyword}, search_target=${param.search_target})}" href="#">이전</a>
+            <th:block th:each="num : ${#numbers.sequence(startPage,startPage+9)}">
+                <a th:class="paging-button" th:classappend="${num eq page}?'selected'" th:if="${num le lastPage}"
+                   th:href="@{/upGallery(page=${num}, search_keyword=${param.search_keyword}, search_target=${param.search_target})}"
+                   th:text="${num}"
+                >1</a>
+            </th:block>
+            <a th:if="${lastPage gt startPage+9}" class="paging-next paging-button" th:href="@{/upGallery(page=${startPage +10}, search_keyword=${param.search_keyword}, search_target=${param.search_target})}" href="#">다음</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

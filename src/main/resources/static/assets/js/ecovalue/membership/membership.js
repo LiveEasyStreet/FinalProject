@@ -18,7 +18,6 @@ function initPostcode() {
             oncomplete: function(data) {
                 addressInput.value = data.address;
                 postCodeInput.value = data.zonecode;
-                // 추가로 필요한 주소 정보를 회원가입 폼의 각 필드에 자동으로 채워넣을 수 있습니다.
             }
         }).open();
     });

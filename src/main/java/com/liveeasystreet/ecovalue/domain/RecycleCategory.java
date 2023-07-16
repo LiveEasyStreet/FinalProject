@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-public enum UpCycleCategory {
+public enum RecycleCategory {
     //form
     NONE(0L,"없음",false),INFO(1L,"정보",false),ASK(2L,"질문",false);
 
@@ -15,7 +15,7 @@ public enum UpCycleCategory {
     private final String description;
     private final Boolean isEnd;
 
-    UpCycleCategory(Long dataValue,String description,Boolean isEnd) {
+    RecycleCategory(Long dataValue, String description, Boolean isEnd) {
         this.dataValue = dataValue;
         this.description = description;
         this.isEnd = isEnd;
@@ -28,18 +28,13 @@ public enum UpCycleCategory {
         return dataValue;
     }
 
-    /**
-     * 이부분 수정 필요할수도?
-     * @param value
-     * @return
-     */
-    public static UpCycleCategory findByDataValue(Long value){
-        return Arrays.stream(UpCycleCategory.values())
+    public static RecycleCategory findByDataValue(Long value){
+        return Arrays.stream(RecycleCategory.values())
                 .filter(e -> e.dataValue.equals(value)).findFirst().orElse(null);
     }
 
-    public static List<UpCycleCategory> getNonEndCategories() {
-        return Arrays.stream(UpCycleCategory.values())
+    public static List<RecycleCategory> getNonEndCategories() {
+        return Arrays.stream(RecycleCategory.values())
                 .filter(category -> !category.isEnd)
                 .collect(Collectors.toList());
     }

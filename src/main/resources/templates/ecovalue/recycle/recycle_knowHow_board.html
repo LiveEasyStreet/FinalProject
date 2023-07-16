@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:replace="~{ecovalue/layout/ecovalue-layout :: layout (~{::title}, ~{::link}, ~{::script}, ~{::section})}">
+<head>
+    <meta charset="UTF-8"/>
+
+    <!-- 각 페이지 타이틀 꼭 변경하기 -->
+    <title>리사이클 게시물</title>
+
+
+    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [시작] -->
+    <link rel="stylesheet" th:href="@{/assets/css/ecovalue/recycle/recycle_knowHow_board.css}">
+    <script defer th:src="@{/assets/js/ecovalue/recycle/recycle_knowHow_board.js}"></script>
+    <!-- 직접 작성해서 사용 해야 되는 css / js 공간 [종료] -->
+
+</head>
+<body>
+
+
+<section>
+    <div class="reCycle_gallery_board_container">
+        <div class="boardCategory" th:text="${boardViewDto.getBoardCategory().getDescription()}"></div>
+        <hr class="hr green">
+
+        <div class="boardTitleArea">
+            <div class="boardTitle" th:text="${boardViewDto.getTitle()}"></div>
+            <div class="uploadDate" th:text="${boardViewDto.getUploadDate()}"></div>
+        </div>
+        <hr class="hr">
+        <div class="writerInfoArea">
+            <div class="boardWriterArea">
+                <div class="writer template">작성자 : </div>
+                <div class="boardWriter" th:text=" ${boardViewDto.getNickName()}"></div>
+            </div>
+            <div class="viewArea">
+                <div class="view template">조회수 : </div>
+                <div class="viewCount" th:text=" ${boardViewDto.getViews()}"></div>
+            </div>
+        </div>
+        <hr class="hr">
+        <div class="boardContents" th:utext="${boardViewDto.getContents()}"></div>
+        <div class="boardAction">
+            <button type="button" onclick="" id="boardUpButton"
+                    class="boardUp" th:classappend="${myThumb}?'clicked':''">좋아요[<span id="boardUpCount" th:text="${thumbUpCount}"></span>]</button>
+            <button type="button" onclick=""
+                    class="boardReport">신고</button>
+        </div>
+        <hr class="hr green">
+        <div class="commentArea">
+            <th:block th:each="comment, commentStat : ${commentList}">
+                <div class="each_comment" th:class="'each_comment comment' + ${comment.getHeadComment()}" th:classappend="${comment.getCommentId() ne comment.getHeadComment()}?'reply'">
+                    <p class="comment_id" th:text="${comment.commentId}">
+                        댓글 아이디
+                    </p>
+                    <p class="comment_writer" th:text="${comment.nickName}">
+                        댓글 작성자
+                    </p>
+                    <p class="comment_content" th:utext="${comment.contents}">
+                        댓글 내용
+                    </p>
+                    <p class="comment_date" th:text="${comment.date}">
+                        작성 시간
+                    </p>
+                </div>
+                <hr class="hr" th:unless="${commentStat.last}">
+            </th:block>
+            <hr class="hr" th:if="${session.loginMember} ne null">
+            <input type="hidden" id="boardId" th:value="${boardViewDto.getBoardId()}">
+            <div class="add_comment" th:if="${session.loginMember} ne null">
+                <p class="comment_nick_name" th:text="${session.loginMember.getNickName()}"></p>
+                <textarea id="comment_content" spellcheck="false" class="my_comment_content" placeholder="댓글을 입력하세요" onkeydown="textarea_auto(this)" onkeyup="textarea_auto(this)" onfocus="this.placeholder = ''" onblur="this.placeholder = '댓글을 입력하세요'"></textarea>
+                <button class="comment_submit" type="submit" th:onclick="submitComment()">등록</button>
+            </div>
+        </div>
+        <hr class="hr green">
+    </div>
+</section>
+
+</body>
+</html>

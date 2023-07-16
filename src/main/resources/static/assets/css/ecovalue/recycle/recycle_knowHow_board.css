@@ -1,0 +1,229 @@
+.reCycle_gallery_board_container{
+    font-family: "NanumSquare", sans-serif;
+    font-weight: 500;
+    width: 1280px;
+    min-height: 800px;
+    border: 1px solid #d9d9d9;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.boardCategory{
+    width: 1100px;
+    padding: 10px 50px 10px 50px;
+
+    font-weight: 800;
+    font-size: 30px;
+    color: var(--point-color);
+    text-align: left;
+
+}
+.boardTitleArea {
+    width: 1100px;
+    padding: 10px 50px 10px 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+}
+.boardTitle{
+    font-weight: 600;
+    font-size: 23px;
+}
+.uploadDate{
+    margin-top: 15px;
+    font-size: 15px;
+}
+.writerInfoArea{
+    width: 1100px;
+    height: 30px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+    padding: 5px 50px 5px 50px;
+    background-color: var(--background-color-main);
+}
+.boardWriterArea{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    font-weight: 400;
+    font-size: 15px;
+
+    /*margin-left: 50px;*/
+
+}
+.boardWriter{
+    padding-top: 3px;
+}
+
+
+/*조회수 영역*/
+.viewArea{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /*margin-right: 50px;*/
+}
+/*조회수 */
+.viewCount{
+    padding-top: 3px;
+}
+
+
+/*게시판 내용*/
+.boardContents{
+    width: 1100px;
+    min-height: 400px;
+    font-weight: 600;
+    font-size: 15px;
+
+    padding: 10px 50px 10px 50px;
+
+}
+.ql-video{
+    width: 600px;
+    height: 350px;
+}
+.boardAction{
+    width: 1100px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+.boardUp{
+    margin: 10px 5px 0 5px;
+    width: 100px;
+    height:30px;
+    border: 1px solid var(--font-color-main);
+    border-radius: 10px;
+    background-color: white;
+    color: var(--point-color);
+    font-family: "NanumSquare", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+.boardUp.clicked{
+    border: 1px solid white;
+    background-color: var(--point-color);
+    color: white;
+}
+.boardReport{
+    margin: 10px 5px 0 5px;
+    width: 100px;
+    height:30px;
+    border: 1px solid var(--font-color-main);
+    border-radius: 10px;
+    background-color: var(--background-color-main);
+    color: var(--font-color-main);
+    font-family: "NanumSquare", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+.commentArea {
+    width: 1100px;
+    min-height: 50px;
+}
+.each_comment{
+    width: 1100px;
+    min-height: 40px;
+    padding: 10px 50px 10px 50px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+.each_comment.reply{
+    padding-left: 80px;
+    padding-right: 20px;
+    background-color: var(--background-color-main);
+}
+.each_comment>hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.each_comment > p{
+    font-weight: 400;
+    font-size:15px;
+    line-height:1;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.comment_id{
+    display: none;
+}
+.comment_writer{
+    width: 180px;
+}
+.comment_content{
+    width: 600px;
+    margin-right: auto;
+}
+.comment_date{
+    width: 170px;
+    margin-left: auto;
+}
+.add_comment{
+    width: 1100px;
+    min-height: 40px;
+    padding: 10px 50px 10px 50px;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+.add_comment >.comment_nick_name{
+    width: 180px;
+    font-weight: 400;
+    font-size:15px;
+    line-height:1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.add_comment >textarea{
+    text-align: start;
+    width: 600px;
+    min-height: 60px;
+    outline: none;
+    padding: 10px 10px 10px 10px;
+}
+.add_comment >.comment_submit{
+    margin: auto;
+    background-color: var(--point-color);
+    color: white;
+    border: 1px solid var(--font-color-main);
+
+    width: 100px;
+    height:30px;
+
+    border-radius: 15px;
+}
+
+/*작성자, 조회수 같은 텍스트 부분 영역*/
+.template{
+    padding-right: 10px;
+}
+.hr {
+    border: 1px solid lightgray;
+    width: 1100px;
+}
+.hr.green{
+    border-color: var(--point-color);
+}
