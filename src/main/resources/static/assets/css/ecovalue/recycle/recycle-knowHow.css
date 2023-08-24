@@ -59,33 +59,79 @@
     appearance: none;
 }
 .gallery_sector{
-    width: 1000px;
+    width: 1200px;
     height: 600px;
     background: white;
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3,1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    margin-top: 20px;
 
 
     align-content: center;
-    justify-content: center;
     align-items: center;
     justify-items: center;
 
 }
-.gallery_sector .k{
-    border: 1px solid #d9d9d9;
-    background: var(--background-color-main);
-    border-radius: 15px 15px 15px 15px;
-    width: 240px;
-    height: 180px;
+.gallery_sector .boardInfo{
+    /*border: 1px solid #d9d9d9;*/
+    /*background: var(--background-color-main);*/
+    /*border-radius: 15px 15px 15px 15px;*/
+    width: 1200px;
+    height: 45px;
 
 
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    font-weight: 400;
+    font-size:15px;
+    line-height:1;
+
+
+
 }
-.gallery_sector .k:hover{
+.gallery_sector .boardInfo:hover{
     cursor: pointer;
+
+}
+.galleryTitle{
+    width: 1100px;
+    padding: 10px 50px 10px 50px;
+
+    font-weight: 800;
+    font-size: 30px;
+    color: var(--point-color);
+    text-align: left;
+
+}
+.boardInfoTag{
+    flex-basis: 100px;
+    margin: 15px 20px 15px 40px;
+}
+.boardInfoTitle{
+    flex-basis: 500px;
+    margin: 15px 20px 15px 40px;
+}
+.boardInfoWriter{
+    flex-basis: 100px;
+    margin: 15px 20px 20px 15px;
+}
+.boardInfoTimeSector{
+    flex-basis: 150px;
+    margin: 15px 20px 20px 15px;
+}
+.boardInfoTime{
+    flex-basis: 150px;
+    /*margin: 15px 20px 20px 15px;*/
+}
+.boardInfoView{
+    flex-basis: 100px;
+    margin: 15px 20px 20px 15px;
 }
 .gallery-paging-section{
     display: flex;
@@ -116,7 +162,8 @@
     height: 40px;
     border: 1px solid var(--font-color-main);
     border-radius: 15px;
-    background-color: #ffa500;
+    /*background-color: #ffa500;*/
+    background-color: #ffc966;
     color: white;
     font-family: "NanumSquare", sans-serif;
     font-size: 15px;
@@ -157,4 +204,12 @@
 .paging-next{
     padding-top: 12px;
     font-size: 15px;
+}
+
+.hr {
+    border: 1px solid lightgray;
+    width: 1200px;
+}
+.hr.green{
+    border-color: var(--point-color);
 }

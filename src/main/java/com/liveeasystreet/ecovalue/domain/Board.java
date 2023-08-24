@@ -1,6 +1,7 @@
 package com.liveeasystreet.ecovalue.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @Data
+@ToString
 public class Board {
 
     //내부 조회용 게시판 번호

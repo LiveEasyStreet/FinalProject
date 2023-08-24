@@ -21,6 +21,9 @@
     text-align: left;
 
 }
+.boardCategory >a{
+    color: var(--point-color);
+}
 .boardTitleArea {
     width: 1100px;
     padding: 10px 50px 10px 50px;

@@ -88,6 +88,9 @@ public class RecycleController {
 
         // 해당 페이지에서 나올 데이터(게시판)을 포함하는것
         List<Board> boardLists = boardService.upGalleryBoardSearch(BoardConst.pageSize,BoardConst.pageSize*(page-1),BoardCategory.RECYCLE,searchTarget,searchKeyword);
+        for (Board boardlist: boardLists) {
+            log.info("board stat{}",boardlist);
+        }
         List<Long> boardNum = boardService.boardPageNum(boardLists);
         /**
          * 이 아래 부분은 임시 부분으로 원래는 게시판 중 사진이 있는 애들을 대상으로 출력해야되지만 다 완성되지 않아서 List 전체 보냄

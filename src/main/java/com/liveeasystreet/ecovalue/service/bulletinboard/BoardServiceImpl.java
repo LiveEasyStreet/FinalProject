@@ -34,6 +34,16 @@ public class BoardServiceImpl implements iBoardService{
         return boardRepository.findById(boardId).orElse(null);
     }
 
+    /**
+     * 레포지토리에서 검색하여 조건에 맞춰 가져온 데이터중에서 태그와 사용자를 정보에 맞게 변경후 전달하는 역할
+     *
+     * @param pageSize
+     * @param offset
+     * @param boardCategory
+     * @param search_target
+     * @param search_keyword
+     * @return
+     */
     @Override
     public List<Board> upGalleryBoardSearch(int pageSize, int offset, BoardCategory boardCategory, String search_target, String search_keyword) {
         BoardSearchCond boardSearchCond = setBoardSearchCond(search_target, search_keyword, boardCategory);

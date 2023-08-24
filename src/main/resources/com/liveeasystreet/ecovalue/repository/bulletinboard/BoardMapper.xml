@@ -17,6 +17,7 @@
         SELECT b.board_id as board_id,
                b.title as title,
                b.board_category as board_category,
+               b.tag as tag,
                b.contents as contents,
                b.member_id as member_id,
                b.upload_date as upload_date,

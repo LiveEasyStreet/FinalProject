@@ -19,7 +19,9 @@
 
 <section>
     <div class="reCycle_gallery_board_container">
-        <div class="boardCategory" th:text="${boardViewDto.getBoardCategory().getDescription()}"></div>
+        <div class="boardCategory">
+            <a th:text="${boardViewDto.getBoardCategory().getDescription()}" href='/recycle/knowHow'></a>
+        </div>
         <hr class="hr green">
 
         <div class="boardTitleArea">

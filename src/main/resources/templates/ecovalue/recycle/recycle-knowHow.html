@@ -19,8 +19,38 @@
 <section>
     <div class="knowHow_container">
         <div class="gallery_sector">
+            <div class="galleryTitle" >리사이클 노하우</div>
+            <hr class="hr green">
+            <div class="boardInfo" id="boardInfoStat">
+                <p class="boardInfoTag">태그</p>
+                <p class="boardInfoTitle">제목</p>
+                <p class="boardInfoWriter">작성자</p>
+                <p class="boardInfoTimeSector" >작성일</p>
+                <p class="boardInfoView">조회수</p>
+            </div>
+            <hr class="hr green">
             <th:block th:each="boardList : ${boardLists}">
-                <div class="k" th:onclick="|location.href='/recycle/views/' + ${boardList.getBoardId()}|" th:text="${boardList.getTitle()}">테스트1</div>
+                <div class="boardInfo" th:onclick="|location.href='/recycle/views/' + ${boardList.getBoardId()}|">
+                    <p class="boardInfoTag" th:text="${boardList.getTag()}">태그</p>
+                    <p class="boardInfoTitle" th:text="${boardList.getTitle()}">제목 1</p>
+<!--                    멤버 고유번호가 나오는 상태인데 닉네임으로 바꿔야됨 서비스 부분에서 바꾸면 될듯-->
+                    <p class="boardInfoWriter" th:text="${boardList.getMemberId()}">멤버 식별번호</p>
+                    <div class="boardInfoTimeSector" th:if="${boardList.getEditDate() == null}">
+
+                        <div th:with="now=${#temporals.createNow()}">
+                            <div th:if="${#temporals.format(boardList.getUploadDate(), 'yyyyMMdd') == #temporals.format(now, 'yyyyMMdd')}">
+                                <p class="boardInfoTime" th:text="${#temporals.format(boardList.getUploadDate(), 'HH:mm')}">**:**</p>
+                            </div>
+                            <div th:unless="${#temporals.format(boardList.getUploadDate(), 'yyyyMMdd') == #temporals.format(now, 'yyyyMMdd')}">
+                                <p class="boardInfoTime" th:text="${#temporals.format(boardList.getUploadDate(), 'MM월dd일')}">**월**일</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="boardInfoTime" th:unless="${boardList.getEditDate() == null}" th:text="${boardList.getEditDate()}">수정일</p>
+                    <p class="boardInfoView" th:text="${boardList.getViews()}">조회수</p>
+                </div>
+                <hr class="hr">
+<!--                <div class="k" th:onclick="|location.href='/recycle/views/' + ${boardList.getBoardId()}|" th:text="${boardList.getTitle()}">테스트1</div>-->
             </th:block>
         </div>
         <div class="button_sector">
